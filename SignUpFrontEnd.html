@@ -27,17 +27,18 @@
 				return false;
 			}
 
+			if(username.length < 1)
+			{
+				alert('Username is not valid.');
+				return false;
+			}
 			if(!regex.test(email))
 			{
 				alert("Email is not valid.");
 				return false;
 			}
 
-			if(username.length < 1)
-			{
-				alert('Username is not valid.');
-				return false;
-			}
+
 
 			if(passwordFirst == passwordSecond)
 			{
