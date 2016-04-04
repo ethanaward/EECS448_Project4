@@ -1,6 +1,6 @@
 <?php
 
-	$mysqli = new mysqli("mysql.eecs.ku.edu", "", "", "");
+	$mysqli = new mysqli("mysql.eecs.ku.edu", "eward", "ethanward", "eward");
 	$username = $_POST["username"];
 	$firstName = $_POST["firstName"];
 	$lastName = $_POST["lastName"];
