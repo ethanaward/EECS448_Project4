@@ -1,60 +1,47 @@
 <html>
 
   <head>
-    <title>Sign up</title>
+	<title>Sign up</title>
 
-		<script type="text/javascript">
+	<script type="text/javascript">
 		function validator() 
 		{
+			var email = document.getElementById('email').value;
 			var firstVal = document.getElementById('passwordFirst').value;
 			var secondVal = document.getElementById('passwordSecond').value;
 
-		if(firstVal == secondVal)
-		{
-			if(firstVal.length < 8)
+			var regex = /^([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-zA-Z]{2,9})$/;
+
+			if(!regex.test(email))
 			{
-				alert('password must be at least 8 characters');
+				alert("Username must be a valid email.");
+				return false;
 			}
+			
+			if(firstVal == secondVal)
+			{
+				if(firstVal.length < 8)
+				{
+					alert('password must be at least 8 characters');
+				}
+				else
+				{
+					alert('valid');
+				}
+			}	
 			else
 			{
-				alert('valid');
+				alert('passwords do not match');
 			}
-		}	
-		else
-		{
-			alert('passwords do not match');
-		}
+			
 
 		}
-		</script>
+	</script>
   </head>
 
   <body>
 	<form onsubmit = "validator()" action = "SignUpBackEnd.php" method = "post">
-		Email: <input type="text" name = "email"><br>		<script type="text/javascript">
-		function validator() 
-		{
-			var firstVal = document.getElementById('passwordFirst').value;
-			var secondVal = document.getElementById('passwordSecond').value;
-
-		if(firstVal == secondVal)
-		{
-			if(firstVal.length < 8)
-			{
-				alert('password must be at least 8 characters');
-			}
-			else
-			{
-				alert('valid');
-			}
-		}	
-		else
-		{
-			alert('passwords do not match');
-		}
-
-		}
-		</script>
+		Email: <input type="text" id = "email" name = "email"><br>		
 		Enter password: <input type="text" id="passwordFirst" name="passwordFirst"></input> <br>
 		Re-enter password: <input type="text" id="passwordSecond" name="passwordSecond"></input><br>
 		
