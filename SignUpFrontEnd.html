@@ -6,32 +6,51 @@
 	<script type="text/javascript">
 		function validator() 
 		{
+			var firstName = document.getElementById('firstName').value;
+			var lastName = document.getElementById('lastName').value;
 			var email = document.getElementById('email').value;
-			var firstVal = document.getElementById('passwordFirst').value;
-			var secondVal = document.getElementById('passwordSecond').value;
-
+			var username = document.getElementById('username').value;
+			var passwordFirst = document.getElementById('passwordFirst').value;
+			var passwordSecond = document.getElementById('passwordSecond').value;
+			
 			var regex = /^([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-zA-Z]{2,9})$/;
+
+			if(firstName.length < 1)
+			{
+				alert("First name is not valid.");
+				return false;
+			}
+
+			if(lastName.length < 1)
+			{
+				alert("Last name is not valid.");
+				return false;
+			}
 
 			if(!regex.test(email))
 			{
-				alert("Username must be a valid email.");
+				alert("Email is not valid.");
 				return false;
 			}
-			
-			if(firstVal == secondVal)
+
+			if(username.length < 1)
 			{
-				if(firstVal.length < 8)
+				alert('Username is not valid.');
+				return false;
+			}
+
+			if(passwordFirst == passwordSecond)
+			{
+				if(passwordFirst.length < 8)
 				{
-					alert('password must be at least 8 characters');
-				}
-				else
-				{
-					alert('valid');
+					alert('Password must be at least 8 characters.');
+					return false;
 				}
 			}	
 			else
 			{
-				alert('passwords do not match');
+				alert('Passwords do not match.');
+				return false;
 			}
 			
 
