@@ -2,11 +2,62 @@
 
   <head>
     <title>Sign up</title>
+
+		<script type="text/javascript">
+		function validator() 
+		{
+			var firstVal = document.getElementById('passwordFirst').value;
+			var secondVal = document.getElementById('passwordSecond').value;
+
+		if(firstVal == secondVal)
+		{
+			if(firstVal.length < 8)
+			{
+				alert('password must be at least 8 characters');
+			}
+			else
+			{
+				alert('valid');
+			}
+		}	
+		else
+		{
+			alert('passwords do not match');
+		}
+
+		}
+		</script>
   </head>
 
   <body>
-	<form action = "SignUpBackEnd.php" method = "post">
-		Email: <input type="text" name = "email"><br>
+	<form onsubmit = "validator()" action = "SignUpBackEnd.php" method = "post">
+		Email: <input type="text" name = "email"><br>		<script type="text/javascript">
+		function validator() 
+		{
+			var firstVal = document.getElementById('passwordFirst').value;
+			var secondVal = document.getElementById('passwordSecond').value;
+
+		if(firstVal == secondVal)
+		{
+			if(firstVal.length < 8)
+			{
+				alert('password must be at least 8 characters');
+			}
+			else
+			{
+				alert('valid');
+			}
+		}	
+		else
+		{
+			alert('passwords do not match');
+		}
+
+		}
+		</script>
+		Enter password: <input type="text" id="passwordFirst" name="passwordFirst"></input> <br>
+		Re-enter password: <input type="text" id="passwordSecond" name="passwordSecond"></input><br>
+		
 		<input type="submit">
 	</form>
 
