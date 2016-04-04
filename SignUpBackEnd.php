@@ -1,13 +1,13 @@
 <?php
 
 	$mysqli = new mysqli("mysql.eecs.ku.edu", "", "", "");
-
+	$username = $_POST["username"];
 	$firstName = $_POST["firstName"];
 	$lastName = $_POST["lastName"];
 	$email = $_POST["email"];
 	$password = $_POST["passwordFirst"];
 
-$sql = "INSERT INTO EECSUsers (FirstName, LastName, Email, Password) VALUES ('$firstName', '$lastName', '$email', '$password')";
+$sql = "INSERT INTO EECSUsers (user_id, FirstName, LastName, Email, Password) VALUES ('$username', '$firstName', '$lastName', '$email', '$password')";
 
 if($mysqli->query($sql) === TRUE) {
 	echo "New record created successfully";
