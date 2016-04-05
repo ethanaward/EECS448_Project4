@@ -3,64 +3,14 @@
   <head>
 	<title>Sign up</title>
 
-	<script type="text/javascript">
-		function validator() 
-		{
-			var firstName = document.getElementById('firstName').value;
-			var lastName = document.getElementById('lastName').value;
-			var email = document.getElementById('email').value;
-			var username = document.getElementById('username').value;
-			var passwordFirst = document.getElementById('passwordFirst').value;
-			var passwordSecond = document.getElementById('passwordSecond').value;
-			
-			var regex = /^([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-zA-Z]{2,9})$/;
 
-			if(firstName.length < 1)
-			{
-				alert("First name is not valid.");
-				return false;
-			}
+	<script type="text/javascript" src="scripts/InputValidator.js"></script>
+	<script type="text/javascript" src="scripts/main.js"></script>
 
-			if(lastName.length < 1)
-			{
-				alert("Last name is not valid.");
-				return false;
-			}
-
-			if(username.length < 1)
-			{
-				alert('Username is not valid.');
-				return false;
-			}
-			if(!regex.test(email))
-			{
-				alert("Email is not valid.");
-				return false;
-			}
-
-
-
-			if(passwordFirst == passwordSecond)
-			{
-				if(passwordFirst.length < 8)
-				{
-					alert('Password must be at least 8 characters.');
-					return false;
-				}
-			}	
-			else
-			{
-				alert('Passwords do not match.');
-				return false;
-			}
-			
-
-		}
-	</script>
   </head>
 
   <body>
-	<form onsubmit = "return validator();" action = "SignUpBackEnd.php" method = "post">
+	<form onsubmit = "return x.checkSignUp();" action = "SignUpBackEnd.php" method = "post">
 		First Name: <input type="text" id="firstName" name = "firstName"><br>
 		Last Name: <input type= "text" id = "lastName" name = "lastName"><br>
 		Username: <input type= "text" id = "username" name = "username"><br>

@@ -2,31 +2,16 @@
 
   <head>
     <title>Login Page</title>
-	<script type="text/javascript">
-		function validator() 
-		{
-			var username = document.getElementById('username').value;
-			var password = document.getElementById('password').value;
-			if(username.length < 1)
-			{
-				alert('Username field is blank.');
-				return false;
-			}
-
-			if(password.length < 1)
-			{
-				alert('Password field is blank.');
-				return false;
-			}
+	<script type="text/javascript" src="scripts/InputValidator.js"></script>
+	<script type="text/javascript" src="scripts/main.js"></script>
 
 
+</script>
 
-		}
-	</script>
   </head>
 
   <body>
-	<form onsubmit = "return validator();" action = "LoginBackEnd.php" method = "post">
+	<form onsubmit = "return x.checkLogin()" action = "LoginBackEnd.php" method = "post">
 		Username: <input type= "text" id = "username" name = "username"><br>
 		Password: <input type="text" id="password" name="password"></input> <br>
 		<input type="submit" value = "Log In">
