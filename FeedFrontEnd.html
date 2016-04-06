@@ -1,12 +1,20 @@
 <html>
+        <head>
+                <title>EECSForum Main Feed</title>
+                <?php
+			include 'FeedBackEnd.php';
+		?>
 
-  <head>
-    <title>Post Feed</title>
-  </head>
+        </head>
+        <body>
+                <br><br>
+                <form id="myForm" action="CreatePosts.php" method="post">
+                        <textarea rows="8" cols="100" name="mypost"></textarea><br>
+                        Username:
+                        <input type="text" name="user" maxlength="25" size="15">
+                        <input type="submit" class="button" name="submit" value="Post">
+                </form>
 
-  <body>
-
-  </body>
-
-
+                <a href="">Profile</a>
+        </body>
 </html>
