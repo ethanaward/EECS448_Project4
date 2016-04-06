@@ -28,7 +28,7 @@ else
 /* close connection */
 $mysqli->close();
 
-header("Location: /ProfileFrontEnd.html", TRUE, 303);
+header("Location: http://people.eecs.ku.edu/~mneises/448/Tests/ProfileFrontEnd.html", TRUE, 303);
 ?>
 
 
