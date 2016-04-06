@@ -16,7 +16,7 @@ else{
 	echo "Error: " . $sql . "<br>" . $mysqli->error;
 }
 
-}
+
 /* close connection */
 $mysqli->close();
 
