@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $mysqli = new mysqli("mysql.eecs.ku.edu", "eward", "ethanward", "eward");
 
 /* check connection */

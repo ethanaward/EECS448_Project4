@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $user = $_POST["user"];
 
 echo "<h1>Main Feed</h1>";

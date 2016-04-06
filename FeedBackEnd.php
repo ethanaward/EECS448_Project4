@@ -4,6 +4,7 @@
 	Date Modified: April 6, 2016
 	Purpose: to display all post content
 **/
+session_start();
 
 $user = $_POST["user"];
 

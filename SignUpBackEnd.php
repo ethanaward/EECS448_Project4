@@ -1,4 +1,5 @@
 <?php
+  session_start();
 
 	$mysqli = new mysqli("mysql.eecs.ku.edu", "eward", "ethanward", "eward");
 	$username = $_POST["username"];
@@ -8,14 +9,14 @@
 	$password = $_POST["passwordFirst"];
 	if($username == "" || $firstname == "" || $lastname == "" || $email == "" || $password == "")
 	{
-		
+
 
 	}
-	else 
+	else
 	{
 		$sql = "INSERT INTO EECSUsers (user_id, FirstName, LastName, Email, Password) VALUES ('$username', '$firstName', '$lastName', '$email', '$password')";
 
-		if($mysqli->query($sql) === TRUE) 
+		if($mysqli->query($sql) === TRUE)
 		{
 
 		}
