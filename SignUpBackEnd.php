@@ -17,7 +17,7 @@
 
 		if($mysqli->query($sql) === TRUE) 
 		{
-			echo "New record created successfully";
+
 		}
 		else
 		{
@@ -27,5 +27,5 @@
 /* close connection */
 $mysqli->close();
 
-header("Location: /ProfileFrontEnd.html", TRUE, 303);
+header("Location: http://people.eecs.ku.edu/~mneises/448/Tests/FeedFrontEnd.html", TRUE, 303);
 ?>
