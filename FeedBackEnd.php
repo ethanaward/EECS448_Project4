@@ -1,4 +1,9 @@
 <?php
+/**
+	Author: Michael Neises, Travis Augustine
+	Date Modified: April 6, 2016
+	Purpose: to display all post content
+**/
 
 $user = $_POST["user"];
 
