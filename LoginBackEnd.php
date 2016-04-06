@@ -27,6 +27,8 @@ else
 
 /* close connection */
 $mysqli->close();
+
+header("Location: /ProfileFrontEnd.html", TRUE, 303);
 ?>
 
 
