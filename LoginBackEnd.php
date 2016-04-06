@@ -17,7 +17,7 @@ $row_num = mysqli_num_rows($result);
 
 if($row_num == 1)
 {
-
+	header("Location: http://people.eecs.ku.edu/~mneises/448/Tests/ProfileFrontEnd.html", TRUE, 303);
 }
 else
 {
@@ -27,9 +27,6 @@ else
 
 /* close connection */
 $mysqli->close();
-
-header("Location: http://people.eecs.ku.edu/~mneises/448/Tests/ProfileFrontEnd.html", TRUE, 303);
-?>
 
 
 ?>
