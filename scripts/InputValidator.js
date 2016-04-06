@@ -1,6 +1,25 @@
 function InputValidator()
 {
+	this.checkPost = function()
+	{
+		var username = document.getElementById('user').value;
+		var post = document.getElementById('post').value;
 
+		if(username.length < 1)
+		{
+			alert('Username field is blank.');
+			return false;
+		}
+		else if(post.length < 1)
+		{
+			alert('Post field is blank.');
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
 	this.checkLogin = function()
 	{
 
