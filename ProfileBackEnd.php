@@ -7,11 +7,12 @@ if($mysqli->connect_errno) {
   exit();
 }
 
-$query = "SELECT * FROM EECSUsers WHERE user_id ='mike'";
+$query = "SELECT Email FROM EECSUsers WHERE user_id ='mike'";
 
 if($result = $mysqli->query($query)) {
 
-
-      echo($result["Email"]<br);
+	$row = $result->fetch-assoc();
+      printf("%s<br>", $row["Email]);
 
 }
+>
