@@ -10,10 +10,10 @@
         </head>
         <body>
                 <br><br>
-                <form id="myForm" onsubmit = "return x.checkPost()" action="CreatePosts.php" method="post">
-                        <textarea rows="8" cols="100" name="mypost"></textarea><br>
+                <form id="myForm" onsubmit = "return x.checkPost();" action="CreatePosts.php" method="post">
+                        <textarea rows="8" cols="100" id = "post" name="mypost"></textarea><br>
                         Username:
-                        <input type="text" name="user" maxlength="25" size="15">
+                        <input type="text" name="user" id = "username" maxlength="25" size="15">
                         <input type="submit" class="button" name="submit" value="Post">
                 </form>
 
