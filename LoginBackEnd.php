@@ -22,7 +22,8 @@ if($row_num == 1)
 else
 {
 	echo "Error: Username does not exist";
-
+	echo "<br>";
+	echo "<a href='http://people.eecs.ku.edu/~mneises/448/Tests/LoginFrontEnd'>Back</a>";
 }
 
 /* close connection */
