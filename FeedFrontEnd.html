@@ -4,11 +4,13 @@
                 <?php
 			include 'FeedBackEnd.php';
 		?>
+	<script type="text/javascript" src="scripts/InputValidator.js"></script>
+	<script type="text/javascript" src="scripts/main.js"></script>
 
         </head>
         <body>
                 <br><br>
-                <form id="myForm" action="CreatePosts.php" method="post">
+                <form id="myForm" onsubmit = "return x.checkPost()" action="CreatePosts.php" method="post">
                         <textarea rows="8" cols="100" name="mypost"></textarea><br>
                         Username:
                         <input type="text" name="user" maxlength="25" size="15">
