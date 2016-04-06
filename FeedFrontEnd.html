@@ -1,22 +1,24 @@
 <html>
-        <head>
-                <title>EECSForum Main Feed</title>
-                <?php
+	<head>
+		<title>EECSForum Main Feed</title>
+		<?php
 			include 'FeedBackEnd.php';
 		?>
-	<script type="text/javascript" src="scripts/InputValidator.js"></script>
-	<script type="text/javascript" src="scripts/main.js"></script>
-
-        </head>
-        <body>
-                <br><br>
-                <form id="myForm" onsubmit = "return x.checkPost();" action="CreatePosts.php" method="post">
-                        <textarea rows="8" cols="100" id = "post" name="mypost"></textarea><br>
-                        Username:
-                        <input type="text" name="user" id = "user" maxlength="25" size="15">
-                        <input type="submit" class="button" name="submit" value="Post">
-                </form>
-
-                <a href="">Profile</a>
-        </body>
+		<script type="text/javascript" src="scripts/InputValidator.js"></script>
+		<script type="text/javascript" src="scripts/main.js"></script>
+    </head>
+	<body>
+		<br><br>
+		<form id="myForm" onsubmit = "return x.checkPost();" action="CreatePosts.php" method="post">
+			<textarea rows="8" cols="100" id = "post" name="mypost"></textarea><br>
+			Username:
+			<input type="text" name="user" id = "user" maxlength="25" size="15">
+        	<input type="submit" class="button" name="submit" value="Post">
+        </form>
+		<a href="http://people.eecs.ku.edu/~mneises/448/Tests/SignUpFrontEnd">Sign Up</a>
+		<br>
+		<a href="http://people.eecs.ku.edu/~mneises/448/Tests/LoginFrontEnd">Login Page</a>
+		<br>
+		<a href="http://people.eecs.ku.edu/~mneises/448/Tests/ProfileFrontEnd">Profile Page</a>
+	</body>
 </html>
