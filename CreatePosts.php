@@ -55,6 +55,6 @@ $mysqli->close();
         </head>
         <body>
                 <br><br>
-                <a href="http://people.eecs.ku.edu/~mneises/448/Tests/FeedFrontEnd">Back</a>
+                <a href="FeedFrontEnd.html">Back</a>
         </body>
 </html>
