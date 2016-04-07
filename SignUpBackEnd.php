@@ -10,17 +10,18 @@
 
 		$sql = "INSERT INTO EECSUsers (user_id, FirstName, LastName, Email, Password) VALUES ('$username', '$firstName', '$lastName', '$email', '$password')";
 
-		if($mysqli->query($sql) === TRUE)
+		if($mysqli->query($sql))
 		{
-
+      $_SESSION['username'] = $username;
+      $_SESSION['profilename'] = $username;
 		}
 		else
 		{
 			echo "Error: " . $sql . "<br>" . $mysqli->error;
 		}
-	
+
 /* close connection */
 $mysqli->close();
 
-header("Location: http://people.eecs.ku.edu/~mneises/448/Tests/FeedFrontEnd.html", TRUE, 303);
+header("Location: ProfileFrontEnd.html", TRUE, 303);
 ?>
