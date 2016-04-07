@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 $mysqli = new mysqli("mysql.eecs.ku.edu", "eward", "ethanward", "eward");
 
 /* check connection */
@@ -17,13 +18,16 @@ $row_num = mysqli_num_rows($result);
 
 if($row_num == 1)
 {
-	header("Location: http://people.eecs.ku.edu/~mneises/448/Tests/ProfileFrontEnd.html", TRUE, 303);
+  $_SESSION["profilename"] = $username;
+  $_SESSION["username"] = $username;
+  header("Location: ProfileFrontEnd.html", TRUE, 303);
+  exit();
 }
 else
 {
 	echo "Error: Username does not exist";
 	echo "<br>";
-	echo "<a href='http://people.eecs.ku.edu/~mneises/448/Tests/LoginFrontEnd'>Back</a>";
+	echo "<a href='LoginFrontEnd.html'>Back</a>";
 }
 
 /* close connection */
