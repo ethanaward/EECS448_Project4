@@ -7,13 +7,7 @@
 	$lastName = $_POST["lastName"];
 	$email = $_POST["email"];
 	$password = $_POST["passwordFirst"];
-	if($username == "" || $firstname == "" || $lastname == "" || $email == "" || $password == "")
-	{
 
-
-	}
-	else
-	{
 		$sql = "INSERT INTO EECSUsers (user_id, FirstName, LastName, Email, Password) VALUES ('$username', '$firstName', '$lastName', '$email', '$password')";
 
 		if($mysqli->query($sql) === TRUE)
@@ -24,7 +18,7 @@
 		{
 			echo "Error: " . $sql . "<br>" . $mysqli->error;
 		}
-	}
+	
 /* close connection */
 $mysqli->close();
 
