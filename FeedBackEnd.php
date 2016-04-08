@@ -27,7 +27,7 @@ if ($result = $mysqli->query($query)) {
                 echo "<br>";
         printf ("%s \n", $row["content"]);
                 echo "<br>-";
-        printf ("%s \n", $row["user_id"]);
+        printf ("<a href = 'ProfileFrontEnd.html?profile=%s'>%s</a> \n", $row["user_id"],$row["user_id"]);
                 echo "<br>";
     }
         echo "</ul>";
