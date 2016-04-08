@@ -25,7 +25,7 @@ if($_SESSION['username'] == $_SESSION['profilename']) {
         <tr> <td>Last Name:</td><td><input type = 'text' name = 'lastName' value = '%s'></td> </tr>", $row["user_id"], $row["Email"], $row["FirstName"], $row["LastName"]);
       }
       echo "</table>";
-      echo "<input type = 'submit'>";
+      echo "<input type = 'submit' value = 'Edit profile'>";
       echo "</form>";
       $result->free();
 
