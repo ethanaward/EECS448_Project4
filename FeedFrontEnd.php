@@ -1,11 +1,19 @@
 <?php
-
+/*
+* Author: Michael Neises
+* Date Modified: April 8, 2016
+* Purpose: to display the user posts and the associated
+*/
 session_start();
 
+//This variable holds the posted user_id
 $user = $_POST["user"];
 
+//This is the main title for the post feed.
+//Add additional titles here in the future.
 echo "<h1>Main Feed</h1>";
 
+//Initialize the connection to the database
 $mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
 
 /* check connection */
@@ -14,17 +22,21 @@ if ($mysqli->connect_errno) {
     exit();
 }
 
+//Here we select everything from the posts database.
 $query = "SELECT * FROM EECSPosts";
+
 
 if ($result = $mysqli->query($query)) {
     /* fetch associative array */
-        echo "<ul>";
+    
+    //Here we display all the post and the associated username, which also serves as a link to that user's profile page.
+    echo "<ul>";
     while ($row = $result->fetch_assoc()) {
-                echo "<br>";
+        echo "<br>";
         printf ("%s \n", $row["content"]);
-                echo "<br>-";
+        echo "<br>-";
         printf ("<a href = 'ProfileFrontEnd.html?profile=%s'>%s</a> \n", $row["user_id"],$row["user_id"]);
-                echo "<br>";
+        echo "<br>";
     }
         echo "</ul>";
 
@@ -37,6 +49,10 @@ $mysqli->close();
 
 ?>
 
+<!--
+    In this html section we display the forms for the post input and the associated username
+    In the future this can be updated to automatically post the username by way of login persistence.
+-->
 <html>
         <head>
                 <title>EECSForum Main Feed</title>
