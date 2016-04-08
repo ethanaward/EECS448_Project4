@@ -10,19 +10,33 @@ session_start();
 -->
 	<head>
 		<title>EECSForum Main Feed</title>
+		<!--
+			With this php we use FeedBackEnd.php to display the contents of the posts database.
+			See file for more details.
+		-->
 		<?php
 			include 'FeedBackEnd.php';
 		?>
+		<!--
+			Here we include the javascript scripts.
+		-->
 		<script type="text/javascript" src="scripts/InputValidator.js"></script>
 		<script type="text/javascript" src="scripts/main.js"></script>
     </head>
 	<body>
 		<br><br>
+		<!--
+			Here is the form for input of post content and username
+			This can be updated to allow automatic username input by way of login persistence.
+		-->
 		<form id="myForm" onsubmit = "return x.checkPost();" action="CreatePosts.php" method="post">
 			<textarea rows="8" cols="100" id = "post" name="mypost"></textarea><br>
 			Username:
 			<input type="text" name="user" id = "user" maxlength="25" size="15">
         	<input type="submit" class="button" name="submit" value="Post">
+	<!--
+		Here we display navigation links below everything else.		
+	-->
         </form>
 		<?php include 'DisplaySignupLogin.php'; ?> 
 		<?php include 'DisplayProfileLink.php'; ?>
