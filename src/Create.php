@@ -84,7 +84,6 @@ session_start();
 			//See echos for explanations inside this conditional.
 			if($this->mysqli->query($this->query)==TRUE) {
 					echo "New post created successfully!";
-				}
 			} else {
 					echo "Error: ".$this->query."<br>".$this->mysqli->error;
 			}
