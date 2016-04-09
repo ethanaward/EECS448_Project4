@@ -1,16 +1,11 @@
-
 <?php
-
 /**
 *	@file : Edit.php
 *	@author : Mike Neises, Travis Augustine, Ethan Ward
 *	@date : 2016.04.08
 *	@brief: Updates database with edited profile information
 */
-
-
 session_start();
-
 	class Edit {
 		
 		private $mysqli;

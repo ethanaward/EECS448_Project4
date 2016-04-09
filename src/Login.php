@@ -1,16 +1,11 @@
-
-
 <?php
-
 /**
 *	@file : Login.php
 *	@author : Mike Neises, Travis Augustine, Ethan Ward
 *	@date : 2016.04.08
 *	@brief: Authenticates user login information
 */
-
 session_start();
-
   class Login {
 
     private $query;
