@@ -1,11 +1,13 @@
+
+
+<?php
+
 /**
 *	@file : Create.php
 *	@author : Mike Neises, Travis Augustine, Ethan Ward
 *	@date : 2016.04.08
 *	@brief: Creates new post in MySQL database
 */
-
-<?php
 session_start();
 /*
 * Author: Michael Neises

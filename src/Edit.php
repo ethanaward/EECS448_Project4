@@ -1,3 +1,6 @@
+
+<?php
+
 /**
 *	@file : Edit.php
 *	@author : Mike Neises, Travis Augustine, Ethan Ward
@@ -5,7 +8,6 @@
 *	@brief: Updates database with edited profile information
 */
 
-<?php
 
 session_start();
 
