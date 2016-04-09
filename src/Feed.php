@@ -1,3 +1,10 @@
+/**
+*	@file : Feed.php
+*	@author : Mike Neises, Travis Augustine, Ethan Ward
+*	@date : 2016.04.08
+*	@brief: Takes posts from database and displays them
+*/
+
 <?php
 
 	session_start();

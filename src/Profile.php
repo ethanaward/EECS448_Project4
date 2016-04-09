@@ -1,3 +1,11 @@
+/**
+*	@file : Profile.php
+*	@author : Mike Neises, Travis Augustine, Ethan Ward
+*	@date : 2016.04.08
+*	@brief: Displays user profile information from database
+*/
+
+
 <?php
 
 session_start();
