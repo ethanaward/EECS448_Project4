@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include "Profile.php";
+include "src/Profile.php";
 
 $profile = new Profile();
 

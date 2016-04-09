@@ -1,7 +1,7 @@
 <?php
   session_start();
 
-include "SignUp.php";
+include "src/SignUp.php";
 
 $signup = new SignUp();
 

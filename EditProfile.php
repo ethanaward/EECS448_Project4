@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include "Edit.php";
+include "src/Edit.php";
 
 $edit = new Edit();
 
