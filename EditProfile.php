@@ -1,29 +1,10 @@
 <?php
 
 session_start();
-$mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
+include "Edit.php";
 
-$email = $_POST['email'];
-$firstname = $_POST['firstName'];
-$lastname = $_POST['lastName'];
+$edit = new Edit();
 
-if($mysqli->connect_errno) {
-  printf("Connect failed: %s\n", $mysqli->connect_error);
-  exit();
-}
+$edit->editProfile();
 
-$query = "UPDATE EECSUsers SET Email='$email', FirstName='$firstname', LastName='$lastname' WHERE user_id='".$_SESSION['username']."'";
-
-if($mysqli->query($query)) {
-
-}
-
-
-  else
-  {
-    echo "Error: <br>" . $mysqli->error;
-  }
-
-$mysqli->close();
-header("Location: ProfileFrontEnd.html", TRUE, 303);
-?>
+ ?>
