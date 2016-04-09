@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['profile',['Profile',['../class_profile.html',1,'']]],
-  ['profile_2ephp',['Profile.php',['../_profile_8php.html',1,'']]],
-  ['profilebackend_2ephp',['ProfileBackEnd.php',['../_profile_back_end_8php.html',1,'']]]
+  ['login',['Login',['../class_login.html',1,'']]],
+  ['login_2ephp',['Login.php',['../_login_8php.html',1,'']]],
+  ['loginbackend_2ephp',['LoginBackEnd.php',['../_login_back_end_8php.html',1,'']]],
+  ['logoutbackend_2ephp',['LogoutBackEnd.php',['../_logout_back_end_8php.html',1,'']]]
 ];
