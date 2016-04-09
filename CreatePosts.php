@@ -1,11 +1,11 @@
+
+<?php
 /**
 *	@file : CreatePosts.php
 *	@author : Mike Neises, Travis Augustine, Ethan Ward
 *	@date : 2016.04.08
 *	@brief: Creates new Create object
 */
-<?php
-
 session_start();
 include "src/Create.php";
 
