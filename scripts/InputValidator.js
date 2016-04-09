@@ -1,3 +1,11 @@
+/**
+*	@file : InputValidator.js
+*	@author : Mike Neises, Travis Augustine, Ethan Ward
+*	@date : 2016.04.08
+*	@brief: Checks for valid input
+*/
+
+
 function InputValidator()
 {
 	this.checkPost = function()
