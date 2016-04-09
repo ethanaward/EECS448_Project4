@@ -19,6 +19,13 @@
 	private $password;
 	private $sql;
 	
+	
+	/**
+	*  @name SignUp
+	*  @pre Submitted form data
+	*  @post The form data is saved to variables and the database called
+	*  @return none
+	*/
 	public function SignUp()
 	{
 		
@@ -32,6 +39,12 @@
 
 	}
 	
+	/**
+	*  @name redirectPage
+	*  @pre None
+	*  @post The user is redirected to the profile page
+	*  @return none
+	*/
 	private function redirectPage()
 	{
 	 
@@ -39,6 +52,13 @@
 	
 	}
 
+
+	/**
+	*  @name runQuery
+	*  @pre Gathered HTML form data
+	*  @post New user is created
+	*  @return none
+	*/
 	public function runQuery()
 	{
 	

@@ -17,6 +17,12 @@ session_start();
 		private $email;
 		private $query;
 	
+		/**
+		*  @name display
+		*  @pre HTML edit form submitted
+		*  @post Intitializes variables and MySQL database
+		*  @return none
+		*/
 		public function Edit()
 		{
 			$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
@@ -28,6 +34,12 @@ session_start();
 			$this->query = "UPDATE EECSUsers SET Email='$this->email', FirstName='$this->firstname', LastName='$this->lastname' WHERE user_id='".$_SESSION['username']."'";
 		}
 		
+		/**
+		*  @name isOK
+		*  @pre None
+		*  @post Prints error if connection failed
+		*  @return none
+		*/
 		private function isOK()
 		{
 			if($this->mysqli->connect_errno) 
@@ -37,12 +49,23 @@ session_start();
 			}
 		}
 		
+		/**
+		*  @name redirectPage
+		*  @pre None
+		*  @post The user is redirected to the profile page
+		*  @return none
+		*/
 		private function redirectPage()
 		{
 			header("Location: ProfileFrontEnd.html", TRUE, 303);
 		}
 		
-		
+		/**
+		*  @name editProfile
+		*  @pre MySQL initialized
+		*  @post Profile page and database are updated with new data
+		*  @return none
+		*/
 		public function editProfile()
 		{
 		

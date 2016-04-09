@@ -21,6 +21,13 @@ session_start();
 		private $query;
 		private $mysqli;
 
+
+		/**
+		*  @name Create
+		*  @pre HTML form for post submitted
+		*  @post Intitializes variables and MySQL database
+		*  @return none
+		*/
 		public function Create()
 		{
 
@@ -45,6 +52,12 @@ session_start();
 
 		}
 
+		/**
+		*  @name isOK
+		*  @pre None
+		*  @post Prints error if connection failed
+		*  @return none
+		*/
 		private function isOK()
 		{
 			/* check connection */
@@ -55,6 +68,12 @@ session_start();
 			}
 		}
 
+		/**
+		*  @name makePost
+		*  @pre HTML form for post submitted, database initialized
+		*  @post Alters MySQL database
+		*  @return none
+		*/
 		public function makePost()
 		{
 			//Test to make sure the database can be accessed

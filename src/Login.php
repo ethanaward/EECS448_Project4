@@ -16,6 +16,12 @@ session_start();
     private $username;
     private $password;
 
+	/**
+	*  @name Login
+	*  @pre HTML form data submitted
+	*  @post Initializes variables and MySQL database
+	*  @return none
+	*/
     public function Login() {
       $this->username = $_POST["username"];
       $this->password = $_POST["password"];
@@ -25,12 +31,25 @@ session_start();
       $this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
     }
 
+	/**
+	*  @name isOK
+	*  @pre None
+	*  @post Prints error if connection failed
+	*  @return none
+	*/
     private function isOK() {
       if($this->mysqli->connect_errno) {
         printf("Connect failed: %s\n", $this->mysqli->connect_error);
         exit();
       }
     }
+
+	/**
+	*  @name run
+	*  @pre Database connected
+	*  @post Authenticates login
+	*  @return none
+	*/
 
     public function run() {
       $this->isOK();

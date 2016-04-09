@@ -15,18 +15,36 @@ session_start();
     private $query;
     private $mysqli;
 
+	/**
+	*  @name Profile
+	*  @pre None
+	*  @post MySQL database is initialized
+	*  @return none
+	*/
     public function Profile() {
       $this->query = "SELECT * FROM EECSUsers WHERE user_id = '".$_SESSION['profilename']."'";
       $this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
     }
-
+    
+	/**
+	*  @name isOK
+	*  @pre None
+	*  @post Prints error if connection failed
+	*  @return none
+	*/
     private function isOK() {
       if($this->mysqli->connect_errno) {
         printf("Connect failed: %s\n", $this->mysqli->connect_error);
         exit();
       }
     }
-
+    
+	/**
+	*  @name display
+	*  @pre None
+	*  @post Displays HTML form for editing profile
+	*  @return none
+	*/
     public function display() {
     	$this->isOK();
       if($_SESSION['username'] == $_SESSION['profilename']) {

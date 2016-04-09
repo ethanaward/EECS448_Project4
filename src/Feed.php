@@ -15,12 +15,24 @@
 		private $mysqli;
 		private $user;
 
+		/**
+		*  @name Feed
+		*  @pre None
+		*  @post Initializes variables and MySQL database
+		*  @return none
+		*/
 		public function Feed() {
 			$this->query = "SELECT * FROM EECSPosts";
 			$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
 			$this->user = $_POST["user"];
 		}
 
+		/**
+		*  @name isOK
+		*  @pre None
+		*  @post Prints error if connection failed
+		*  @return none
+		*/
 		private function isOK() {
 			if ($this->mysqli->connect_errno) {
 				printf("Connect failed: %s\n", $this->mysqli->connect_error);
@@ -28,9 +40,16 @@
 			}
 		}
 
+
+		/**
+		*  @name display
+		*  @pre None
+		*  @post Displays posts and navigation
+		*  @return none
+		*/
 		public function display() {
-      //Checks to make sure the mysql database can be accessed
-      $this->isOK();
+      	//Checks to make sure the mysql database can be accessed
+      		$this->isOK();
 
 			echo "<h1>Main Feed</h1>";
 			if ($result = $this->mysqli->query($this->query))
