@@ -20,6 +20,7 @@ session_start();
     }
 
     public function display() {
+    	$this->isOK();
       if($_SESSION['username'] == $_SESSION['profilename']) {
 
           if($result = $this->mysqli->query($this->query)) {
