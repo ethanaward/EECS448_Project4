@@ -3,9 +3,16 @@
 session_start();
 include "Create.php";
 
-$create = new Create();
+if(isset($_SESSION['username'])) {
+  $create = new Create();
 
-$create->makePost();
+  $create->makePost();
+}
+
+else {
+  echo "The post could not be created. You are not logged in.";
+}
+
 
 ?>
 

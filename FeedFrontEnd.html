@@ -31,14 +31,12 @@ session_start();
 		-->
 		<form id="myForm" onsubmit = "return x.checkPost();" action="CreatePosts.php" method="post">
 			<textarea rows="8" cols="100" id = "post" name="mypost"></textarea><br>
-			Username:
-			<input type="text" name="user" id = "user" maxlength="25" size="15">
         	<input type="submit" class="button" name="submit" value="Post">
 	<!--
-		Here we display navigation links below everything else.		
+		Here we display navigation links below everything else.
 	-->
         </form>
-		<?php include 'DisplaySignupLogin.php'; ?> 
+		<?php include 'DisplaySignupLogin.php'; ?>
 		<?php include 'DisplayProfileLink.php'; ?>
 		<?php include 'DisplayLogoutLink.php'; ?>
 		<br>
