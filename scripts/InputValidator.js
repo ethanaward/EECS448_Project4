@@ -8,6 +8,13 @@
 
 function InputValidator()
 {
+
+	/**
+	*  @name checkPost
+	*  @pre Submitted post form
+	*  @post None
+	*  @return true if passes, false if error
+	*/
 	this.checkPost = function()
 	{
 		var username = document.getElementById('user').value;
@@ -28,6 +35,13 @@ function InputValidator()
 			return true;
 		}
 	}
+	
+	/**
+	*  @name checkLogin
+	*  @pre Submitted login form
+	*  @post None
+	*  @return true if passes, false if error
+	*/
 	this.checkLogin = function()
 	{
 
@@ -50,7 +64,12 @@ function InputValidator()
 		}
 	}
 		
-
+	/**
+	*  @name checkSignUp
+	*  @pre Submitted sign up form
+	*  @post None
+	*  @return true if passes, false if error
+	*/
 	this.checkSignUp = function()
 	{
 		var firstName = document.getElementById('firstName').value;
