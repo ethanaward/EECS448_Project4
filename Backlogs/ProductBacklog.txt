@@ -13,12 +13,17 @@ a. display recent posts of “friends”, along with recent posts of EECS class 
 b. hide items
 c. comment on post
 
-4. L – profile page
+4. M – profile page
 a. Update for friend functionality
 b. website link
-c. clear function
-d. hide user (if profile is not user's)
-e. Add profile picture
+c. hide user (if profile is not user's)
+d. Add profile picture
+e. List of recent posts
+
+5. L - Delete User
+a. Remove user from user table
+b. Remove user from followers/followed tables
+c. Remove misc. 
 
 6. M – Website Styling
 a. template for all pages
