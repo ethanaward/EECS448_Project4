@@ -4,11 +4,11 @@ ONGOING
 a. Allow user to add friends/boards to follow
 b. Store friends/boards of user
 
-2. XL – individual class feed
+2. L – individual class feed
 a. comment on post
 b. recent / friends recent / topic heads switch
 
-3. XL – general posts feed
+3. L – general posts feed
 a. display recent posts of “friends”, along with recent posts of EECS class feeds followed
 b. hide items
 c. comment on post
