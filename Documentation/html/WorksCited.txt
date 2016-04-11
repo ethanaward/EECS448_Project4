@@ -1,5 +1,0 @@
-Works Cited
-
-PHP Manual. (2016). Retrieved April 4, 2016, from http://php.net/manual/en/
-
-EECS448:Lab5. (n.d.). Retrieved April 4, 2016, from https://wiki.ittc.ku.edu/ittc_wiki/index.php/EECS448:Lab5
