@@ -1,6 +1,3 @@
-
-
-
 <?php
 
 /**
@@ -12,7 +9,7 @@
   session_start();
 
 	class SignUp {
-	
+
 	private $mysqli;
 	private $username;
 	private $firstname;
@@ -20,8 +17,8 @@
 	private $email;
 	private $password;
 	private $sql;
-	
-	
+
+
 	/**
 	*  @name SignUp
 	*  @pre Submitted form data
@@ -30,7 +27,7 @@
 	*/
 	public function SignUp()
 	{
-		
+
 		$this->mysqli = new mysqli("mysql.eecs.ku.edu", "eward", "ethanward", "eward");
 		$this->username = $_POST["username"];
 		$this->firstName = $_POST["firstName"];
@@ -40,7 +37,7 @@
 		$this->sql = "INSERT INTO EECSUsers (user_id, FirstName, LastName, Email, Password) VALUES ('$this->username', '$this->firstName', '$this->lastName', '$this->email', '$this->password')";
 
 	}
-	
+
 	/**
 	*  @name redirectPage
 	*  @pre None
@@ -49,9 +46,9 @@
 	*/
 	private function redirectPage()
 	{
-	 
+
 		header("Location: ProfileFrontEnd.html", TRUE, 303);
-	
+
 	}
 
 
@@ -63,7 +60,7 @@
 	*/
 	public function runQuery()
 	{
-	
+
 		if($this->mysqli->query($this->sql))
 		{
       		$_SESSION['username'] = $this->username;
@@ -74,13 +71,31 @@
 			echo "Error: " . $this->sql . "<br>" . $this->mysqli->error;
 		}
 		/* close connection */
-		$this->mysqli->close();
-		
+
+
+    $this->createFriends();
+
+	  $this->mysqli->close();
+
 		$this->redirectPage();
-	
+
 	}
 
-	
+  public function createFriends() {
+
+    $this->sql = "CREATE TABLE ". $this->username . "_Friends (user_id varchar(255) NOT NULL, FOREIGN KEY(user_id) REFERENCES EECSUsers(user_id)) ENGINE=InnoDB";
+
+    if($this->mysqli->query($this->sql)) {
+
+    }
+    else
+		{
+			echo "Error: " . $this->sql . "<br>" . $this->mysqli->error;
+    }
+
+  }
+
+
 
 
 
