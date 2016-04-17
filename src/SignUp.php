@@ -74,6 +74,7 @@
 
 
     $this->createFriends();
+    $this->createTopics();
 
 	  $this->mysqli->close();
 
@@ -83,7 +84,7 @@
 
   public function createFriends() {
 
-    $this->sql = "CREATE TABLE ". $this->username . "_Friends (user_id varchar(255) NOT NULL, FOREIGN KEY(user_id) REFERENCES EECSUsers(user_id)) ENGINE=InnoDB";
+    $this->sql = "CREATE TABLE ". $this->username ."_Friends (user_id varchar(255) NOT NULL, FOREIGN KEY(user_id) REFERENCES EECSUsers(user_id)) ENGINE=InnoDB";
 
     if($this->mysqli->query($this->sql)) {
 
@@ -91,6 +92,20 @@
     else
 		{
 			echo "Error: " . $this->sql . "<br>" . $this->mysqli->error;
+    }
+
+  }
+
+  public function createTopics() {
+
+    $this->sql = "CREATE TABLE ". $this->username ."_Topics (topic_id varchar(255) NOT NULL) ENGINE=InnoDB";
+
+    if($this->mysqli->query($this->sql)) {
+
+    }
+    else
+    {
+      echo "Error: " . $this->sql . "<br>" . $this->mysqli->error;
     }
 
   }
