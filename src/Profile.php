@@ -41,6 +41,10 @@ session_start();
       }
     }
 
+    public function close() {
+      $this->mysqli->close();
+    }
+
 	/**
 	*  @name display
 	*  @pre None
@@ -121,7 +125,6 @@ session_start();
 
         }
       }
-      $this->mysqli->close();
     }
   }
 

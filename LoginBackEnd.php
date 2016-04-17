@@ -6,7 +6,11 @@
 *	@brief: Creates new Login object
 */
 session_start();
+
 include "src/Login.php";
+
 $login = new Login();
 $login->run();
+$login->close();
+
 ?>

@@ -13,5 +13,6 @@ include "src/SignUp.php";
 $signup = new SignUp();
 
 $signup->runQuery();
+$signup->close();
 
 ?>

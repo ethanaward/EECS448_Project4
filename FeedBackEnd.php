@@ -14,5 +14,6 @@ include "src/Feed.php";
 $feed = new Feed();
 
 $feed->display();
+$feed->close();
 
  ?>

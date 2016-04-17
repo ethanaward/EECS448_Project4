@@ -51,6 +51,10 @@
 
 	}
 
+  public function close() {
+    $this->mysqli->close();
+  }
+
 
 	/**
 	*  @name runQuery
@@ -75,8 +79,6 @@
 
     $this->createFriends();
     $this->createTopics();
-
-	  $this->mysqli->close();
 
 		$this->redirectPage();
 

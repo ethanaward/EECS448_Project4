@@ -15,5 +15,6 @@ $profile = new Profile();
 
 $profile->display();
 $profile->displayFollowed();
+$profile->close();
 
  ?>

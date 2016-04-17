@@ -41,6 +41,10 @@ session_start();
       }
     }
 
+    public function close() {
+      $this->mysqli->close();
+    }
+
 	/**
 	*  @name run
 	*  @pre Database connected
@@ -79,9 +83,6 @@ session_start();
         }
 
       }
-
-      $this->mysqli->close();
-
     }
 
   }

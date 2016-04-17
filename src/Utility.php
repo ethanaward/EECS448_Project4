@@ -18,6 +18,10 @@
     }
   }
 
+  public function close() {
+    $this->mysqli->close();
+  }
+
   public function checkUser($user) {
     	$this->isOK();
       $this->query = "SELECT count(1) FROM EECSUsers WHERE user_id='". $user ."'";

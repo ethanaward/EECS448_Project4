@@ -42,6 +42,10 @@
 			}
 		}
 
+		public function close() {
+			$this->mysqli->close();
+		}
+
 
 		/**
 		*  @name display
@@ -73,9 +77,6 @@
 				/* free result set */
 				$result->free();
 			}
-
-			/* close connection */
-			$this->mysqli->close();
 
 		}
 
