@@ -27,7 +27,7 @@ session_start();
       $this->query = "SELECT * FROM EECSUsers WHERE user_id = '".$_SESSION['profilename']."'";
       $this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
     }
-    
+
 	/**
 	*  @name isOK
 	*  @pre None
@@ -40,7 +40,7 @@ session_start();
         exit();
       }
     }
-    
+
 	/**
 	*  @name display
 	*  @pre None
@@ -59,7 +59,10 @@ session_start();
               printf("<tr> <td>Username:</td><td> %s</td> </tr>
               <tr> <td>Email address:</td><td><input type = 'text' name = 'email' value = '%s'></td> </tr>
               <tr> <td>First Name:</td><td> <input type = 'text' name = 'firstName' value = '%s'></td> </tr>
-              <tr> <td>Last Name:</td><td><input type = 'text' name = 'lastName' value = '%s'></td> </tr>", $row["user_id"], $row["Email"], $row["FirstName"], $row["LastName"]);
+              <tr> <td>Last Name:</td><td><input type = 'text' name = 'lastName' value = '%s'></td> </tr>
+              <tr> <td>Website:</td><td><input type = 'text' name = 'website' value = '%s'</td> </tr>
+              <tr> <td>Description:</td><td><input type = 'text' name = 'description' value = '%s'</td> </tr>",
+              $row["user_id"], $row["Email"], $row["FirstName"], $row["LastName"], $row["Website"], $row["Description"]);
             }
             echo "</table>";
             echo "<input type = 'submit' value = 'Edit profile'>";
@@ -80,7 +83,10 @@ session_start();
             printf("<tr> <td>Username:</td><td> %s</td> </tr>
             <tr> <td>Email address:</td><td>%s</td> </tr>
             <tr> <td>First Name:</td><td>%s</td> </tr>
-            <tr> <td>Last Name:</td><td>%s</td> </tr>", $row["user_id"], $row["Email"], $row["FirstName"], $row["LastName"]);
+            <tr> <td>Last Name:</td><td>%s</td> </tr>
+            <tr> <td>Website:</td> <td>%s</td> </tr>
+            <tr> <td>Description: </td> <td>%s</td> </tr>",
+            $row["user_id"], $row["Email"], $row["FirstName"], $row["LastName"], $row["Website"], $row["Description"]);
           }
           echo "</table>";
           $result->free();
