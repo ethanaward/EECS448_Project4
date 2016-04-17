@@ -82,7 +82,7 @@
 
 	}
 
-  public function createFriends() {
+  private function createFriends() {
 
     $this->sql = "CREATE TABLE ". $this->username ."_Friends (user_id varchar(255) NOT NULL, FOREIGN KEY(user_id) REFERENCES EECSUsers(user_id)) ENGINE=InnoDB";
 
@@ -96,7 +96,7 @@
 
   }
 
-  public function createTopics() {
+  private function createTopics() {
 
     $this->sql = "CREATE TABLE ". $this->username ."_Topics (topic_id varchar(255) NOT NULL) ENGINE=InnoDB";
 
