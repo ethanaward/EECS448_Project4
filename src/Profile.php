@@ -53,7 +53,7 @@ session_start();
 
           if($result = $this->mysqli->query($this->query)) {
           echo "<form action = 'EditProfile.php' method = 'post'>";
-            echo "<table>";
+            echo "<table style = 'display: inline-block'>";
             while($row = $result->fetch_assoc()) {
 
               printf("<tr> <td>Username:</td><td> %s</td> </tr>
@@ -64,36 +64,64 @@ session_start();
               <tr> <td>Description:</td><td><input type = 'text' name = 'description' value = '%s'</td> </tr>",
               $row["user_id"], $row["Email"], $row["FirstName"], $row["LastName"], $row["Website"], $row["Description"]);
             }
+            echo "<tr><td><input type = 'submit' value = 'Edit profile'></td></tr>";
+
             echo "</table>";
-            echo "<input type = 'submit' value = 'Edit profile'>";
+
             echo "</form>";
             $result->free();
-
-
-            $this->mysqli->close();
           }
       }
 
       else {
         if($result = $this->mysqli->query($this->query)) {
 
-          echo "<table>";
+          echo "<table style = 'display: inline-block'>";
           while($row = $result->fetch_assoc()) {
 
             printf("<tr> <td>Username:</td><td> %s</td> </tr>
-            <tr> <td>Email address:</td><td>%s</td> </tr>
             <tr> <td>First Name:</td><td>%s</td> </tr>
             <tr> <td>Last Name:</td><td>%s</td> </tr>
             <tr> <td>Website:</td> <td>%s</td> </tr>
             <tr> <td>Description: </td> <td>%s</td> </tr>",
-            $row["user_id"], $row["Email"], $row["FirstName"], $row["LastName"], $row["Website"], $row["Description"]);
+            $row["user_id"], $row["FirstName"], $row["LastName"], $row["Website"], $row["Description"]);
           }
           echo "</table>";
           $result->free();
 
-          $this->mysqli->close();
         }
       }
+    }
+
+    public function displayFollowed() {
+
+      $this->query = "SELECT * FROM ". $_SESSION['profilename']."_Friends";
+
+      if($_SESSION['username'] == $_SESSION['profilename']) {
+        if($result = $this->mysqli->query($this->query)) {
+          echo "<table style = 'display: inline-block'>";
+          echo "<tr><td>Friends List</td></tr>";
+          while($row = $result->fetch_assoc()) {
+            printf("<tr> <td><a href = ProfileFrontEnd.html?profile=%s>%s</a></td> </tr>", $row['user_id'], $row['user_id']);
+          }
+          echo "</table";
+          }
+
+      }
+      else {
+        if($result = $this->mysqli->query($this->query)) {
+          echo "<table style = 'display: inline-block'>";
+          echo "<tr><td>Friends List</td></tr>";
+          while($row = $result->fetch_assoc()) {
+            printf("<tr> <td><a href = ProfileFrontEnd.html?profile=%s>%s</a></td> </tr>", $row['user_id'], $row['user_id']);
+          }
+          echo "</table";
+        }
+        else {
+
+        }
+      }
+      $this->mysqli->close();
     }
   }
 

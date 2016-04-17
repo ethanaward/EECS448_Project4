@@ -20,10 +20,10 @@ if(isset($_GET['profile'])) {
    <h1><?php if($_SESSION["username"] == $_SESSION["profilename"]) {echo "Welcome to your ";}
      else {echo "Welcome to ". $_SESSION['profilename']. "'s ";} ?>Profile Page</h1>
 
-   <?php
+  <?php
    include 'ProfileBackEnd.php';
 	?>
-  <br>
+  <br><br><br>
 	<?php include 'DisplaySignupLogin.php'; ?>
   <a href='FeedFrontEnd.html'>Main Feed</a>
   <br>

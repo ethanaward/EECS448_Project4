@@ -14,5 +14,6 @@ include "src/Profile.php";
 $profile = new Profile();
 
 $profile->display();
+$profile->displayFollowed();
 
  ?>
