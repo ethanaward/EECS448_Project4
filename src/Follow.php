@@ -23,21 +23,35 @@
   }
 
   public function addFriend($user, $friend) {
+    $this->isOK();
+    $this->query = "INSERT INTO ". $user."_Friends (user_id) VALUES ('"  .$friend. "')";
 
+    if($this->mysqli->query($this->query)) {
+
+    } else {
+        echo "Error: ".$this->query."<br>".$this->mysqli->error;
+    }
 
   }
 
   public function addForum($user, $forum) {
+    $this->isOK();
+    $query = "INSERT INTO ". $user."_Forums (user_id) VALUES ('"  .$forum. "')";
 
+    if($this->mysqli->query($this->query)) {
+
+    } else {
+        echo "Error: ".$this->query."<br>".$this->mysqli->error;
+    }
   }
 
   public function removeFriend($user, $friend){
 
   }
 
-  public function removeForum() {
+  public function removeForum($user, $forum) {
 
-    
+
   }
 
   }

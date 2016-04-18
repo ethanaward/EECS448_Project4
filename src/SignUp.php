@@ -78,7 +78,7 @@
 
 
     $this->createFriends();
-    $this->createTopics();
+    $this->createForums();
 
 		$this->redirectPage();
 
@@ -98,9 +98,9 @@
 
   }
 
-  private function createTopics() {
+  private function createForums() {
 
-    $this->sql = "CREATE TABLE ". $this->username ."_Topics (topic_id varchar(255) NOT NULL) ENGINE=InnoDB";
+    $this->sql = "CREATE TABLE ". $this->username ."_Forums (forum_id varchar(255) NOT NULL) ENGINE=InnoDB";
 
     if($this->mysqli->query($this->sql)) {
 
