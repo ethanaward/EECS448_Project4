@@ -1,0 +1,69 @@
+<?php
+
+// Start the session
+
+session_start();
+
+?>
+
+<html>
+
+<!--
+
+	Author: Michael Neises, Travis Augustine
+
+	Date Modified: April 6, 2016
+
+	Purpose: to display the forums available to the user
+
+-->
+
+	<head>
+
+		<title>EECSForum Archive</title>
+
+		<!--
+
+			With this php we use ForumArchiveBackEnd.php to display the contents of the user's forum database.
+
+			See file for more details.
+
+		-->
+
+		<?php
+
+			include 'ForumArchiveBackEnd.php';
+
+		?>
+
+		<!--
+
+			Here we include the javascript scripts.
+
+		-->
+
+		<script type="text/javascript" src="scripts/main.js"></script>
+
+    </head>
+
+	<body>
+
+	<!--
+
+		Here we display navigation links below everything else.
+
+	-->
+
+		<?php include 'DisplaySignupLogin.php'; ?>
+
+		<?php include 'DisplayProfileLink.php'; ?>
+
+		<?php include 'DisplayLogoutLink.php'; ?>
+
+		<br>
+
+		<a href="index.html">Main Page</a>
+
+	</body>
+
+</html>
