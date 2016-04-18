@@ -1,0 +1,54 @@
+<?php
+// Start the session
+session_start();
+if(isset($_GET['forumID'])) {
+  $_SESSION['forum'] = $_GET['forumID'];
+}
+?>
+<html>
+<!--
+	Author: Michael Neises,
+	Date Modified: April 17, 2016
+	Purpose: to display the list of topics for choosing inside a forum
+-->
+	<head>
+		<title>EECSForum Forum Feed</title>
+		<!--
+			With this php we use ForumBackEnd.php to display the forums available from the user's forum database.
+			See file for more details.
+		-->
+		<?php
+			include 'ForumBackEnd.php';
+		?>
+		<!--
+			Here we include the javascript scripts.
+		-->
+		<script type="text/javascript" src="scripts/InputValidator.js"></script>
+		<script type="text/javascript" src="scripts/main.js"></script>
+    </head>
+	<body>
+		<br><br>
+		<!--
+			Here is the form for creation of a new topic
+			This can be updated to allow automatic username input by way of login persistence.
+		-->
+		<form id="myForm" onsubmit = "return x.checkPost();" action="CreatePosts.php" method="post">
+			<textarea rows="8" cols="100" id = "post" name="mypost"></textarea><br>
+        		<input type="submit" class="button" name="submit" value="Post">
+			Topic Name:
+        		<input type="text" id="topic" name="topicname">
+        		<input type="hidden" name="isForum" value="0">
+        		<input type="hidden" name="isTopic" value="1">
+		</form>
+	<!--
+		Here we display navigation links below everything else.
+	-->
+		<?php include 'DisplaySignupLogin.php'; ?>
+		<?php include 'DisplayProfileLink.php'; ?>
+		<?php include 'DisplayLogoutLink.php'; ?>
+		<br>
+		<a href='ForumArchiveFrontEnd.html'>Forums</a>
+		<br>
+		<a href="index.html">Main Page</a>
+	</body>
+</html>
