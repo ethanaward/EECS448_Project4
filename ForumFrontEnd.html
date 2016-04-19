@@ -2,7 +2,7 @@
 // Start the session
 session_start();
 if(isset($_GET['forumID'])) {
-  $_SESSION['forum'] = $_GET['forumID'];
+  $_SESSION['forumname'] = $_GET['forumID'];
 }
 ?>
 <html>
@@ -36,7 +36,7 @@ if(isset($_GET['forumID'])) {
 			<textarea rows="8" cols="100" id = "post" name="mypost"></textarea><br>
         		<input type="submit" class="button" name="submit" value="Post">
 			Topic Name:
-        		<input type="text" id="topic" name="topicname">
+        		<input type="text" id="topic" name="topicID">
         		<input type="hidden" name="isForum" value="0">
         		<input type="hidden" name="isTopic" value="1">
 		</form>
