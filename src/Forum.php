@@ -8,7 +8,7 @@
 
 /**
 
-*	@file : Feed.php
+*	@file : Forum.php
 
 *	@author : Mike Neises, Travis Augustine, Ethan Ward
 
