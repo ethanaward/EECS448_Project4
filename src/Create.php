@@ -19,9 +19,14 @@ session_start();
 
 		private $post;
 		private $user;
+		private $forum;
+		private $topic;
+		private $isForum;
+		private $isTopic;		
 		private $here;
 		private $query;
 		private $mysqli;
+	
 
 
 		/**
@@ -37,9 +42,17 @@ session_start();
 			$this->post = $_POST["mypost"];
 			$this->user = $_SESSION["username"];
 			$this->forum = $_SESSION["forumname"];
-			$this->topic = $_SESSION["topicname"];
 			$this->isForum = $_POST["isForum"];
 			$this->isTopic = $_POST["isTopic"];
+			if( isset($_POST['topicID']) )
+			{
+	     		$this->topic = $_POST['topicID'];
+				$_SESSION["topicname"] = $this->topic;
+			}
+			else
+			{
+				$this->topic = $_SESSION["topicname"];
+			}
 
 			//This variable is used to see if the user_id exists within the EECSUsers database.
 			$this->here = false;
