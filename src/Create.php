@@ -36,6 +36,11 @@ session_start();
 			//These two variables hold the post content and the username of the poster respectively.
 			$this->post = $_POST["mypost"];
 			$this->user = $_SESSION["username"];
+			$this->forum = $_SESSION["forumname"];
+			$this->topic = $_SESSION["topicname"];
+			$this->isForum = $_POST["isForum"];
+			$this->isTopic = $_POST["isTopic"];
+
 			//This variable is used to see if the user_id exists within the EECSUsers database.
 			$this->here = false;
 
@@ -50,7 +55,7 @@ session_start();
 
 
 			//This query we will use to add the post with the username into the EECSPosts database.
-			$this->query = "INSERT INTO EECSPosts (content, user_id) VALUES('$this->post', '$this->user')";
+			$this->query = "INSERT INTO EECSPosts (content, user_id, forum_id, topic_id, isForum, isTopic) VALUES('$this->post', '$this->user', '$this->forum', '$this->topic', '$this->isForum', '$this->isTopic')";
 
 		}
 
