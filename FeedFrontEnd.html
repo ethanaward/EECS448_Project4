@@ -9,7 +9,7 @@ session_start();
 	Purpose: to display the feed through FeedBackEnd and to provide forms for posting
 -->
 	<head>
-		<title>EECSForum Main Feed</title>
+		<title>EECSForum Topic</title>
 		<!--
 			With this php we use FeedBackEnd.php to display the contents of the posts database.
 			See file for more details.
@@ -31,14 +31,17 @@ session_start();
 		-->
 		<form id="myForm" onsubmit = "return x.checkPost();" action="CreatePosts.php" method="post">
 			<textarea rows="8" cols="100" id = "post" name="mypost"></textarea><br>
-        	<input type="submit" class="button" name="submit" value="Post">
+        		<input type="submit" class="button" name="submit" value="Post">
+        		<input type="hidden" name="isForum" value="0">
+        		<input type="hidden" name="isTopic" value="0">
+		</form>
 	<!--
 		Here we display navigation links below everything else.
 	-->
-        </form>
 		<?php include 'DisplaySignupLogin.php'; ?>
 		<?php include 'DisplayProfileLink.php'; ?>
 		<?php include 'DisplayLogoutLink.php'; ?>
+		<?php include 'DisplayForumLink.php'; ?>
 		<br>
 		<a href="index.html">Main Page</a>
 	</body>
