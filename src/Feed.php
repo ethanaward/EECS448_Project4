@@ -11,11 +11,16 @@
 
 	session_start();
 
+	if(isset($_GET['topic'])) {
+		$_SESSION['topicname'] = $_GET['topic'];
+	}
+
 	class Feed {
 
 		private $query;
 		private $mysqli;
 		private $user;
+		private $topic;
 
 		/**
 		*  @name Feed
@@ -24,9 +29,10 @@
 		*  @return none
 		*/
 		public function Feed() {
-			$this->query = "SELECT * FROM EECSPosts";
+			$this->topic = $_SESSION["topicname"];
+			$this->query = "SELECT * FROM EECSPosts WHERE topic_id='$this->topic'";
 			$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
-			$this->user = $_POST["user"];
+			$this->user = $_SESSION["username"];
 		}
 
 		/**
@@ -57,7 +63,7 @@
       	//Checks to make sure the mysql database can be accessed
       		$this->isOK();
 
-			echo "<h1>Main Feed</h1>";
+			echo "<h1>".$this->topic."</h1>";
 			if ($result = $this->mysqli->query($this->query))
 			{
 				/* fetch associative array */
