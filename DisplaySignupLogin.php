@@ -10,6 +10,6 @@
 
 if(!isset($_SESSION['username'])) {
   echo "<li><a href='SignUpFrontEnd.html'>Sign Up</a></li>
-  		<li><a href='LoginFrontEnd.html'>Login Page</a></li>";
+  		<li><a href='LoginFrontEnd.html'>Log In</a></li>";
 }
 ?>
