@@ -56,7 +56,7 @@ li a:hover:not(.active) {
 	}
     else 
     {
-    	echo "<li><a href='ProfileFrontEnd.html'>Your Profile</a></li>";
+    	printf ("<li><a href = 'ProfileFrontEnd.html?profile=%s'>Your Profile</a></li> \n", $_SESSION["username"]);
     } 
     ?>
 	<li><a href='ForumArchiveFrontEnd.html'>Forum</a></li>
