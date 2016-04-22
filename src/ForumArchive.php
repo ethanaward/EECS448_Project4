@@ -116,7 +116,6 @@
 
 
 
-			echo "<h1>Forum Archive</h1>";
 
 			if ($result = $this->mysqli->query($this->query))
 
