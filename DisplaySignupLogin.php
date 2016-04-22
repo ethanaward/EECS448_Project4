@@ -9,9 +9,7 @@
 */
 
 if(!isset($_SESSION['username'])) {
-  echo "<a href='SignUpFrontEnd.html'>Sign Up</a>
-  		<br>
-  		<a href='LoginFrontEnd.html'>Login Page</a>
-  		<br>";
+  echo "<li><a href='SignUpFrontEnd.html'>Sign Up</a></li>
+  		<li><a href='LoginFrontEnd.html'>Login Page</a></li>";
 }
 ?>

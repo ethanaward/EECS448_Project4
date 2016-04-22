@@ -6,13 +6,44 @@ session_start();
 	<head>
 		<title>Main Page</title>
 		<meta content="">
-		<style></style>
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+</style>
 	</head>
 	<body>
 		<h1>Welcome to the EECS forum!</h1>
 		<br>
-		<?php include 'DisplaySignupLogin.php'; ?> 
-		<?php include 'DisplayProfileLink.php'; ?>
-		<a href="ForumArchiveFrontEnd.html">Forums</a>
+		<ul>
+			<li><a class="active" href = "index.html">Home</a></li>
+			<?php include 'DisplaySignupLogin.php'; ?> 
+			<?php include 'DisplayProfileLink.php'; ?>
+			<li><a href="ForumArchiveFrontEnd.html">Forums</a></li>
+		</ul>
+		
+
+		
 	</body>
 </html>
