@@ -48,9 +48,11 @@ li a:hover:not(.active) {
 		</ul>
 		<br><br>
 	<form onsubmit = "return x.checkLogin()" action = "LoginBackEnd.php" method = "post">
-		Username: <input type= "text" id = "username" name = "username"><br>
-		Password: <input type="password" id="password" name="password"></input> <br>
-		<input type="submit" value = "Log In">
+	<table>
+	<tr><td>Username:</td><td><input type= "text" id = "username" name = "username"></td></tr>
+	<tr><td>Password:</td><td><input type="password" id="password" name="password"></input></td></tr>
+	<tr><td colspan = 2><input type="submit" value = "Log In"><td></tr>
+	</table>
 	</form>
 
   </body>
