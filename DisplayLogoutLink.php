@@ -8,6 +8,5 @@
 */
 
  if(isset($_SESSION['username'])) {
-  echo "<a href='LogoutFrontEnd.html'>Log out</a>
-  <br>";
+  echo "<li><a href='LogoutFrontEnd.html'>Log Out</a></li>";
 } ?>
