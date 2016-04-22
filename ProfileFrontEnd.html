@@ -49,7 +49,16 @@ li a:hover:not(.active) {
 <ul>
 	<li><a href="index.html">Home</a></li>
 	<?php include 'DisplaySignupLogin.php'; ?>
-	<?php include 'DisplayProfileLink.php'; ?>
+	<?php 
+	if($_SESSION["username"] == $_SESSION["profilename"]) 
+	{
+		echo "<li><a class='active' href='ProfileFrontEnd.html'>Your Profile</a></li>";
+	}
+    else 
+    {
+    	echo "<li><a href='ProfileFrontEnd.html'>Your Profile</a></li>";
+    } 
+    ?>
 	<li><a href='ForumArchiveFrontEnd.html'>Forum</a></li>
   	<?php include 'DisplayLogoutLink.php'; ?> 
 </ul>
