@@ -47,14 +47,15 @@ li a:hover:not(.active) {
   <br>
   <br>
 	<form onsubmit = "return x.checkSignUp();" action = "SignUpBackEnd.php" method = "post">
-		First Name: <input type="text" id="firstName" name = "firstName"><br>
-		Last Name: <input type= "text" id = "lastName" name = "lastName"><br>
-		Username: <input type= "text" id = "username" name = "username"><br>
-		Email: <input type="text" id = "email" name = "email"><br>
-		Enter password: <input type="password" id="passwordFirst" name="passwordFirst"></input> <br>
-		Re-enter password: <input type="password" id="passwordSecond" name="passwordSecond"></input><br>
-
-		<input type="submit" value = "Sign Up">
+	<table>
+	<tr><td>First Name:</td><td><input type="text" id="firstName" name = "firstName"></td></tr>
+	<tr><td>Last Name:</td><td><input type= "text" id = "lastName" name = "lastName"></td></tr>
+	<tr><td>Username:</td><td><input type= "text" id = "username" name = "username"></td></tr>
+	<tr><td>Email:</td><td><input type="text" id = "email" name = "email"></td></tr>
+	<tr><td>Enter password:</td><td><input type="password" id="passwordFirst" name="passwordFirst"></input></td></tr>
+	<tr><td>Re-enter password:</td><td><input type="password" id="passwordSecond" name="passwordSecond"></input></td></tr>
+	<tr><td colspan = 2><input type="submit" value = "Sign Up"></td><tr>
+	<table>
 	</form>
 
   </body>
