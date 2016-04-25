@@ -35,6 +35,10 @@ if(isset($_SESSION['message'])) {
 	{
 		echo "<li><a class='active' href='ProfileFrontEnd.html'>Your Profile</a></li>";
 	}
+	else if($_SESSION["username"] == "")
+	{
+	
+	}
 	else
 	{
 		printf ("<li><a href = 'ProfileFrontEnd.html?profile=%s'>Your Profile</a></li> \n", $_SESSION["username"]);
