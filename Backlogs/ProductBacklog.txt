@@ -26,10 +26,11 @@ c. hide user (if profile is not user's)
 d. Add profile picture
 e. List of recent posts
 
-6. L - Delete User
+6. L - Deletion
 a. Remove user from user table
 b. Remove user from followers/followed tables
 c. Remove misc. 
+d. Delete individual posts
 
 7. M – Website Styling
 a. template for all pages
