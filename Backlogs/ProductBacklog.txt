@@ -13,27 +13,31 @@ a. display recent posts of “friends”, along with recent posts of EECS class 
 b. hide items
 c. comment on post
 
-4. M – profile page
+4. M - Security
+a. Secure password encryption
+b. Disallow code injection
+
+5. M – profile page
 a. Update for friend functionality
 b. website link
 c. hide user (if profile is not user's)
 d. Add profile picture
 e. List of recent posts
 
-5. L - Delete User
+6. L - Delete User
 a. Remove user from user table
 b. Remove user from followers/followed tables
 c. Remove misc. 
 
-6. M – Website Styling
+7. M – Website Styling
 a. template for all pages
 
-7. XL – private chat
+8. XL – private chat
 a. show what users are online
 b. allow real-time communication
 c. clear chat function
 
-8. S – sign-up page
+9. S – sign-up page
 a. email verification
 
 COMPLETE
