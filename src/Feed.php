@@ -63,7 +63,7 @@
       	//Checks to make sure the mysql database can be accessed
       		$this->isOK();
 
-			echo "<h1>".$this->topic."</h1>";
+			//echo "<h1>".$this->topic."</h1>";
 			if ($result = $this->mysqli->query($this->query))
 			{
 				/* fetch associative array */
