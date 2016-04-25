@@ -13,9 +13,10 @@ a. display recent posts of “friends”, along with recent posts of EECS class 
 b. hide items
 c. comment on post
 
-4. M - Security
+4. L - Security
 a. Secure password encryption
 b. Disallow code injection
+c. Admin functionality
 
 5. M – profile page
 a. Update for friend functionality
