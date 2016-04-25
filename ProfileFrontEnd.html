@@ -59,10 +59,10 @@ li a:hover:not(.active) {
 	{
 		echo "<li><a class='active' href='ProfileFrontEnd.html'>Your Profile</a></li>";
 	}
-    else
-    {
-    	printf ("<li><a href = 'ProfileFrontEnd.html?profile=%s'>Your Profile</a></li> \n", $_SESSION["username"]);
-    }
+	else
+	{
+		printf ("<li><a href = 'ProfileFrontEnd.html?profile=%s'>Your Profile</a></li> \n", $_SESSION["username"]);
+	}
     ?>
 	<li><a href='ForumArchiveFrontEnd.html'>Forum</a></li>
   	<?php include 'DisplayLogoutLink.php'; ?>
