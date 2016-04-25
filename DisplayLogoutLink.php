@@ -8,5 +8,5 @@
 */
 
  if(isset($_SESSION['username'])) {
-  echo "<li><a href='LogoutFrontEnd.html'>Log Out</a></li>";
+  echo "<li><a href='LogoutBackEnd.php'>Log Out</a></li>";
 } ?>

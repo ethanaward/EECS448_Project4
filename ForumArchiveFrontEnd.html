@@ -4,6 +4,11 @@
 
 session_start();
 
+//Displays session message if needed
+if(isset($_SESSION['message'])) {
+	echo "<h3>".$_SESSION['message']."</h3>";
+	unset($_SESSION['message']);
+}
 ?>
 
 <html>
@@ -30,7 +35,7 @@ session_start();
 
 		-->
 
-		
+
 		<!--
 
 			Here we include the javascript scripts.

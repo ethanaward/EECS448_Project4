@@ -11,12 +11,19 @@ include "src/Create.php";
 
 if(isset($_SESSION['username'])) {
   $create = new Create();
-
   $create->makePost();
+  $_SESSION['message'] = "Post created!";
 }
 
 else {
-  echo "The post could not be created. You are not logged in.";
+  $_SESSION['message'] = "The post could not be created. You are not logged in.";
+}
+
+if($_GET['topic'] == 0) {
+  header("Location: ForumFrontEnd.html", TRUE, 303);
+}
+else {
+  header("Location: FeedFrontEnd.html", TRUE, 303);
 }
 
 

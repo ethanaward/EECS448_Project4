@@ -11,4 +11,8 @@
 
 	session_start();
 	session_destroy();
+
+	session_start();
+	$_SESSION['message'] = "Successfully logged out!";
+	header("Location: index.html", TRUE, 303);
 ?>

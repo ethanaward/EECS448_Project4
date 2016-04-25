@@ -4,6 +4,12 @@ session_start();
 if(isset($_GET['forumID'])) {
   $_SESSION['forumname'] = $_GET['forumID'];
 }
+
+//Displays session message if needed
+if(isset($_SESSION['message'])) {
+	echo "<h3>".$_SESSION['message']."</h3>";
+	unset($_SESSION['message']);
+}
 ?>
 <html>
 <!--
@@ -32,7 +38,7 @@ if(isset($_GET['forumID'])) {
 			Here is the form for creation of a new topic
 			This can be updated to allow automatic username input by way of login persistence.
 		-->
-		<form id="myForm" onsubmit = "return x.checkPost();" action="CreatePosts.php" method="post">
+		<form id="myForm" onsubmit = "return x.checkPost();" action="CreatePosts.php?topic=0" method="post">
 			<textarea rows="8" cols="100" id = "post" name="mypost"></textarea><br>
         		<input type="submit" class="button" name="submit" value="Post">
 			Topic Name:

@@ -1,6 +1,12 @@
 <?php
 // Start the session
 session_start();
+
+//Displays session message if needed
+if(isset($_SESSION['message'])) {
+	echo "<h3>".$_SESSION['message']."</h3>";
+	unset($_SESSION['message']);
+}
 ?>
 <html>
 
@@ -44,7 +50,7 @@ li a:hover:not(.active) {
 			<li><a class="active" href="LoginFrontEnd.html">Log In</a></li>
 			<?php include 'DisplayProfileLink.php'; ?>
 			<li><a href="ForumArchiveFrontEnd.html">Forum</a></li>
-			<?php include 'DisplayLogoutLink.php'; ?> 
+			<?php include 'DisplayLogoutLink.php'; ?>
 		</ul>
 		<br><br>
 	<form onsubmit = "return x.checkLogin()" action = "LoginBackEnd.php" method = "post">
