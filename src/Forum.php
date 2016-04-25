@@ -128,7 +128,7 @@
 
 
 
-			echo "<h1>".$this->forum." Feed</h1>";
+			//echo "<h1>".$this->forum." Feed</h1>";
 
 			if ($result = $this->mysqli->query($this->query))
 
