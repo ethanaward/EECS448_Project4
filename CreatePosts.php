@@ -5,6 +5,7 @@
 *	@date : 2016.04.08
 *	@brief: Creates new Create object
 */
+error_reporting(0);
 session_start();
 include "src/Create.php";
 
