@@ -1,4 +1,3 @@
-
 <?php
 /**
 *	@file : CreatePosts.php
@@ -25,14 +24,8 @@ if($_GET['topic'] == 0) {
 else {
   header("Location: FeedFrontEnd.html", TRUE, 303);
 }
-
-
-?>
-
-
-<!--
-    In this html section, we simply provide a link back to the feed.
--->
+//In this html section, we simply provide a link back to the feed.
+echo"
 <html>
         <head>
                 <title>EECSForum Main Feed</title>
@@ -40,6 +33,7 @@ else {
         </head>
         <body>
                 <br><br>
-                <a href="FeedFrontEnd.html">Back</a>
+                <a href='FeedFrontEnd.html'>Back</a>
         </body>
-</html>
+</html>";
+?>

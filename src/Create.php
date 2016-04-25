@@ -1,7 +1,4 @@
-
-
 <?php
-
 /**
 *	@file : Create.php
 *	@author : Mike Neises, Travis Augustine, Ethan Ward
@@ -16,7 +13,6 @@ session_start();
 */
 	class Create
 	{
-
 		private $post;
 		private $user;
 		private $forum;
@@ -26,8 +22,6 @@ session_start();
 		private $here;
 		private $query;
 		private $mysqli;
-	
-
 
 		/**
 		*  @name Create
@@ -37,7 +31,6 @@ session_start();
 		*/
 		public function Create()
 		{
-
 			//These two variables hold the post content and the username of the poster respectively.
 			$this->post = $_POST["mypost"];
 			$this->user = $_SESSION["username"];
@@ -71,7 +64,6 @@ session_start();
 			$this->query = "INSERT INTO EECSPosts (content, user_id, forum_id, topic_id, isForum, isTopic) VALUES('$this->post', '$this->user', '$this->forum', '$this->topic', '$this->isForum', '$this->isTopic')";
 
 		}
-
 		/**
 		*  @name isOK
 		*  @pre None
@@ -87,7 +79,6 @@ session_start();
 				exit();
 			}
 		}
-
 		/**
 		*  @name makePost
 		*  @pre HTML form for post submitted, database initialized
@@ -98,19 +89,14 @@ session_start();
 		{
 			//Test to make sure the database can be accessed
 			$this->isOK();
-
 			//See echos for explanations inside this conditional.
 			if($this->mysqli->query($this->query)==TRUE) {
 					echo "New post created successfully!";
 			} else {
 					echo "Error: ".$this->query."<br>".$this->mysqli->error;
 			}
-
 			//close connection
 			$this->mysqli->close();
-
-
 		}
-
 	}
 ?>
