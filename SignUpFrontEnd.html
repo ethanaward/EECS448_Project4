@@ -13,37 +13,12 @@ if(isset($_SESSION['message'])) {
 	<title>Sign Up Page</title>
 	<script type="text/javascript" src="scripts/InputValidator.js"></script>
 	<script type="text/javascript" src="scripts/main.js"></script>
-<style>
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #f1f1f1;
-}
-
-li a {
-    display: block;
-    color: #000;
-    padding: 8px 0 8px 16px;
-    text-decoration: none;
-}
-
-li a.active {
-    background-color: #4CAF50;
-    color: white;
-}
-
-li a:hover:not(.active) {
-    background-color: #555;
-    color: white;
-}
-</style>
+		<link rel="stylesheet" type="text/css" href="assets/css/styleSheet.css">
   </head>
 
   <body>
   		<h1>Sign Up</h1>
-	<ul>
+	<ul class = 'nav'>
   	<li><a href="index.html">Home</a></li>
   	<li><a class="active" href = "SignUpFrontEnd.html">Sign Up</a></li>
   	<li><a href="LoginFrontEnd.html">Log In</a></li>
