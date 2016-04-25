@@ -25,16 +25,4 @@ if($_GET['topic'] == 0) {
 else {
   header("Location: FeedFrontEnd.html", TRUE, 303);
 }
-//In this html section, we simply provide a link back to the feed.
-echo"
-<html>
-        <head>
-                <title>EECSForum Main Feed</title>
-                <style></style>
-        </head>
-        <body>
-                <br><br>
-                <a href='FeedFrontEnd.html'>Back</a>
-        </body>
-</html>";
 ?>
