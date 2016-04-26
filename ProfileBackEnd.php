@@ -1,4 +1,3 @@
-
 <?php
 
 /**
@@ -21,13 +20,11 @@ $profile->displayFollowed();
 if($_SESSION['username'] != $_SESSION['profilename']) {
   if(! ($util->checkFriend( $_SESSION['username'], $_SESSION['profilename'] )) ) {
     $_SESSION['friend'] = $_SESSION['profilename'];
-    echo "<br><br>";
     echo "<form action = 'addFriend.php'>";
     echo "<button type = 'submit'>Add as friend</button>";
     echo "</form>";
   }
   else {
-    echo "<br><br>";
     echo "<p>Added as friend</p>";
   }
 }
