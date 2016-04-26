@@ -1,10 +1,17 @@
 <?php
-	session_start();
-	if(isset($_SESSION['message']))
-	{
-		echo "<h3>".$_SESSION['message']."</h3>";
-		unset($_SESSION['message']);
-	}
+// Start the session
+session_start();
+//ini_set('display_errors','1');
+//error_reporting(0);
+
+if(isset($_GET['profile'])) {
+  $_SESSION['profilename'] = $_GET['profile'];
+}
+
+if(isset($_SESSION['message'])) {
+	echo "<h3>".$_SESSION['message']."</h3>";
+	unset($_SESSION['message']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
