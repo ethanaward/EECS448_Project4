@@ -1,10 +1,5 @@
 <?php
 	session_start();
-	if(isset($_SESSION['message']))
-	{
-		echo "<h3>".$_SESSION['message']."</h3>";
-		unset($_SESSION['message']);
-	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,8 +60,16 @@
       </div>
       -->
     </div>
-	<!--
+
     <div class="col-sm-9">
+    <?php
+    	if(isset($_SESSION['message']))
+	{
+		echo "<h3>".$_SESSION['message']."</h3>";
+		unset($_SESSION['message']);
+	}
+	?>
+		<!--
       <h4><small>RECENT POSTS</small></h4>
       <hr>
       <h2>I Love Food</h2>
@@ -123,8 +126,9 @@
           </div>
         </div>
       </div>
+          -->
     </div>
-    -->
+
   </div>
 </div>
 <footer class="container-fluid">
