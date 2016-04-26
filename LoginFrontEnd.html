@@ -1,67 +1,87 @@
 <?php
-// Start the session
-session_start();
+	// Start the session
+	session_start();
 
-//Displays session message if needed
-if(isset($_SESSION['message'])) {
-	echo "<h3>".$_SESSION['message']."</h3>";
-	unset($_SESSION['message']);
-}
+	//Displays session message if needed
+	if(isset($_SESSION['message'])) 
+	{
+		echo "<h3>".$_SESSION['message']."</h3>";
+		unset($_SESSION['message']);
+	}
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Profile Page</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<style>
+			/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+			.row.content {height: 1500px}
 
-  <head>
-    <title>Login Page</title>
-	<script type="text/javascript" src="scripts/InputValidator.js"></script>
-	<script type="text/javascript" src="scripts/main.js"></script>
-	<style>
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #f1f1f1;
-}
+			/* Set gray background color and 100% height */
+			.sidenav {
+			  background-color: #f1f1f1;
+			  height: 100%;
+			}
 
-li a {
-    display: block;
-    color: #000;
-    padding: 8px 0 8px 16px;
-    text-decoration: none;
-}
+			/* Set black background color, white text and some padding */
+			footer {
+			  background-color: #555;
+			  color: white;
+			  padding: 15px;
+			}
 
-li a.active {
-    background-color: #4CAF50;
-    color: white;
-}
+			/* On small screens, set height to 'auto' for sidenav and grid */
+			@media screen and (max-width: 767px) {
+			  .sidenav {
+				height: auto;
+				padding: 15px;
+			  }
+			  .row.content {height: auto;} 
+			}
+		</style>
+	</head>
+	<body>
+	
+		<div class="container-fluid">
+			<div class="row content">
+				<div class="col-sm-3 sidenav">
+			
+					<h4>Log In</h4>
+				
+					<ul class="nav nav-pills nav-stacked">
+						<li><a href = "index.html">Home</a></li>
+						<li><a href="SignUpFrontEnd.html">Sign Up</a></li>
+						<li class="active"><a href="LoginFrontEnd.html">Log In</a></li>
+						<?php include 'DisplayProfileLink.php'; ?>
+						<li><a href="ForumArchiveFrontEnd.html">Forum</a></li>
+						<?php include 'DisplayLogoutLink.php'; ?>
+					</ul>
+			  		<br>
+				</div>
+	
+				<div class="col-sm-9">
+					<br>
+			
+					<form onsubmit = "return x.checkLogin()" action = "LoginBackEnd.php" method = "post">
+						<table>
+						<tr><td>Username:</td><td><input type= "text" id = "username" name = "username"></td></tr>
+						<tr><td>Password:</td><td><input type="password" id="password" name="password"></input></td></tr>
+						<tr><td colspan = 2><input type="submit" value = "Log In"><td></tr>
+						</table>
+					</form>	
+				</div>
 
-li a:hover:not(.active) {
-    background-color: #555;
-    color: white;
-}
-</style>
-  </head>
+			</div>
+		</div>
 
-  <body>
-  		<h1>Log In</h1>
-  		<ul>
-			<li><a href = "index.html">Home</a></li>
-			<li><a href="SignUpFrontEnd.html">Sign Up</a></li>
-			<li><a class="active" href="LoginFrontEnd.html">Log In</a></li>
-			<?php include 'DisplayProfileLink.php'; ?>
-			<li><a href="ForumArchiveFrontEnd.html">Forum</a></li>
-			<?php include 'DisplayLogoutLink.php'; ?>
-		</ul>
-		<br><br>
-	<form onsubmit = "return x.checkLogin()" action = "LoginBackEnd.php" method = "post">
-	<table>
-	<tr><td>Username:</td><td><input type= "text" id = "username" name = "username"></td></tr>
-	<tr><td>Password:</td><td><input type="password" id="password" name="password"></input></td></tr>
-	<tr><td colspan = 2><input type="submit" value = "Log In"><td></tr>
-	</table>
-	</form>
+		<footer class="container-fluid">
+			<p>Copyright 2016</p>
+		</footer>
 
-  </body>
-
-
+	</body>
 </html>
