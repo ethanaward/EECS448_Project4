@@ -70,6 +70,12 @@
 				</div>
 	
 				<div class="col-sm-9">
+				<?php
+				if(isset($_GET['forum'])) 
+				{
+					echo "<h4>".$_GET['forum']."</h4>";
+				}
+				?>
 		<?php
 			include 'ForumBackEnd.php';
 		?>
