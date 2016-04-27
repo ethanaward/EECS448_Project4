@@ -10,56 +10,73 @@ if(isset($_SESSION['message'])) {
 	unset($_SESSION['message']);
 }
 ?>
-
-<html>
-
-<!--
-
-	Author: Michael Neises, Travis Augustine
-
-	Date Modified: April 6, 2016
-
-	Purpose: to display the forums available to the user
-
--->
-
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-
-		<title>EECSForum Archive</title>
-
-		<!--
-
-			With this php we use ForumArchiveBackEnd.php to display the contents of the user's forum database.
-
-			See file for more details.
-
-		-->
-
-
-		<!--
-
-			Here we include the javascript scripts.
-
-		-->
-
+		<title>Forum Archive</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="scripts/main.js"></script>
-		<link rel="stylesheet" type="text/css" href="assets/css/styleSheet.css">
+		<style>
+			/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+			.row.content {height: 1500px}
 
-    </head>
+			/* Set gray background color and 100% height */
+			.sidenav {
+			  background-color: #f1f1f1;
+			  height: 100%;
+			}
 
+			/* Set black background color, white text and some padding */
+			footer {
+			  background-color: #555;
+			  color: white;
+			  padding: 15px;
+			}
+
+			/* On small screens, set height to 'auto' for sidenav and grid */
+			@media screen and (max-width: 767px) {
+			  .sidenav {
+				height: auto;
+				padding: 15px;
+			  }
+			  .row.content {height: auto;} 
+			}
+		</style>
+	</head>
 	<body>
-	<h1>Forum</h1>
-	<ul class='nav'>
-  	<li><a href="index.html">Home</a></li>
-	<?php include 'DisplaySignupLogin.php'; ?>
-	<?php include 'DisplayProfileLink.php'; ?>
-	<li><a class="active" href="ForumArchiveFrontEnd.html">Forum</a></li>
-	<?php include 'DisplayLogoutLink.php'; ?>
-	</ul>
-	<br>
+	
+		<div class="container-fluid">
+			<div class="row content">
+				<div class="col-sm-3 sidenav">
+			
+					<h4>Forum Archive</h4>
+				
+					<ul class="nav nav-pills nav-stacked">
+						<li><a href = "index.html">Home</a></li>
+						<?php include 'DisplaySignupLogin.php'; ?>
+						<?php include 'DisplayProfileLink.php'; ?>
+						<li class = "active"><a href="ForumArchiveFrontEnd.html">Forum</a></li>
+						<?php include 'DisplayLogoutLink.php'; ?>
+					</ul>
+			  		<br>
+				</div>
+	
+				<div class="col-sm-9">
+				  <br>
 	<?php include 'ForumArchiveBackEnd.php'; ?>
 
+				</div>
+
+			</div>
+		</div>
+
+		<footer class="container-fluid">
+			<p>Copyright 2016</p>
+		</footer>
 
 	</body>
-
 </html>
