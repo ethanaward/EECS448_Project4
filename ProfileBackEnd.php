@@ -17,16 +17,22 @@ $util = new Utility();
 $profile->display();
 $profile->displayFollowed();
 
-if($_SESSION['username'] != $_SESSION['profilename']) {
-  if(! ($util->checkFriend( $_SESSION['username'], $_SESSION['profilename'] )) ) {
-    $_SESSION['friend'] = $_SESSION['profilename'];
-    echo "<form action = 'addFriend.php'>";
-    echo "<button type = 'submit'>Add as friend</button>";
-    echo "</form>";
-  }
-  else {
-    echo "<p>Added as friend</p>";
-  }
+if(isset($_SESSION['username']))
+{
+	if(($_SESSION['username'] != $_SESSION['profilename']))
+	{
+		if(! ($util->checkFriend( $_SESSION['username'], $_SESSION['profilename'] )) ) 
+		{
+			$_SESSION['friend'] = $_SESSION['profilename'];
+			echo "<form action = 'addFriend.php'>";
+			echo "<button type = 'submit'>Add as friend</button>";
+			echo "</form>";
+		}
+		else 
+		{
+			echo "<p>Added as friend</p>";
+		}
+	}
 }
 
 $profile->close();
