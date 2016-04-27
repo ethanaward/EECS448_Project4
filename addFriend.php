@@ -16,5 +16,4 @@ if(isset($_SESSION['friend'])) {
 
   header("Location: ProfileFrontEnd.html", TRUE, 303);
 }
-
 ?>
