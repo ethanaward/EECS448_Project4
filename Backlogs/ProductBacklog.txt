@@ -32,15 +32,12 @@ b. Remove user from followers/followed tables
 c. Remove misc. 
 d. Delete individual posts
 
-7. M – Website Styling
-a. template for all pages
-
-8. XL – private chat
+7. XL – private chat
 a. show what users are online
 b. allow real-time communication
 c. clear chat function
 
-9. S – sign-up page
+8. S – sign-up page
 a. email verification
 
 COMPLETE
@@ -70,4 +67,6 @@ a. Keep track of when user is signed in
 b. Display different things based on whether user is logged in or out
 c. Keep track of which user is signed in
 
+7. M – Website Styling
+a. template for all pages
 
