@@ -1,3 +1,1 @@
-var x = new InputValidator();	
-
-
+var x = new InputValidator();
