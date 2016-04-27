@@ -1,4 +1,3 @@
-
 <?php 
 /**
 *	@file : DisplayProfileLink.php
@@ -7,6 +6,12 @@
 *	@brief: Displays profile link
 */
 
-if(isset($_SESSION['username'])) {
-  echo "<li><a href='ProfileFrontEnd.html'>Your Profile</a></li>";
-} ?>
+	if(isset($_SESSION['username'])) 
+	{
+		printf ("<li><a href = 'ProfileFrontEnd.html?profile=%s'>Your Profile</a></li> \n", $_SESSION['username']);
+	}
+	else
+	{
+
+	} 
+?>
