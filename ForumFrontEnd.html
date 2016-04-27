@@ -1,56 +1,75 @@
 <?php
-// Start the session
-session_start();
-if(isset($_GET['forumID'])) {
-  $_SESSION['forumname'] = $_GET['forumID'];
-}
+	// Start the session
+	session_start();
+	
+	if(isset($_GET['forumID'])) 
+	{
+		$_SESSION['forumname'] = $_GET['forumID'];
+	}
 
-//Displays session message if needed
-if(isset($_SESSION['message'])) {
-	echo "<h3>".$_SESSION['message']."</h3>";
-	unset($_SESSION['message']);
-}
+	//Displays session message if needed
+	if(isset($_SESSION['message']))
+	{
+		echo "<h3>".$_SESSION['message']."</h3>";
+		unset($_SESSION['message']);
+	}
 ?>
-<html>
-<!--
-	Author: Michael Neises,
-	Date Modified: April 17, 2016
-	Purpose: to display the list of topics for choosing inside a forum
--->
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<title>EECSForum Forum Feed</title>
-		<!--
-			With this php we use ForumBackEnd.php to display the forums available from the user's forum database.
-			See file for more details.
-		-->
-
-		<!--
-			Here we include the javascript scripts.
-		-->
-		<script type="text/javascript" src="scripts/InputValidator.js"></script>
+		<title>Forum Archive</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="scripts/main.js"></script>
-		<link rel="stylesheet" type="text/css" href="assets/css/styleSheet.css">
+		<style>
+			/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+			.row.content {height: 1500px}
 
-    </head>
+			/* Set gray background color and 100% height */
+			.sidenav {
+			  background-color: #f1f1f1;
+			  height: 100%;
+			}
+
+			/* Set black background color, white text and some padding */
+			footer {
+			  background-color: #555;
+			  color: white;
+			  padding: 15px;
+			}
+
+			/* On small screens, set height to 'auto' for sidenav and grid */
+			@media screen and (max-width: 767px) {
+			  .sidenav {
+				height: auto;
+				padding: 15px;
+			  }
+			  .row.content {height: auto;} 
+			}
+		</style>
+	</head>
 	<body>
-		<?php
-			if (isset($_GET['forum'])) 
-			{
-   				echo "<h1>".$_GET['forum']."</h1>";
-			}
-			else
-			{
-  				echo "<h1>EECS Forum</h1>";
-			}
-		?>
-	<ul class ="nav">
-  	<li><a href="index.html">Home</a></li>
-	<?php include 'DisplaySignupLogin.php'; ?>
-	<?php include 'DisplayProfileLink.php'; ?>
-	<li><a href="ForumArchiveFrontEnd.html">Forum</a></li>
-	<?php include 'DisplayLogoutLink.php'; ?>
-	</ul>
-	<br><br>
+	
+		<div class="container-fluid">
+			<div class="row content">
+				<div class="col-sm-3 sidenav">
+			
+					<h4>Forum Archive</h4>
+				
+					<ul class="nav nav-pills nav-stacked">
+						<li><a href = "index.html">Home</a></li>
+						<?php include 'DisplaySignupLogin.php'; ?>
+						<?php include 'DisplayProfileLink.php'; ?>
+						<li class = "active"><a href="ForumArchiveFrontEnd.html">Forum</a></li>
+						<?php include 'DisplayLogoutLink.php'; ?>
+					</ul>
+			  		<br>
+				</div>
+	
+				<div class="col-sm-9">
 		<?php
 			include 'ForumBackEnd.php';
 		?>
@@ -68,5 +87,15 @@ if(isset($_SESSION['message'])) {
         		<input type="hidden" name="isForum" value="0">
         		<input type="hidden" name="isTopic" value="1">
 		</form>
+
+				</div>
+
+			</div>
+		</div>
+
+		<footer class="container-fluid">
+			<p>Copyright 2016</p>
+		</footer>
+
 	</body>
 </html>
