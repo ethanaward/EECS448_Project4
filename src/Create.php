@@ -19,6 +19,7 @@ session_start();
 		private $topic;
 		private $isForum;
 		private $isTopic;		
+		private $Date;
 		private $here;
 		private $query;
 		private $mysqli;
@@ -37,6 +38,8 @@ session_start();
 			$this->forum = $_SESSION["forumname"];
 			$this->isForum = $_POST["isForum"];
 			$this->isTopic = $_POST["isTopic"];
+			$this->Date = $_POST["Date"];
+
 			if( isset($_POST['topicID']) )
 			{
 	     		$this->topic = $_POST['topicID'];
@@ -61,7 +64,7 @@ session_start();
 
 
 			//This query we will use to add the post with the username into the EECSPosts database.
-			$this->query = "INSERT INTO EECSPosts (content, user_id, forum_id, topic_id, isForum, isTopic) VALUES('$this->post', '$this->user', '$this->forum', '$this->topic', '$this->isForum', '$this->isTopic')";
+			$this->query = "INSERT INTO EECSPosts (content, user_id, forum_id, topic_id, isForum, isTopic, Date) VALUES('$this->post', '$this->user', '$this->forum', '$this->topic', '$this->isForum', '$this->isTopic', '$this->Date' )";
 
 		}
 		/**
