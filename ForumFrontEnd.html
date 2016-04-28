@@ -24,6 +24,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="scripts/main.js"></script>
+		<script type="text/javascript" src="scripts/GetDate.js"></script>
 		<style>
 			/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
 			.row.content {height: 1500px}
@@ -51,7 +52,7 @@
 			}
 		</style>
 	</head>
-	<body>
+	<body onload="getTheDate()">
 	
 		<div class="container-fluid">
 			<div class="row content">
@@ -92,6 +93,7 @@
         		<input type="text" id="topic" name="topicID">
         		<input type="hidden" name="isForum" value="0">
         		<input type="hidden" name="isTopic" value="1">
+        		<input type="hidden" name="Date" id="date" value="">
 		</form>
 
 				</div>
