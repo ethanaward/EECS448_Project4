@@ -48,8 +48,11 @@ if(isset($_SESSION['message'])) {
       .row.content {height: auto;}
     }
   </style>
+
 </head>
+
 <body>
+
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav">
@@ -72,9 +75,17 @@ if(isset($_SESSION['message'])) {
     </div>
 
     <div class="col-sm-9">
-    <br>
-    <?php include 'ProfileBackEnd.php'; ?>
-	</div>
+      <br>
+      <?php include 'ProfileBackEnd.php';
+      session_start();
+      include "src/myRecentPosts.php";
+      $recentPosts = new myRecentPosts();
+      $recentPosts->display();
+      $recentPosts->close(); ?>
+    </div>
+
+    
+</div>
 
   </div>
 </div>
