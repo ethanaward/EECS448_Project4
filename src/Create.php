@@ -108,7 +108,12 @@ session_start();
 			//close connection
 			$this->mysqli->close();
 		}
-
+		/**
+		*  @name topicExists
+		*  @pre HTML form for post submitted, database initialized
+		*  @post none
+		*  @return True if the new topic had already been created
+		*/
 		public function topicExists(){
 			$topic = $this->topic;
 			$id = "";
