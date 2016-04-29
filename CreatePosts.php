@@ -11,15 +11,23 @@ include "src/Create.php";
 
 if(isset($_SESSION['username'])) {
 	$create = new Create();
-	$exist = $create->topicExists();
-	if(!$exist)
+	if($_POST["isTopic"]==1)
 	{
-		$create->makePost();
-		$_SESSION['message'] = "Post created!";
+		$exist = $create->topicExists();
+		if(!$exist)
+		{
+			$create->makePost();
+			$_SESSION['message'] = "Post created!";
+		}
+		else
+		{
+	 		$_SESSION['message'] = "That topic already exists! Find it here: ";
+		}
 	}
 	else
 	{
- 		$_SESSION['message'] = "That topic already exists! Find it here: ";
+		$create->makePost();
+		$_SESSION['message'] = "Post created!";
 	}
 }
 
