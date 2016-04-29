@@ -5,7 +5,6 @@
 *	@brief: Checks for valid input
 */
 
-
 function InputValidator()
 {
 
@@ -17,12 +16,11 @@ function InputValidator()
 	*/
 	this.checkPost = function()
 	{
-		var username = document.getElementById('user').value;
 		var post = document.getElementById('post').value;
-
-		if(username.length < 1)
+		var topic = document.getElementById('topic').value;
+		if(topic.length < 1)
 		{
-			alert('Username field is blank.');
+			alert('Topic field is blank');
 			return false;
 		}
 		else if(post.length < 1)
@@ -44,7 +42,6 @@ function InputValidator()
 	*/
 	this.checkLogin = function()
 	{
-		alert('in check login');
 		var username = document.getElementById("username").value;
 		var password = document.getElementById("password").value;
 

@@ -6,13 +6,6 @@
 	{
 		$_SESSION['forumname'] = $_GET['forumID'];
 	}
-
-	//Displays session message if needed
-	if(isset($_SESSION['message']))
-	{
-		echo "<h3>".$_SESSION['message']."</h3>";
-		unset($_SESSION['message']);
-	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,11 +16,12 @@
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="scripts/main.js"></script>
+		<script type="text/javascript" src="scripts/InputValidator.js"></script>
+		<script type="text/javascript">var CheckInput = new InputValidator();</script>
 		<script type="text/javascript" src="scripts/GetDate.js"></script>
 		<style>
 			/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-			.row.content {height: 1500px}
+			.row.content {height:1500px}
 
 			/* Set gray background color and 100% height */
 			.sidenav {
@@ -72,6 +66,12 @@
 				{
 					echo "<h4>".$_GET['forum']."</h4>";
 				}
+				//Displays session message if needed
+				if(isset($_SESSION['message']))
+				{
+					echo "<h3>".$_SESSION['message']."</h3>";
+					unset($_SESSION['message']);
+				}
 				?>
 				<!-- This is what used to be ForumBackEnd.php -->
 		<?php
@@ -89,7 +89,7 @@
 			Here is the form for creation of a new topic
 			This can be updated to allow automatic username input by way of login persistence.
 		-->
-		<form id="myForm" onsubmit = "return x.checkPost();" action="CreatePosts.php?topic=0" method="post">
+		<form id="myForm" onsubmit = "return CheckInput.checkPost();" action="CreatePosts.php?topic=0" method="post">
 			<textarea rows="8" cols="100" id = "post" name="mypost"></textarea><br>
         		<input type="submit" class="button" name="submit" value="Post">
 			Topic Name:
