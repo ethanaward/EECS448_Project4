@@ -44,9 +44,9 @@ function InputValidator()
 	*/
 	this.checkLogin = function()
 	{
-
-		var username = document.getElementById('username').value;
-		var password = document.getElementById('password').value;
+		alert('in check login');
+		var username = document.getElementById("username").value;
+		var password = document.getElementById("password").value;
 
 		if(username.length < 1)
 		{
