@@ -25,27 +25,27 @@ if(isset($_SESSION['message'])) {
   <style>
     /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
     .row.content {height: 1500px}
-    
+
     /* Set gray background color and 100% height */
     .sidenav {
       background-color: #f1f1f1;
       height: 100%;
     }
-    
+
     /* Set black background color, white text and some padding */
     footer {
       background-color: #555;
       color: white;
       padding: 15px;
     }
-    
+
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
       .sidenav {
         height: auto;
         padding: 15px;
       }
-      .row.content {height: auto;} 
+      .row.content {height: auto;}
     }
   </style>
 </head>
@@ -54,40 +54,23 @@ if(isset($_SESSION['message'])) {
   <div class="row content">
     <div class="col-sm-3 sidenav">
     	<h4>
-    	<?php 
-    		if($_SESSION["username"] == $_SESSION["profilename"]) 
+    	<?php
+    		if($_SESSION["username"] == $_SESSION["profilename"])
     		{
     			echo "Your ";
     		}
      		else
      		{
      			echo $_SESSION['profilename']. "'s ";
-     		} 
+     		}
      	?>
      	Profile</h4>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="index.html">Home</a></li>
-		<?php include 'DisplaySignupLogin.php'; ?>
-		<?php
-			if($_SESSION["username"] == $_SESSION["profilename"])
-			{
-				echo "<li class='active'><a href='ProfileFrontEnd.html'>Your Profile</a></li>";
-			}
-			else if($_SESSION["username"] == "")
-			{
-	
-			}
-			else
-			{
-				printf ("<li><a href = 'ProfileFrontEnd.html?profile=%s'>Your Profile</a></li> \n", $_SESSION["username"]);
-			}
-		?>
-        <li><a href="ForumArchiveFrontEnd.html">Forum</a></li>
-		<?php include 'DisplayLogoutLink.php'; ?>
+		      <?php include 'DisplayLinks.php'; ?>
       </ul>
       <br>
     </div>
-    
+
     <div class="col-sm-9">
     <br>
     <?php include 'ProfileBackEnd.php'; ?>
