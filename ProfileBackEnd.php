@@ -21,16 +21,19 @@ if(isset($_SESSION['username']))
 {
 	if(($_SESSION['username'] != $_SESSION['profilename']))
 	{
-		if(! ($util->checkFriend( $_SESSION['username'], $_SESSION['profilename'] )) ) 
+		if(! ($util->checkFriend( $_SESSION['username'], $_SESSION['profilename'] )) )
 		{
 			$_SESSION['friend'] = $_SESSION['profilename'];
 			echo "<form action = 'addFriend.php'>";
 			echo "<button type = 'submit'>Add as friend</button>";
 			echo "</form>";
 		}
-		else 
+		else
 		{
-			echo "<p>Added as friend</p>";
+			$_SESSION['friend'] = $_SESSION['profilename'];
+			echo "<form action = 'removeFriend.php'>";
+			echo "<button type = 'submit'>Remove as friend</button>";
+			echo "</form>";
 		}
 	}
 }

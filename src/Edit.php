@@ -7,13 +7,13 @@
 */
 session_start();
 	class Edit {
-		
+
 		private $mysqli;
 		private $firstname;
 		private $lastname;
 		private $email;
 		private $query;
-	
+
 		/**
 		*  @name display
 		*  @pre HTML edit form submitted
@@ -30,7 +30,7 @@ session_start();
 
 			$this->query = "UPDATE EECSUsers SET Email='$this->email', FirstName='$this->firstname', LastName='$this->lastname' WHERE user_id='".$_SESSION['username']."'";
 		}
-		
+
 		/**
 		*  @name isOK
 		*  @pre None
@@ -39,13 +39,13 @@ session_start();
 		*/
 		private function isOK()
 		{
-			if($this->mysqli->connect_errno) 
+			if($this->mysqli->connect_errno)
 			{
 				printf("Connect failed: %s\n", $this->mysqli->connect_error);
 				exit();
 			}
 		}
-		
+
 		/**
 		*  @name redirectPage
 		*  @pre None
@@ -56,7 +56,7 @@ session_start();
 		{
 			header("Location: ProfileFrontEnd.html", TRUE, 303);
 		}
-		
+
 		/**
 		*  @name editProfile
 		*  @pre MySQL initialized
@@ -65,9 +65,9 @@ session_start();
 		*/
 		public function editProfile()
 		{
-		
+
 			$this->isOK();
-			
+
 			if($this->mysqli->query($this->query))
 			{
 
@@ -78,10 +78,10 @@ session_start();
 			}
 
 			$this->mysqli->close();
-			
+
 			$this->redirectPage();
 
 		}
-		
+
 	}
 ?>

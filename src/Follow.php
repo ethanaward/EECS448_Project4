@@ -36,7 +36,7 @@
 
   public function addForum($user, $forum) {
     $this->isOK();
-    $query = "INSERT INTO ". $user."_Forums (user_id) VALUES ('"  .$forum. "')";
+    $this->query = "INSERT INTO ". $user."_Forums (user_id) VALUES ('"  .$forum. "')";
 
     if($this->mysqli->query($this->query)) {
 
@@ -46,11 +46,25 @@
   }
 
   public function removeFriend($user, $friend){
+      $this->isOK();
+      $this->query = "DELETE FROM " . $user ."_Friends WHERE user_id='". $friend . "'";
 
+      if($this->mysqli->query($this->query)) {
+
+      } else {
+          echo "Error: ".$this->query."<br>".$this->mysqli->error;
+      }
   }
 
   public function removeForum($user, $forum) {
+    $this->isOK();
+    $this->query = "DELETE FROM" . $user ."_Forums WHERE user_id='". $friend . "'";
 
+    if($this->mysqli->query($this->query)) {
+
+    } else {
+        echo "Error: ".$this->query."<br>".$this->mysqli->error;
+    }
 
   }
 
