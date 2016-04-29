@@ -89,7 +89,7 @@
 			Here is the form for creation of a new topic
 			This can be updated to allow automatic username input by way of login persistence.
 		-->
-		<form id="myForm" onsubmit = "return CheckInput.checkPost();" action="CreatePosts.php?topic=0" method="post">
+		<form id="myForm" onsubmit = "return CheckInput.checkPostTopic();" action="CreatePosts.php?topic=0" method="post">
 			<textarea rows="8" cols="100" id = "post" name="mypost"></textarea><br>
         		<input type="submit" class="button" name="submit" value="Post">
 			Topic Name:

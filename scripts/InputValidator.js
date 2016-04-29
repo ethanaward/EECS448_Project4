@@ -10,11 +10,32 @@ function InputValidator()
 
 	/**
 	*  @name checkPost
-	*  @pre Submitted post form
+	*  @pre Submitted feed post form
 	*  @post None
 	*  @return true if passes, false if error
 	*/
 	this.checkPost = function()
+	{
+		var post = document.getElementById('post').value;
+		if(post.length < 1)
+		{
+			alert('Post field is blank.');
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	
+	
+	/**
+	*  @name checkPostTopic
+	*  @pre Submitted forum post form
+	*  @post None
+	*  @return true if passes, false if error
+	*/
+	this.checkPostTopic = function()
 	{
 		var post = document.getElementById('post').value;
 		var topic = document.getElementById('topic').value;
