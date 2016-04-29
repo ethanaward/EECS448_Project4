@@ -23,6 +23,7 @@ session_start();
 		private $here;
 		private $query;
 		private $mysqli;
+		private $exists;
 
 		/**
 		*  @name Create
@@ -50,8 +51,8 @@ session_start();
 				$this->topic = $_SESSION["topicname"];
 			}
 
-			//This variable is used to see if the user_id exists within the EECSUsers database.
-			$this->here = false;
+			//This query is used to see if the topic already exists in this forum.
+			$exists = "SELECT topic_id FROM EECSPosts WHERE forum_id='$this->forum'";
 
 			//Here we initialize the connection to the database.
 			$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
@@ -106,6 +107,25 @@ session_start();
 			}
 			//close connection
 			$this->mysqli->close();
+		}
+
+		public function topicExists(){
+			$topic = $this->topic;
+			$id = "";
+			if($result = $this->mysqli->query($this->exists)) {
+
+			    // fetch associative array
+			    while ($row = $result->fetch_assoc()) {
+					$id = $row["topic_id"];
+					if(strcmp($topic, $id)==0){
+						return true;
+					}
+			    }
+
+			    // free result set
+			    $result->free();
+			}
+			return false;
 		}
 	}
 ?>
