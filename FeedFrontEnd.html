@@ -43,12 +43,12 @@
 				height: auto;
 				padding: 15px;
 			  }
-			  .row.content {height: auto;} 
+			  .row.content {height: auto;}
 			}
 		</style>
 	</head>
 	<body onload="getTheDate()">
-	
+
 		<div class="container-fluid">
 			<div class="row content">
 				<div class="col-sm-3 sidenav">
@@ -62,10 +62,10 @@
 					</ul>
 			  		<br>
 				</div>
-	
+
 				<div class="col-sm-9">
 					<?php
-						if (isset($_GET['topic'])) 
+						if (isset($_GET['topic']))
 						{
 							echo "<h4>".$_GET['topic']."</h4>";
 						}
@@ -74,9 +74,16 @@
 							echo "<h4>EECS Forum</h4>";
 						}
 					?>
+		<!--This is what used to be FeedBackEnd.php	-->
 		<?php
-			include 'FeedBackEnd.php';
-		?>
+			session_start();
+			include "src/Feed.php";
+
+			$feed = new Feed();
+
+			$feed->display();
+			$feed->close();
+ 		?>
 		<!--
 			Here is the form for input of post content and username
 			This can be updated to allow automatic username input by way of login persistence.

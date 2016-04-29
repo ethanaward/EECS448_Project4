@@ -1,8 +1,8 @@
 <?php
 	// Start the session
 	session_start();
-	
-	if(isset($_GET['forumID'])) 
+
+	if(isset($_GET['forumID']))
 	{
 		$_SESSION['forumname'] = $_GET['forumID'];
 	}
@@ -48,18 +48,18 @@
 				height: auto;
 				padding: 15px;
 			  }
-			  .row.content {height: auto;} 
+			  .row.content {height: auto;}
 			}
 		</style>
 	</head>
 	<body onload="getTheDate()">
-	
+
 		<div class="container-fluid">
 			<div class="row content">
 				<div class="col-sm-3 sidenav">
-			
+
 					<h4>EECS Forum</h4>
-				
+
 					<ul class="nav nav-pills nav-stacked">
 						<li><a href = "index.html">Home</a></li>
 						<?php include 'DisplaySignupLogin.php'; ?>
@@ -69,16 +69,23 @@
 					</ul>
 			  		<br>
 				</div>
-	
+
 				<div class="col-sm-9">
 				<?php
-				if(isset($_GET['forum'])) 
+				if(isset($_GET['forum']))
 				{
 					echo "<h4>".$_GET['forum']."</h4>";
 				}
 				?>
+				<!-- This is what used to be ForumBackEnd.php -->
 		<?php
-			include 'ForumBackEnd.php';
+		session_start();
+
+		include "src/Forum.php";
+		$feed = new Forum();
+
+		$feed->display();
+		$feed->close();
 		?>
 		<br><br>
 
