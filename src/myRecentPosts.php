@@ -62,7 +62,7 @@
 			{
 				/* fetch associative array */
 
-				//Here we display the posts with the related username, which also serves as a link to their profile page.
+				//Here we display the posts with only the related date.
 				echo "<ul>";
 				while ($row = $result->fetch_assoc())
 				{
