@@ -93,6 +93,11 @@ if(isset($_SESSION['message'])) {
 	$FriendPosts->display();
 	$FriendPosts->close(); ?>
 
+	include "src/ForumPosts.php";
+	$ForumPosts = new ForumPosts();
+	$ForumPosts->display();
+	$ForumPosts->close(); ?>
+	
     </div>
 
 
