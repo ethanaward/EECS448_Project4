@@ -24,7 +24,7 @@
 		*  @return none
 		*/
 		public function myRecentPosts() {
-			$this->user = $_SESSION["username"];
+			$this->user = $_SESSION["profilename"];
 			$this->query = "SELECT * FROM EECSPosts WHERE user_id='$this->user'";
 			$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
 		}
