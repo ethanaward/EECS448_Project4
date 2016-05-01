@@ -33,6 +33,9 @@ session_start();
 		*/
 		public function Create()
 		{
+
+			//Here we initialize the connection to the database.
+			$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
 			//These two variables hold the post content and the username of the poster respectively.
 			$this->post = $_POST["mypost"];
 			$this->user = $_SESSION["username"];
@@ -43,25 +46,23 @@ session_start();
 
 			if( isset($_POST['topicID']) )
 			{
-	     	$this->topic = $_POST['topicID'];
+				$this->topic = $_POST['topicID'];
 				$_SESSION["topicname"] = $this->topic;
+				$this->topic = $this->mysqli->real_escape_string($this->topic);
 			}
 			else
 			{
 				$this->topic = $_SESSION["topicname"];
 			}
-
+			
 			//This query is used to see if the topic already exists in this forum.
 			$exists = "SELECT topic_id FROM EECSPosts WHERE forum_id='$this->forum'";
-
-			//Here we initialize the connection to the database.
-			$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
-
 
 			//Here I escape the post return into a correctly formatted string.
 			//Example: without this line, if the post contains a single apostrophe ("I'm coding."),
 			//Then that apostrophe will confuse the query and the program crashes.
 			$this->post = $this->mysqli->real_escape_string($this->post);
+
 
 
 			//This query we will use to add the post with the username into the EECSPosts database.

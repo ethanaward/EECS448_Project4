@@ -73,7 +73,7 @@
 				while ($row = $result->fetch_assoc())
 				{
 					echo "<br>";
-					printf ("%s \n", $row["content"]);
+					printf ("%s \n", htmlspecialchars($row["content"]));
 					echo "<br>-";
 					printf ("<a href = 'ProfileFrontEnd.html?profile=%s'>%s</a> (%s)", $row["user_id"],$row["user_id"],$row["Date"]);
 					echo "<br>";

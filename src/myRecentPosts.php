@@ -67,9 +67,9 @@
 				while ($row = $result->fetch_assoc())
 				{
 					echo "<br>";
-					printf ("%s \n", $row["content"]);
+					printf ("%s \n", htmlspecialchars($row["content"]));
 					echo "<br>-";
-					printf ("%s", $row["Date"]);
+					printf ("%s", htmlspecialchars($row["Date"]));
 					echo "<br>";
 				}
 				echo "</ul>";
