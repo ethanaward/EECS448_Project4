@@ -1,3 +1,7 @@
 Works Cited
 
 http://stackoverflow.com/questions/4253960/sql-how-to-properly-check-if-a-record-exists
+
+http://stackoverflow.com/questions/16434174/only-allow-certain-characters-to-be-entered-in-html-textinput
+
+http://html5pattern.com/
