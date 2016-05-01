@@ -57,47 +57,45 @@
 					<ul class="nav nav-pills nav-stacked">
 						<?php include 'DisplayLinks.php'; ?>
 					</ul>
-			  		<br>
+			  	<br>
 				</div>
 
 				<div class="col-sm-9">
-				<?php
-				if(isset($_SESSION['forumname']))
-				{
-					echo "<h4>".$_SESSION['forumname']."</h4>";
-				}
-				//Displays session message if needed
-				if(isset($_SESSION['message']))
-				{
-					echo "<h3>".$_SESSION['message']."</h3>";
-					unset($_SESSION['message']);
-				}
-				?>
-				<!-- This is what used to be ForumBackEnd.php -->
-		<?php
-		session_start();
+					<?php
+					if(isset($_SESSION['forumname']))
+					{
+						echo "<h4>".$_SESSION['forumname']."</h4>";
+					}
+					//Displays session message if needed
+					if(isset($_SESSION['message']))
+					{
+						echo "<h3>".$_SESSION['message']."</h3>";
+						unset($_SESSION['message']);
+					}
+					?>
+					<!-- This is what used to be ForumBackEnd.php -->
+					<?php
+					include "src/Forum.php";
+					$feed = new Forum();
 
-		include "src/Forum.php";
-		$feed = new Forum();
+					$feed->display();
+					$feed->close();
+					?>
+					<br><br>
 
-		$feed->display();
-		$feed->close();
-		?>
-		<br><br>
-
-		<!--
-			Here is the form for creation of a new topic
-			This can be updated to allow automatic username input by way of login persistence.
-		-->
-		<form id="myForm" onsubmit = "return CheckInput.checkPostTopic();" action="CreatePosts.php?topic=0" method="post">
-			<textarea rows="8" cols="100" id = "post" name="mypost"></textarea><br>
-        		<input type="submit" class="button" name="submit" value="Post">
-			Topic Name:
-        		<input type="text" id="topic" name="topicID">
-        		<input type="hidden" name="isForum" value="0">
-        		<input type="hidden" name="isTopic" value="1">
-        		<input type="hidden" name="Date" id="date" value="">
-		</form>
+					<!--
+						Here is the form for creation of a new topic
+						This can be updated to allow automatic username input by way of login persistence.
+					-->
+					<form id="myForm" onsubmit = "return CheckInput.checkPostTopic();" action="CreatePosts.php?topic=0" method="post">
+						<textarea rows="8" cols="100" id = "post" name="mypost"></textarea><br>
+			        		<input type="submit" class="button" name="submit" value="Post">
+						Topic Name:
+			        		<input type="text" id="topic" name="topicID">
+			        		<input type="hidden" name="isForum" value="0">
+			        		<input type="hidden" name="isTopic" value="1">
+			        		<input type="hidden" name="Date" id="date" value="">
+					</form>
 
 				</div>
 

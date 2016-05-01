@@ -52,6 +52,21 @@
 
   }
 
+  public function checkForum($user, $forum) {
+    $this->isOK();
+    $this->query = "SELECT count(1) FROM ".$user."_Forums WHERE forum_id='". $forum ."'";
+      if($result = $this->mysqli->query($this->query)) {
+        $row = $result->fetch_assoc();
+        if($row['count(1)']) {
+          return true;
+        }
+        else {
+          return false;
+        }
+      }
+
+  }
+
   }
 
 ?>
