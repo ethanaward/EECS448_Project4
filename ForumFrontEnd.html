@@ -62,9 +62,9 @@
 
 				<div class="col-sm-9">
 				<?php
-				if(isset($_GET['forum']))
+				if(isset($_SESSION['forumname']))
 				{
-					echo "<h4>".$_GET['forum']."</h4>";
+					echo "<h4>".$_SESSION['forumname']."</h4>";
 				}
 				//Displays session message if needed
 				if(isset($_SESSION['message']))

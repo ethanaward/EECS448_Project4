@@ -55,7 +55,11 @@
 				<div class="col-sm-3 sidenav">
 					<h4>EECS Forum</h4>
 					<ul class="nav nav-pills nav-stacked">
-							<?php include 'DisplayLinks.php'; ?>	
+							<?php include 'DisplayLinks.php';
+							if(isset($_SESSION['forumname'])) {
+								printf ("<a href = 'ForumFrontEnd.html?forumID=%s'>Back to %s</a> \n", $_SESSION['forumname'], $_SESSION['forumname']);
+							}
+							?>	
 					</ul>
 			  		<br>
 				</div>

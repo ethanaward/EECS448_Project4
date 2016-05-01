@@ -13,8 +13,6 @@ else {
 
 echo "<li><a href='ForumArchiveFrontEnd.html'>Forum</a></li>";
 
-if(isset($_SESSION['forumname'])) {
-	printf ("<a href = 'ForumFrontEnd.html?forumID=%s'>Back to %s</a> \n", $_SESSION['forumname'], $_SESSION['forumname']);
-}
+
 
 ?>

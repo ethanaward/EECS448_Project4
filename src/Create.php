@@ -18,7 +18,7 @@ session_start();
 		private $forum;
 		private $topic;
 		private $isForum;
-		private $isTopic;		
+		private $isTopic;
 		private $Date;
 		private $here;
 		private $query;
@@ -43,7 +43,7 @@ session_start();
 
 			if( isset($_POST['topicID']) )
 			{
-	     		$this->topic = $_POST['topicID'];
+	     	$this->topic = $_POST['topicID'];
 				$_SESSION["topicname"] = $this->topic;
 			}
 			else
