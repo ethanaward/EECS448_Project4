@@ -29,12 +29,13 @@
 	{
 
 		$this->mysqli = new mysqli("mysql.eecs.ku.edu", "eward", "ethanward", "eward");
-		$this->username = $_POST["username"];
-		$this->firstName = $_POST["firstName"];
-		$this->lastName = $_POST["lastName"];
-		$this->email = $_POST["email"];
+		$this->username = $this->mysqli->real_escape_string($_POST["username"]);
+		$this->firstName = $this->mysqli->real_escape_string($_POST["firstName"]);
+		$this->lastName = $this->mysqli->real_escape_string($_POST["lastName"]);
+		$this->email = $this->mysqli->real_escape_string($_POST["email"]);
     $this->password = password_hash($_POST["passwordFirst"], PASSWORD_DEFAULT);
-		$this->sql = "INSERT INTO EECSUsers (user_id, FirstName, LastName, Email, Password) VALUES ('$this->username', '$this->firstName', '$this->lastName', '$this->email', '$this->password')";
+		$this->sql = "INSERT INTO EECSUsers (user_id, FirstName, LastName, Email, Password)
+                                 VALUES ('$this->username', '$this->firstName', '$this->lastName', '$this->email', '$this->password')";
 
 	}
 
