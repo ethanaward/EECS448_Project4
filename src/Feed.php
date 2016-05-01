@@ -75,7 +75,8 @@
 					echo "<br>";
 					printf ("%s \n", htmlspecialchars($row["content"]));
 					echo "<br>-";
-					printf ("<a href = 'ProfileFrontEnd.html?profile=%s'>%s</a> (%s)", $row["user_id"],$row["user_id"],$row["Date"]);
+					printf ("<a href = 'ProfileFrontEnd.html?profile=%s'>%s</a> (%s)",
+					htmlspecialchars($row["user_id"]),htmlspecialchars($row["user_id"]),htmlspecialchars($row["Date"]));
 					echo "<br>";
 				}
 				echo "</ul>";

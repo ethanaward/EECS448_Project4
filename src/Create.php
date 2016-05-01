@@ -54,7 +54,7 @@ session_start();
 			{
 				$this->topic = $_SESSION["topicname"];
 			}
-			
+
 			//This query is used to see if the topic already exists in this forum.
 			$exists = "SELECT topic_id FROM EECSPosts WHERE forum_id='$this->forum'";
 
@@ -62,7 +62,6 @@ session_start();
 			//Example: without this line, if the post contains a single apostrophe ("I'm coding."),
 			//Then that apostrophe will confuse the query and the program crashes.
 			$this->post = $this->mysqli->real_escape_string($this->post);
-
 
 
 			//This query we will use to add the post with the username into the EECSPosts database.
