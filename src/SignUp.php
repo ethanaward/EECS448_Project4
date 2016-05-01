@@ -33,7 +33,7 @@
 		$this->firstName = $_POST["firstName"];
 		$this->lastName = $_POST["lastName"];
 		$this->email = $_POST["email"];
-		$this->password = $_POST["passwordFirst"];
+    $this->password = password_hash($_POST["passwordFirst"], PASSWORD_DEFAULT);
 		$this->sql = "INSERT INTO EECSUsers (user_id, FirstName, LastName, Email, Password) VALUES ('$this->username', '$this->firstName', '$this->lastName', '$this->email', '$this->password')";
 
 	}

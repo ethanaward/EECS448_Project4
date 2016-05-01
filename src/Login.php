@@ -63,7 +63,7 @@ session_start();
         $row = $result->fetch_assoc();
 
         if($row_num > 0) {
-          if($row['Password'] == $this->password) {
+          if(password_verify($this->password,$row['Password']) ) {
             $_SESSION["profilename"] = $this->username;
             $_SESSION["username"] = $this->username;
             header("Location: ProfileFrontEnd.html", TRUE, 303);

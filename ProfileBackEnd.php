@@ -25,7 +25,6 @@ if(isset($_SESSION['username']))
 		{
 			$_SESSION['friend'] = $_SESSION['profilename'];
 			echo "<form action = 'changeFriend.php?action=1' method = 'post'>";
-			//echo "<input type='hidden' name='action' value='1'>";
 			echo "<button type = 'submit'>Add as friend</button>";
 			echo "</form>";
 		}
@@ -34,7 +33,6 @@ if(isset($_SESSION['username']))
 		{
 			$_SESSION['friend'] = $_SESSION['profilename'];
 			echo "<form action = 'changeFriend.php?action=2' method = 'post'>";
-		//	echo "<input type='hidden' name='action' value='2'>";
 			echo "<button type = 'submit'>Remove as friend</button>";
 			echo "</form>";
 		}
