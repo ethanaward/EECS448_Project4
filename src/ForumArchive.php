@@ -66,6 +66,9 @@
 
       //Checks to make sure the mysql database can be accessed
 
+			include "src/Utility.php";
+			$util = new Utility();
+
       $this->isOK();
 
 			if ($result = $this->mysqli->query($this->query))
@@ -77,7 +80,29 @@
 				echo "<ul>";
 				while ($row = $result->fetch_assoc())
 				{
-					printf ("<a href = 'ForumFrontEnd.html?forum=%s'>%s</a> \n", $row["forum_id"],$row["forum_id"]);
+					printf ("<a href = 'ForumFrontEnd.html?forum=%s'>%s</a>", $row["forum_id"],$row["forum_id"]);
+
+					if(isset($_SESSION['username']))
+					{
+						if(! ($util->checkForum( $_SESSION['username'], $row["forum_id"] )) )
+							{
+								echo "<form action = 'ChangeForum.php?action=1' method = 'post'>";
+								echo "<button type = 'submit'>Follow forum</button>";
+								printf("<input type = 'hidden' name = 'Forum' value = '%s'>", $row["forum_id"]);
+								// echo "<input type='hidden' name='Forum' value='$row['forum_id']'>"
+								echo "</form>";
+							}
+
+							else
+							{
+								echo "<form action = 'ChangeForum.php?action=2' method = 'post'>";
+								echo "<button type = 'submit'>Unfollow forum</button>";
+								printf("<input type = 'hidden' name = 'Forum' value = '%s'>", $row["forum_id"]);
+								// echo "<input type='hidden' name='Forum' value='$row['forum_id']'>"
+								echo "</form>";
+							}
+
+					}
 					echo "<br>";
 				}
 				echo "</ul>";

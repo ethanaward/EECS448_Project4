@@ -1,34 +1,15 @@
-
-
-
-
 <?php
 
-
-
 /**
-
 *	@file : ForumPosts.php
-
 *	@author : Mike Neises, Travis Augustine, Ethan Ward
-
 *	@date : 2016.04.08
-
 *	@brief: Takes posts from user's Forums database and displays some
-
 */
-
-
 
 	session_start();
 
-
-
-
-
-	class FriendPosts {
-
-
+	class ForumPosts {
 
 		private $query;
 
@@ -40,15 +21,10 @@
 
 
 		/**
-
 		*  @name FriendPosts()
-
 		*  @pre None
-
 		*  @post Initializes variables and MySQL database
-
 		*  @return none
-
 		*/
 
 		public function ForumPosts() {
@@ -60,35 +36,28 @@
 
 
 		/**
-
 		*  @name getForums()
-
 		*  @pre user is logged in
-
 		*  @post $forumList is set
-
 		*  @return none
-
 		*/
 		public function getForums(){
 
-			$this->query = "SELECT * FROM ". $_SESSION['profilename']."_Friends";
-			$myForumList = array();			
+			$this->query = "SELECT * FROM ". $_SESSION['profilename']."_Forums";
+			$myForumList = array();
 
-      		//Checks to make sure the mysql database can be accessed
+  		//Checks to make sure the mysql database can be accessed
 
-      		$this->isOK();
+    	$this->isOK();
 
 
 			if ($result = $this->mysqli->query($this->query))
-
 			{
 			$i=0;
 
-				// fetch associative array 
+				// fetch associative array
 
 				while ($row = $result->fetch_assoc())
-
 				{
 					$myForumList[$i] = $row["forum_id"];
 
@@ -106,15 +75,10 @@
 
 
 		/**
-
 		*  @name isOK
-
 		*  @pre None
-
 		*  @post Prints error if connection failed
-
 		*  @return none
-
 		*/
 
 		private function isOK() {
@@ -126,10 +90,7 @@
 				exit();
 
 			}
-
 		}
-
-
 
 		public function close() {
 
@@ -142,15 +103,10 @@
 
 
 		/**
-
 		*  @name display
-
 		*  @pre None
-
 		*  @post Displays posts and navigation
-
 		*  @return none
-
 		*/
 
 		public function display() {
@@ -167,7 +123,6 @@
 				$this->query = "SELECT * FROM EECSPosts WHERE forum_id='$forum' AND isTopic=1";
 
 				if ($result = $this->mysqli->query($this->query))
-
 				{
 
 					/* fetch associative array */
