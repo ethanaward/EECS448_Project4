@@ -8,6 +8,10 @@ if(isset($_GET['profile'])) {
   $_SESSION['profilename'] = $_GET['profile'];
 }
 
+else {
+  $_SESSION['profilename'] = $_SESSION['username'];
+}
+
 if(isset($_SESSION['message'])) {
 	echo "<h3>".$_SESSION['message']."</h3>";
 	unset($_SESSION['message']);
@@ -84,7 +88,7 @@ if(isset($_SESSION['message'])) {
       $recentPosts->close(); ?>
     </div>
 
-    
+
 </div>
 
   </div>
