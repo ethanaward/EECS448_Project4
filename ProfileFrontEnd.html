@@ -80,8 +80,16 @@ if(isset($_SESSION['message'])) {
 
     <div class="col-sm-9">
 	<br>
-	<?php include 'ProfileBackEnd.php';
-	session_start();
+	<?php
+
+    include "src/Profile.php";
+
+    $profile = new Profile();
+
+    $profile->display();
+    $profile->displayFollowed();
+    $profile->displayButton();
+    $profile->close();
 
 	include "src/myRecentPosts.php";
 	$recentPosts = new myRecentPosts();
@@ -91,7 +99,7 @@ if(isset($_SESSION['message'])) {
 	include "src/FriendPosts.php";
 	$FriendPosts = new FriendPosts();
 	$FriendPosts->display();
-	$FriendPosts->close(); 
+	$FriendPosts->close();
 
 	include "src/ForumPosts.php";
 	$ForumPosts = new ForumPosts();

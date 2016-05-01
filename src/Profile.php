@@ -98,7 +98,7 @@ session_start();
 		}
     }
 
-    public function displayFollowed()
+  public function displayFollowed()
 	{
 		$this->query = "SELECT * FROM ". $_SESSION['profilename']."_Friends";
 		if($_SESSION['username'] == $_SESSION['profilename'])
@@ -134,6 +134,37 @@ session_start();
         	}
 		}
 	}
+
+  public function displayButton() {
+
+    include "src/Utility.php";
+    $util = new Utility();
+
+
+    if(isset($_SESSION['username']))
+    {
+    	if(($_SESSION['username'] != $_SESSION['profilename']))
+    	{
+    		if(! ($util->checkFriend( $_SESSION['username'], $_SESSION['profilename'] )) )
+    		{
+    			echo "<form action = 'changeFriend.php?action=1' method = 'post'>";
+    			printf("<input type = 'hidden' name = 'Profile' value = '%s'>", $_SESSION['profilename']);
+    			echo "<button type = 'submit'>Add as friend</button>";
+    			echo "</form>";
+    		}
+
+    		else
+    		{
+    			echo "<form action = 'changeFriend.php?action=2' method = 'post'>";
+    			printf("<input type = 'hidden' name = 'Profile' value = '%s'>", $_SESSION['profilename']);
+    			echo "<button type = 'submit'>Remove as friend</button>";
+    			echo "</form>";
+    		}
+    	}
+    }
   }
+
+
+}
 
 ?>

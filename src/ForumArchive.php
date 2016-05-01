@@ -89,7 +89,6 @@
 								echo "<form action = 'ChangeForum.php?action=1' method = 'post'>";
 								echo "<button type = 'submit'>Follow forum</button>";
 								printf("<input type = 'hidden' name = 'Forum' value = '%s'>", $row["forum_id"]);
-								// echo "<input type='hidden' name='Forum' value='$row['forum_id']'>"
 								echo "</form>";
 							}
 
@@ -98,7 +97,6 @@
 								echo "<form action = 'ChangeForum.php?action=2' method = 'post'>";
 								echo "<button type = 'submit'>Unfollow forum</button>";
 								printf("<input type = 'hidden' name = 'Forum' value = '%s'>", $row["forum_id"]);
-								// echo "<input type='hidden' name='Forum' value='$row['forum_id']'>"
 								echo "</form>";
 							}
 
