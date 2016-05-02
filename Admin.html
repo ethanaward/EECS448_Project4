@@ -20,18 +20,18 @@
       <h4>EECS Forum</h4>
       <ul class="nav nav-pills nav-stacked">
 				<?php
-				echo "<li><a href = '../index.html'>Home</a></li>";
+				echo "<li><a href = 'index.html'>Home</a></li>";
 				if(!isset($_SESSION['username'])) {
-				  echo "<li><a href='../SignUpFrontEnd.html'>Sign Up</a></li>
-				  		<li><a href='../LoginFrontEnd.html'>Log In</a></li>";
+				  echo "<li><a href='.SignUpFrontEnd.html'>Sign Up</a></li>
+				  		<li><a href='LoginFrontEnd.html'>Log In</a></li>";
 				}
 
 				else {
-				  echo "<li><a href='../LogoutBackEnd.php'>Log Out</a></li>";
-				  printf ("<li><a href = '../ProfileFrontEnd.html?profile=%s'>Your Profile</a></li> \n", $_SESSION['username']);
+				  echo "<li><a href='LogoutBackEnd.php'>Log Out</a></li>";
+				  printf ("<li><a href = 'ProfileFrontEnd.html?profile=%s'>Your Profile</a></li> \n", $_SESSION['username']);
 				}
 
-				echo "<li><a href='../ForumArchiveFrontEnd.html'>Forum</a></li>";
+				echo "<li><a href='ForumArchiveFrontEnd.html'>Forum</a></li>";
 				?>
 
       </ul><br>
@@ -48,6 +48,12 @@
 		?>
 
 		<a href = "admin/ViewPosts.html">View and delete posts</a>
+
+		<br>
+		<form action = 'admin/CreateForum.php' method = 'post'>
+		<input type = 'text' placeholder="Forum Name" name = 'Forum'>
+		<input type = submit value = 'Create Forum'>
+	</form>
 
     </div>
 
