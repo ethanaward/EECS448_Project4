@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel = "stylesheet" href = "../src/ForumStyle.css">
+
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>EECS Forum</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <?php
+				echo "<li><a href = '../index.html'>Home</a></li>";
+				if(!isset($_SESSION['username'])) {
+				  echo "<li><a href='../SignUpFrontEnd.html'>Sign Up</a></li>
+				  		<li><a href='../LoginFrontEnd.html'>Log In</a></li>";
+				}
+
+				else {
+				  echo "<li><a href='../LogoutBackEnd.php'>Log Out</a></li>";
+				  printf ("<li><a href = '../ProfileFrontEnd.html?profile=%s'>Your Profile</a></li> \n", $_SESSION['username']);
+				}
+
+				echo "<li><a href='../ForumArchiveFrontEnd.html'>Forum</a></li>";
+				?>
+
+      </ul><br>
+      <!--
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search Blog..">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+      -->
+    </div>
+
+    <div class="col-sm-9">
+
+		<?php
+
+			$mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
+
+			if($mysqli->connect_errno) {
+			  printf("Connect failed: %s\n", $mysqli->connect_error);
+			  exit();
+			}
+
+			$user = $_POST['users'];
+
+			$query = "SELECT post_id,user_id,content,forum_id,topic_id,isForum,isTopic,Date FROM EECSPosts";
+
+			if($result = $mysqli->query($query)) {
+
+				echo "<form action = 'DeletePost.php' method = 'post'>";
+			//	echo "<table cellspacing =  '5px'>";
+
+				while($row = $result->fetch_assoc()) {
+
+					printf("<input type = 'checkbox' name = 'DeleteList[]' value = '%s'>      %s      %s     %s       %s      %s       %s      %s",
+          htmlspecialchars($row["post_id"]), htmlspecialchars($row["user_id"]), htmlspecialchars($row["content"]), htmlspecialchars($row["forum_id"]), htmlspecialchars($row["topic_id"]),
+          htmlspecialchars($row["isForum"]), htmlspecialchars($row["isTopic"]), htmlspecialchars($row["Date"]));
+					echo "<br>";
+				}
+
+				echo "</table>";
+				echo "<input type = 'submit' value = 'Delete Posts'>";
+				echo "</form>";
+				$result->free();
+			}
+
+			$mysqli->close();
+
+
+			?>
+    </div>
+
+      </div>
+      </div>
+      <footer class="container-fluid">
+      <p>Copyright 2016</p>
+      </footer>
+      </body>
+      </html>
