@@ -34,7 +34,7 @@ if(isset($_SESSION['username'])) {
 else {
   $_SESSION['message'] = "The post could not be created. You are not logged in.";
 }
-
+$create->close();
 if($_GET['topic'] == 0) {
   header("Location: ForumFrontEnd.html", TRUE, 303);
 }

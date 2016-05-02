@@ -8,6 +8,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <link rel = "stylesheet" href = "../src/ForumStyle.css">
+  <style>
+    p {
+      display: inline-block;
+      margin:7;
+    }
+  </style>
 
 </head>
 <body>
@@ -62,17 +68,17 @@
 			if($result = $mysqli->query($query)) {
 
 				echo "<form action = 'DeletePost.php' method = 'post'>";
-			//	echo "<table cellspacing =  '5px'>";
+
 
 				while($row = $result->fetch_assoc()) {
 
-					printf("<input type = 'checkbox' name = 'DeleteList[]' value = '%s'>      %s      %s     %s       %s      %s       %s      %s",
+					printf("<input type = 'checkbox' name = 'DeleteList[]' value = '%s'> <p>%s</p>    <p>%s</p>     <p>%s</p>    <p>%s</p>    <p>%s</p>    <p>%s</p> <p>%s</p>",
           htmlspecialchars($row["post_id"]), htmlspecialchars($row["user_id"]), htmlspecialchars($row["content"]), htmlspecialchars($row["forum_id"]), htmlspecialchars($row["topic_id"]),
           htmlspecialchars($row["isForum"]), htmlspecialchars($row["isTopic"]), htmlspecialchars($row["Date"]));
 					echo "<br>";
 				}
 
-				echo "</table>";
+
 				echo "<input type = 'submit' value = 'Delete Posts'>";
 				echo "</form>";
 				$result->free();

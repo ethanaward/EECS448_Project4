@@ -83,6 +83,11 @@ session_start();
 				exit();
 			}
 		}
+
+		public function close() {
+			
+			$this->mysqli->close();
+		}
 		/**
 		*  @name makePost
 		*  @pre HTML form for post submitted, database initialized
@@ -105,8 +110,7 @@ session_start();
 			} else {
 					echo "Error: ".$this->query."<br>".$this->mysqli->error;
 			}
-			//close connection
-			$this->mysqli->close();
+
 		}
 		/**
 		*  @name topicExists
@@ -131,6 +135,19 @@ session_start();
 			    $result->free();
 			}
 			return false;
+		}
+
+		public function deletePost($post_id) {
+			$this->isOK();
+
+			$this->query = "DELETE FROM EECSPosts WHERE post_id = '".$post_id."'";
+
+			if($this->mysqli->query($this->query)) {
+				return true;
+			}
+			else {
+				return false;
+			}
 		}
 	}
 ?>
