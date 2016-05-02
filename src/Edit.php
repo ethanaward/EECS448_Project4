@@ -12,6 +12,8 @@ session_start();
 		private $firstname;
 		private $lastname;
 		private $email;
+		private $description;
+		private $website;
 		private $query;
 
 		/**
@@ -24,11 +26,13 @@ session_start();
 		{
 			$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
 
-			$this->email = $_POST['email'];
-			$this->firstname = $_POST['firstName'];
-			$this->lastname = $_POST['lastName'];
-
-			$this->query = "UPDATE EECSUsers SET Email='$this->email', FirstName='$this->firstname', LastName='$this->lastname' WHERE user_id='".$_SESSION['username']."'";
+			$this->email = $this->mysqli->real_escape_string($_POST['email']);
+			$this->firstname = $this->mysqli->real_escape_string($_POST['firstName']);
+			$this->lastname = $this->mysqli->real_escape_string($_POST['lastName']);
+			$this->description = $this->mysqli->real_escape_string($_POST['description']);
+			$this->website = $this->mysqli->real_escape_string($_POST['website']);
+			$this->query = "UPDATE EECSUsers SET Email='$this->email', FirstName='$this->firstname', LastName='$this->lastname', Description='$this->description', Website='$this->website'
+			 										WHERE user_id='".$_SESSION['username']."'";
 		}
 
 		/**

@@ -7,7 +7,7 @@
 */
 session_start();
 
-include "src/Login.php";
+include "src/User.php";
 
 $user = new User();
 $user->login();
