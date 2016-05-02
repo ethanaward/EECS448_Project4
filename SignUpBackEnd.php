@@ -8,11 +8,13 @@
 */
   session_start();
 
-include "src/SignUp.php";
+include "src/User.php";
 
-$signup = new SignUp();
+var_dump($_POST);
 
-$signup->runQuery();
-$signup->close();
+$user = new User();
+
+$user->signup();
+$user->close();
 
 ?>

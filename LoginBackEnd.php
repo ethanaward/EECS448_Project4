@@ -9,8 +9,8 @@ session_start();
 
 include "src/Login.php";
 
-$login = new Login();
-$login->run();
-$login->close();
+$user = new User();
+$user->login();
+$user->close();
 
 ?>
