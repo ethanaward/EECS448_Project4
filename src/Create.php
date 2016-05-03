@@ -37,12 +37,12 @@ session_start();
 			//Here we initialize the connection to the database.
 			$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
 			//These two variables hold the post content and the username of the poster respectively.
-			$this->post = $_POST["mypost"];
-			$this->user = $_SESSION["username"];
-			$this->forum = $_SESSION["forumname"];
-			$this->isForum = $_POST["isForum"];
-			$this->isTopic = $_POST["isTopic"];
-			$this->Date = $_POST["Date"];
+			$this->post = $this->mysqli->real_escape_string($_POST["mypost"]);
+			$this->user = $this->mysqli->real_escape_string($_SESSION["username"]);
+			$this->forum = $this->mysqli->real_escape_string($_SESSION["forumname"]);
+			$this->isForum = $this->mysqli->real_escape_string($_POST["isForum"]);
+			$this->isTopic = $this->mysqli->real_escape_string($_POST["isTopic"]);
+			$this->Date = $this->mysqli->real_escape_string($_POST["Date"]);
 
 			if( isset($_POST['topicID']) )
 			{
@@ -57,12 +57,6 @@ session_start();
 
 			//This query is used to see if the topic already exists in this forum.
 			$exists = "SELECT topic_id FROM EECSPosts WHERE forum_id='$this->forum'";
-
-			//Here I escape the post return into a correctly formatted string.
-			//Example: without this line, if the post contains a single apostrophe ("I'm coding."),
-			//Then that apostrophe will confuse the query and the program crashes.
-			$this->post = $this->mysqli->real_escape_string($this->post);
-
 
 			//This query we will use to add the post with the username into the EECSPosts database.
 			$this->query = "INSERT INTO EECSPosts (content, user_id, forum_id, topic_id, isForum, isTopic, Date) VALUES('$this->post', '$this->user', '$this->forum', '$this->topic', '$this->isForum', '$this->isTopic', '$this->Date' )";
@@ -85,7 +79,7 @@ session_start();
 		}
 
 		public function close() {
-			
+
 			$this->mysqli->close();
 		}
 		/**

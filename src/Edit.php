@@ -31,6 +31,7 @@ session_start();
 			$this->lastname = $this->mysqli->real_escape_string($_POST['lastName']);
 			$this->description = $this->mysqli->real_escape_string($_POST['description']);
 			$this->website = $this->mysqli->real_escape_string($_POST['website']);
+			
 			$this->query = "UPDATE EECSUsers SET Email='$this->email', FirstName='$this->firstname', LastName='$this->lastname', Description='$this->description', Website='$this->website'
 			 										WHERE user_id='".$_SESSION['username']."'";
 		}

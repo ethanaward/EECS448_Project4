@@ -36,7 +36,7 @@
 			$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
 
 			$this->user = $_SESSION["username"];
-			$this->forum = $_SESSION["forumname"];
+			$this->forum = $this->mysqli->real_escape_string($_SESSION["forumname"]);
 
 			$this->query = "SELECT * FROM EECSPosts WHERE forum_id='$this->forum' AND isTopic=1";
 

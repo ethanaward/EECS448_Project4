@@ -23,8 +23,10 @@ session_start();
 	*/
     public function Profile()
     {
-		$this->query = "SELECT * FROM EECSUsers WHERE user_id = '".$_SESSION['profilename']."'";
-    	$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
+        $this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
+        
+		$this->query = "SELECT * FROM EECSUsers WHERE user_id = '".$this->mysqli->real_escape_string($_SESSION['profilename'])."'";
+
     }
 
 	/**
