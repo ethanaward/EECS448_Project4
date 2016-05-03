@@ -1,12 +1,14 @@
 <?php
 	// Start the session
 	session_start();
-
-	//Displays session message if needed
-	if(isset($_SESSION['message']))
+	if(isset($_GET['message']))
 	{
-		echo "<h3>".$_SESSION['message']."</h3>";
-		unset($_SESSION['message']);
+		$_SESSION['message'] = $_GET['message'];
+	}
+	
+	if(isset($_GET['topic']))
+	{
+		$_SESSION['topicname'] = $_GET['topic'];
 	}
 ?>
 <!DOCTYPE html>
@@ -41,14 +43,30 @@
 
 				<div class="col-sm-9">
 					<?php
-						if (isset($_GET['topic']))
+						//display forum topic
+						if (isset($_SESSION['topicname']))
 						{
-							echo "<h4>".$_GET['topic']."</h4>";
-						}
+							echo "<h4>".$_SESSION['topicname'];
+							
+								//Displays session message if needed
+								if(isset($_SESSION['message']))
+								{
+									echo " - ".$_SESSION['message'];
+									unset($_SESSION['message']);
+								}
+						}	
 						else
 						{
 							echo "<h4>EECS Forum</h4>";
+							
+								//Displays session message if needed
+								if(isset($_SESSION['message']))
+								{
+									echo "<h4> - ".$_SESSION['message']."</h4>";
+									unset($_SESSION['message']);
+								}
 						}
+						echo "</h4>";
 					?>
 		<!--This is what used to be FeedBackEnd.php	-->
 		<?php
