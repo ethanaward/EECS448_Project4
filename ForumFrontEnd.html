@@ -37,9 +37,14 @@
 
 				<div class="col-sm-9">
 					<?php
-					if(isset($_SESSION['forumname']))
+					if(isset($_GET['forum']))
 					{
-						echo "<h4>".$_SESSION['forumname']."</h4>";
+						echo "<h4>".$_GET['forum']."</h4>";
+					}
+					else
+					{
+						echo "<h4>EECS Forum</h4>";
+					
 					}
 					//Displays session message if needed
 					if(isset($_SESSION['message']))
