@@ -29,7 +29,7 @@
 		*  @return none
 		*/
 		public function Feed() {
-			$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');s
+			$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
 
 			$this->topic = $this->mysqli->real_escape_string($_SESSION["topicname"]);
 			$this->query = "SELECT * FROM EECSPosts WHERE topic_id='$this->topic'";
