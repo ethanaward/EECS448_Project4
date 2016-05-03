@@ -28,7 +28,6 @@ session_start();
       $this->username = $this->mysqli->real_escape_string($_POST['username']);
       $this->password = $this->mysqli->real_escape_string($_POST['password']);
 
-
     }
 
 	/**
@@ -128,40 +127,110 @@ session_start();
   		{
   			echo "Error: " . $this->query . "<br>" . $this->mysqli->error;
   		}
-  		
+
       $this->createFriends();
       $this->createForums();
 
-  		$this->redirectPage();
+      $this->redirectPage();
 
   	}
 
     private function createFriends() {
 
-      $this->sql = "CREATE TABLE ". $this->username ."_Friends (user_id varchar(255) NOT NULL, FOREIGN KEY(user_id) REFERENCES EECSUsers(user_id)) ENGINE=InnoDB";
+      $this->query = "CREATE TABLE ". $this->username ."_Friends (user_id varchar(255) NOT NULL, FOREIGN KEY(user_id) REFERENCES EECSUsers(user_id)) ENGINE=InnoDB";
 
-      if($this->mysqli->query($this->sql)) {
+      if($this->mysqli->query($this->query)) {
+            return true;
 
       }
       else
   		{
-  			echo "Error: " . $this->sql . "<br>" . $this->mysqli->error;
+            echo "Error: " . $this->query . "<br>" . $this->mysqli->error;
+            return false;
       }
 
     }
 
     private function createForums() {
 
-      $this->sql = "CREATE TABLE ". $this->username ."_Forums (forum_id varchar(255) NOT NULL) ENGINE=InnoDB";
+      $this->query = "CREATE TABLE ". $this->username ."_Forums (forum_id varchar(255) NOT NULL) ENGINE=InnoDB";
 
-      if($this->mysqli->query($this->sql)) {
-
+      if($this->mysqli->query($this->query)) {
+          return true;
       }
       else
       {
-        echo "Error: " . $this->sql . "<br>" . $this->mysqli->error;
+          echo "Error: " . $this->query . "<br>" . $this->mysqli->error;
+          return false;
       }
 
+    }
+
+    public function deleteUser($user) {
+
+        $this->deleteForums($user);
+        $this->deleteFriends($user);
+        $this->deleteFromFriends($user);
+
+        $this->query = "DELETE FROM EECSUsers WHERE user_id = '$user'";
+
+        if($this->mysqli->query($this->query)) {
+            return true;
+        }
+        else
+        {
+            echo "Error: " . $this->query . "<br>" . $this->mysqli->error;
+            return false;
+        }
+
+
+    }
+
+    private function deleteFriends($user) {
+
+        $this->query = "DROP TABLE ". $user . "_Friends";
+
+        if($this->mysqli->query($this->query)) {
+            return true;
+        }
+        else
+        {
+            echo "Error: " . $this->query . "<br>" . $this->mysqli->error;
+            return false;
+        }
+
+    }
+
+    private function deleteForums($user) {
+
+        $this->query = "DROP TABLE ". $user . "_Forums";
+
+        if($this->mysqli->query($this->query)) {
+            return true;
+        }
+        else
+        {
+            echo "Error: " . $this->query . "<br>" . $this->mysqli->error;
+            return false;
+        }
+
+    }
+
+    private function deleteFromFriends($user) {
+
+        $this->query = 'SELECT * FROM EECSUsers';
+
+        if($result = $this->mysqli->query($this->query)) {
+            while($row = $result->fetch_assoc()) {
+                $this->query = "DELETE FROM ". $row['user_id'] . "_Friends WHERE user_id = '$user'";
+                $this->mysqli->query($this->query);
+            }
+        }
+        else
+        {
+            echo "Error: " . $this->query . "<br>" . $this->mysqli->error;
+            return false;
+        }
     }
 
 
