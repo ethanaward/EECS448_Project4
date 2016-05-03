@@ -2,9 +2,9 @@
 	// Start the session
 	session_start();
 
-	if(isset($_GET['forumID']))
+	if(isset($_GET['forum']))
 	{
-		$_SESSION['forumname'] = $_GET['forumID'];
+		$_SESSION['forumname'] = $_GET['forum'];
 	}
 ?>
 <!DOCTYPE html>
@@ -37,22 +37,23 @@
 
 				<div class="col-sm-9">
 					<?php
-					if(isset($_GET['forum']))
+					if(isset($_SESSION['forumname']))
 					{
-						echo "<h4>".$_GET['forum']."</h4>";
+						echo "<h4>".$_SESSION['forumname'];
 					}
 					else
 					{
-						echo "<h4>EECS Forum</h4>";
+						echo "<h4>EECS Forum";
 					
 					}
 					//Displays session message if needed
 					if(isset($_SESSION['message']))
 					{
-						echo "<h3>".$_SESSION['message']."</h3>";
+						echo " - ".$_SESSION['message'];
 						unset($_SESSION['message']);
 					}
-					?>
+					echo "</h4>";
+						?>
 					<!-- This is what used to be ForumBackEnd.php -->
 					<?php
 					include "src/Forum.php";
