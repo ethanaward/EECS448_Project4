@@ -11,8 +11,24 @@ else {
   printf ("<li><a href = 'ProfileFrontEnd.html?profile=%s'>Your Profile</a></li> \n", $_SESSION['username']);
 }
 
-echo "<li><a href='ForumArchiveFrontEnd.html'>Forum</a></li>";
+echo	"<li class='dropdown'>";
+echo	"<a class = 'dropdown' href='ForumArchiveFrontEnd.html'>Forum</a>";
+echo	"<div class='dropdown-content'>";
 
+			$user = $_SESSION["username"];
 
+			$query = "SELECT * FROM EECSForums";
+
+			$mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
+			if ($result = $mysqli->query($query))
+
+			{
+while ($row = $result->fetch_assoc())
+	{
+		printf ("<a href = 'ForumFrontEnd.html?forum=%s'>%s</a>", $row["forum_id"],$row["forum_id"]);
+	}
+	}
+echo	"</div>";
+echo	"</li>";
 
 ?>
