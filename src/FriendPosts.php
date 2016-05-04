@@ -192,11 +192,11 @@
 						}
 
 						echo "<br>";
-
+						//prints the post
 						printf ("%s \n", $row["content"]);
 
 						echo "<br>-";
-
+						//prints the profile link and date
 						printf ("<a href = 'ProfileFrontEnd.html?profile=%s'>%s</a> (%s)", $row["user_id"],$row["user_id"],$row["Date"]);
 
 						echo "<br>";
