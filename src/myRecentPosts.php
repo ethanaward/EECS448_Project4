@@ -1,14 +1,10 @@
-
-
 <?php
-
 /**
 *	@file : myRecentPosts.php
 *	@author : Mike Neises, Travis Augustine, Ethan Ward
 *	@date : 2016.04.08
 *	@brief: Takes the user's posts from database and displays them
 */
-
 	session_start();
 
 	class myRecentPosts {
@@ -79,6 +75,4 @@
 			}
 
 		}
-
-
 	}

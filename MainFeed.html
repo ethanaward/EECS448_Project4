@@ -1,0 +1,62 @@
+<?php
+// Start the session
+session_start();
+//ini_set('display_errors','1');
+//error_reporting(0);
+$_SESSION['profilename'] = $_SESSION['username']
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Main Feed</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel = "stylesheet" href = "src/ForumStyle.css">
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+	<div class="row content">
+		<div class="col-sm-3 sidenav">
+    		<h4>Main Feed</h4>
+			<ul class="nav nav-pills nav-stacked">
+    	    	<?php include 'DisplayLinks.php'; ?>
+			</ul>
+    	</div>
+
+    	<div class="col-sm-9">
+	
+			<?php
+			
+			include "src/myRecentPosts.php";
+			$recentPosts = new myRecentPosts();
+			$recentPosts->display();
+			$recentPosts->close();
+
+			include "src/FriendPosts.php";
+			$FriendPosts = new FriendPosts();
+			$FriendPosts->display();
+			$FriendPosts->close();
+
+			include "src/ForumPosts.php";
+			$ForumPosts = new ForumPosts();
+			$ForumPosts->display();
+			$ForumPosts->close();
+			?>
+	
+		</div>
+
+	</div>
+
+</div>
+
+<footer class="container-fluid">
+  <p>Copyright 2016</p>
+</footer>
+</body>
+</html>

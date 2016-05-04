@@ -9,8 +9,8 @@ if(!isset($_SESSION['username'])) {
 else {
   echo "<li><a href='LogoutBackEnd.php'>Log Out</a></li>";
   printf ("<li><a href = 'ProfileFrontEnd.html?profile=%s'>Your Profile</a></li> \n", $_SESSION['username']);
+  echo	"<li><a href = 'MainFeed.html'>Main Feed</a></li>";
 }
-
 echo	"<li class='dropdown'>";
 echo	"<a class = 'dropdown' href='ForumArchiveFrontEnd.html'>Forum</a>";
 echo	"<div class='dropdown-content'>";
