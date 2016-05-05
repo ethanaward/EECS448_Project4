@@ -26,20 +26,27 @@ class TestSuite {
 	*  @post runs the other test functions
 	*  @return none
 	*/
-	public function runTests() {
+	public function TestSuite() {
 		$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
-		$this->user = "Admin";
+		$this->user = "mike";//"Admin";
 		$this->create = new Create();	
 
 		$this->post = "testpost";
 		$this->topicName = "testTopic";
 		$this->forumName = "EECS448";	
 
-		CreateUserTest();
-		TopicPostTest();
-		FeedPostTest();
-		DeletePostTest();
-		DeleteUserTest();
+	}
+
+	public function RunTests() {
+		$_SESSION["TestSuite"] = true;
+
+		$this->CreateUserTest();
+		$this->TopicPostTest();
+		$this->FeedPostTest();
+		$this->DeletePostTest();
+		$this->DeleteUserTest();
+
+		$_SESSION["TestSuite"] = false;
 	}
 
 	/**
@@ -64,15 +71,15 @@ class TestSuite {
 	private function TopicPostTest(){
 		$result = false;
 	
-		$_POST["mypost"] = $this->post;
+		$_SESSION["testmypost"] = $this->post;
 		$_SESSION["username"] = $this->user;
 		$_SESSION["forumname"] = $this->forumName;
-		$_POST['topicID'] = $this->topicName;
-		$_POST["isForum"] = 0;
-		$_POST["isTopic"] = 1;
+		$_SESSION["testtopicID"] = $this->topicName;
+		$_SESSION["testisForum"] = 0;
+		$_SESSION["testisTopic"] = 1;
 
 		try{
-			$create->makePost();
+			$this->create->makePost();
 		}
 		catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
@@ -91,15 +98,15 @@ class TestSuite {
 	private function FeedPostTest(){
 		$result = false;
 	
-		$_POST["mypost"] = $this->post;
+		$_SESSION["testmypost"] = $this->post;
 		$_SESSION["username"] = $this->user;
 		$_SESSION["forumname"] = $this->forumName;
-		$_POST['topicID'] = $this->topicName;
-		$_POST["isForum"] = 0;
-		$_POST["isTopic"] = 0;
+		$_SESSION["testtopicID"] = $this->topicName;
+		$_SESSION["testisForum"] = 0;
+		$_SESSION["testisTopic"] = 0;
 
 		try{
-			$create->makePost();
+			$this->create->makePost();
 		}
 		catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
