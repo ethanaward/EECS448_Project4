@@ -77,11 +77,11 @@ class TestSuite {
 		//if found, $result = true
 		if($result)
 		{
-			echo "Topic post created successfully.";
+			echo "<p>Topic post created successfully.</p>";
 		}
 		else
 		{
-			echo "Topic post creation failed.";
+			echo "<p>Topic post creation failed.</p>";
 		}
 	}
 	private function FeedPostTest(){
@@ -100,11 +100,11 @@ class TestSuite {
 		//if found, $result = true
 		if($result)
 		{
-			echo "Feed post created successfully.";
+			echo "<p>Feed post created successfully.</p>";
 		}
 		else
 		{
-			echo "Feed post creation failed.";
+			echo "<p>Feed post creation failed.</p>";
 		}
 	}
 	private function DeletePostTest(){
