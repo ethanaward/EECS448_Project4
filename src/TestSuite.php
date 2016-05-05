@@ -71,8 +71,12 @@ class TestSuite {
 		$_POST["isForum"] = 0;
 		$_POST["isTopic"] = 1;
 
-		$create->makePost();
-
+		try{
+			$create->makePost();
+		}
+		catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
 		//search EECSPosts for this post
 		//if found, $result = true
 		if($result)
@@ -94,8 +98,12 @@ class TestSuite {
 		$_POST["isForum"] = 0;
 		$_POST["isTopic"] = 0;
 
-		$create->makePost();
-
+		try{
+			$create->makePost();
+		}
+		catch(Exception $e){
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+		}
 		//search EECSPosts for this post
 		//if found, $result = true
 		if($result)
