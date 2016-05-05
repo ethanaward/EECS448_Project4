@@ -55,6 +55,19 @@ session_start();
 				$this->topic = $_SESSION["topicname"];
 			}
 
+			if( isset($_SESSION["TestSuite"]) )
+			{
+				if($_SESSION["TestSuite"])
+				{
+					$this->post = $_SESSION["testmypost"];
+					$this->user = $_SESSION["username"];
+					$this->forum = $_SESSION["forumname"];
+					$this->topic = $_SESSION["testtopicID"];
+					$this->isForum = $_SESSION["testisForum"];
+					$this->isTopic = $_SESSION["testisTopic"];
+				}
+			}
+
 			//This query is used to see if the topic already exists in this forum.
 			$exists = "SELECT topic_id FROM EECSPosts WHERE forum_id='$this->forum'";
 
