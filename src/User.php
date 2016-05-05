@@ -110,12 +110,12 @@ session_start();
   	public function signup()
   	{
 
-      $this->firstName = $this->mysqli->real_escape_string($_POST["firstName"]);
+        $this->firstName = $this->mysqli->real_escape_string($_POST["firstName"]);
   		$this->lastName = $this->mysqli->real_escape_string($_POST["lastName"]);
-  		$this->email = $this->mysqli->real_escape_string($_POST["email"]);
-      $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+        $this->email = $this->mysqli->real_escape_string($_POST["email"]);
+        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
 
-      $this->query = "INSERT INTO EECSUsers (user_id, FirstName, LastName, Email, Password)
+        $this->query = "INSERT INTO EECSUsers (user_id, FirstName, LastName, Email, Password)
                                    VALUES ('$this->username', '$this->firstName', '$this->lastName', '$this->email', '$this->password')";
 
   		if($this->mysqli->query($this->query))
