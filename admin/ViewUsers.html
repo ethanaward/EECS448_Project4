@@ -112,6 +112,36 @@ session_start();
 			$mysqli->close();
 			?>
 
+<?php
+    	if(isset($_SESSION['message']))
+			{
+				echo "<h3>".$_SESSION['message']."</h3>";
+				unset($_SESSION['message']);
+			}
+			
+		if(isset($_SESSION['username']))
+		{			
+			$user = $_SESSION["username"];
+			$mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
+			
+			$query = "SELECT * FROM EECSUsers WHERE user_id='$user'";
+			
+			if ($result = $mysqli->query($query))
+			{				
+				// fetch associative array			
+				$row = $result->fetch_assoc();
+				$isAdmin = $row['isAdmin'];
+				// free result set
+				$result->free();
+			}
+			
+			if($isAdmin == 1)
+			{
+				echo "<br><br><a href = '../Admin.html'>Back to Admin Page</a>";
+			}
+		}
+
+		?>
 
     </div>
 
