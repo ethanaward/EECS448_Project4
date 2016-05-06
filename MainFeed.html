@@ -31,7 +31,12 @@ $_SESSION['profilename'] = $_SESSION['username']
 
     	<div class="col-sm-9">
 	
-			<?php include 'MainFeedBackEnd.php'; ?>
+			<?php 
+				include "src/MainFeedDriver.php";
+				$allPosts = new MainFeedDriver();
+				$allPosts->display();
+				$allPosts->close();
+			?>
 	
 		</div>
 
