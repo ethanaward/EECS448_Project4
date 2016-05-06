@@ -14,7 +14,8 @@ session_start();
 
     private $query;
     private $mysqli;
-
+	private $isAdmin;
+	
 	/**
 	*  @name Profile
 	*  @pre None
@@ -73,12 +74,19 @@ session_start();
 					<tr> <td>Website:</td><td><input type = 'text' name = 'website' value = '%s'</td> </tr>
 					<tr> <td>Description:</td><td><input type = 'text' name = 'description' value = '%s'</td> </tr>",
 					htmlspecialchars($row["user_id"]), htmlspecialchars($row["Email"]), htmlspecialchars($row["FirstName"]), htmlspecialchars($row["LastName"]), htmlspecialchars($row["Website"]), htmlspecialchars($row["Description"]));
+					
+					$this->isAdmin = $row['isAdmin'];
 				}
+			
+
+
 				echo "<tr><td><input type = 'submit' value = 'Edit profile'></td></tr>";
 				echo "</table>";
 				echo "</form>";
+			
 				$result->free();
 			}
+			
 		}
 		else
 		{
@@ -114,7 +122,7 @@ session_start();
             		printf("<tr> <td><a href = ProfileFrontEnd.html?profile=%s>%s</a></td> </tr>",
                 htmlspecialchars($row['user_id']), htmlspecialchars($row['user_id']));
           		}
-          		echo "</table";
+          		echo "</table>";
           	}
 		}
 		else
@@ -167,6 +175,12 @@ session_start();
   }
 
 
+	public function displayAdmin(){
+		if($this->isAdmin == 1)
+		{
+			echo "<br><br><a href='Admin.html'>Admin Page</a>";
+		}
+	}
 }
 
 ?>
