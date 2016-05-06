@@ -45,20 +45,48 @@
 				echo "<h3>".$_SESSION['message']."</h3>";
 				unset($_SESSION['message']);
 			}
+			
+		if(isset($_SESSION['username']))
+		{			
+			$user = $_SESSION["username"];
+			$mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
+			
+			$query = "SELECT * FROM EECSUsers WHERE user_id='$user'";
+			
+			if ($result = $mysqli->query($query))
+			{				
+				// fetch associative array			
+				$row = $result->fetch_assoc();
+				$isAdmin = $row['isAdmin'];
+				// free result set
+				$result->free();
+			}
+			
+			if($isAdmin == 1)
+			{
+				echo "<a href = 'admin/ViewPosts.html'>View and delete posts</a>
+					<br><br>
+					<form action = 'admin/CreateForum.php' method = 'post'>
+					<input type = 'text' placeholder='Forum Name' name = 'Forum'>
+					<input type = submit value = 'Create Forum'>
+					<br><br>
+					<a href = 'admin/ViewUsers.html'>View and delete users</a>
+					<br><br>
+					</form>";
+			}
+			else 
+			{
+				echo "You are not an admin.";
+			}
+
+		}
+		else
+		{
+			echo "You are not logged in.";
+		}
 		?>
 
-		<a href = "admin/ViewPosts.html">View and delete posts</a>
 
-		<br><br>
-		<form action = 'admin/CreateForum.php' method = 'post'>
-		<input type = 'text' placeholder="Forum Name" name = 'Forum'>
-		<input type = submit value = 'Create Forum'>
-		<br><br>
-
-		<a href = "admin/ViewUsers.html">View and delete users</a>
-		<br><br>
-
-	</form>
 
     </div>
 
