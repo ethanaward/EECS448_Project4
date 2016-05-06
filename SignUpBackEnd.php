@@ -10,8 +10,6 @@
 
 include "src/User.php";
 
-var_dump($_POST);
-
 $user = new User();
 
 $user->signup();
