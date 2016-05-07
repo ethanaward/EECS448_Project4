@@ -148,28 +148,33 @@
 			if ($result = $this->mysqli->query($this->query))
 			{
 				//Here we display the posts with only the related date.
-				echo "<ul>";
-				$i = 0;
-				$arrLength = count($this->userArray);
-				// fetch associative array
-				
-				$reversed = array_reverse($this->userArray);
-				while ($i < $arrLength )
-				{
-					printf ("<a href = 'FeedFrontEnd.html?topic=%s'>%s</a>", htmlspecialchars($reversed[$i]["topic_id"]), htmlspecialchars($reversed[$i]["topic_id"]));
-					echo "<br>";
-					
-					printf ("%s \n", htmlspecialchars($reversed[$i]["content"]));
-		
-					echo "<br>";
-					printf ("<a href = 'ProfileFrontEnd.html?profile=%s'>%s</a>", htmlspecialchars($reversed[$i]["user_id"]),htmlspecialchars($reversed[$i]["user_id"]));
-					echo " - ";
-					printf ("%s", htmlspecialchars($reversed[$i]["Date"]));
-					echo "<br><br>";
-					$i++;
+				if(is_null($this->userArray)) {
+					echo "<ul>No posts to display</ul>";
 				}
-				echo "</ul>";
-
+				
+				else {
+					echo "<ul>";
+					$i = 0;
+					$arrLength = count($this->userArray);
+					// fetch associative array
+				
+					$reversed = array_reverse($this->userArray);
+					while ($i < $arrLength )
+					{
+						printf ("<a href = 'FeedFrontEnd.html?topic=%s'>%s</a>", htmlspecialchars($reversed[$i]["topic_id"]), htmlspecialchars($reversed[$i]["topic_id"]));
+						echo "<br>";
+					
+						printf ("%s \n", htmlspecialchars($reversed[$i]["content"]));
+		
+						echo "<br>";
+						printf ("<a href = 'ProfileFrontEnd.html?profile=%s'>%s</a>", htmlspecialchars($reversed[$i]["user_id"]),htmlspecialchars($reversed[$i]["user_id"]));
+						echo " - ";
+						printf ("%s", htmlspecialchars($reversed[$i]["Date"]));
+						echo "<br><br>";
+						$i++;
+					}
+					echo "</ul>";
+				}
 				/* free result set */
 				$result->free();
 			}

@@ -147,15 +147,15 @@ session_start();
 
   public function displayButton() {
 
-    include "src/Utility.php";
-    $util = new Utility();
+    //include "src/Utility.php";
+    $utility = new Utility();
 
 
     if(isset($_SESSION['username']))
     {
     	if(($_SESSION['username'] != $_SESSION['profilename']))
     	{
-    		if(! ($util->checkFriend( $_SESSION['username'], $_SESSION['profilename'] )) )
+    		if(! ($utility->checkFriend( $_SESSION['username'], $_SESSION['profilename'] )) )
     		{
     			echo "<form action = 'changeFriend.php?action=1' method = 'post'>";
     			printf("<input type = 'hidden' name = 'Profile' value = '%s'>", $_SESSION['profilename']);

@@ -4,8 +4,21 @@ session_start();
 //ini_set('display_errors','1');
 //error_reporting(0);
 
+include "src/Utility.php";
+
+$util = new Utility();
+
 if(isset($_GET['profile'])) {
-  $_SESSION['profilename'] = $_GET['profile'];
+
+	if($util->checkUser($_GET['profile'])) {
+		  $_SESSION['profilename'] = $_GET['profile'];
+	}
+	
+	else {
+		header("Location: Error.html", TRUE, 303);
+	}
+
+  
 }
 
 else {
