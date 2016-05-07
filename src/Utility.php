@@ -66,7 +66,24 @@
       }
 
   }
-
+  
+  public function checkBoard($board) {
+	$this->isOK();
+	$this->query = "SELECT count(1) FROM EECSForums WHERE forum_id = '". $board ."'";
+	
+	if($result = $this->mysqli->query($this->query)) {
+		$row = $result->fetch_assoc();
+		if($row['count(1)']) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
+	
+  }
+  
   }
 
 ?>

@@ -1,10 +1,22 @@
 <?php
 	// Start the session
 	session_start();
+	
+	include "src/Utility.php";
+	$util = new Utility();
 
 	if(isset($_GET['forum']))
 	{
-		$_SESSION['forumname'] = $_GET['forum'];
+		if($util->checkBoard($_GET['forum'])) {
+			$_SESSION['forumname'] = $_GET['forum'];
+		}
+		else {
+			header("Location: Error.html", TRUE, 303);
+		}
+
+	}
+	else {
+		header("Location: Error.html", TRUE, 303);
 	}
 ?>
 <!DOCTYPE html>
