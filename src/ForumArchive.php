@@ -22,7 +22,6 @@
 		*  @post Initializes variables and MySQL database
 		*  @return none
 		*/
-
 		public function ForumArchive() {
 			$this->user = $_SESSION["username"];
 
@@ -37,7 +36,6 @@
 		*  @post Prints error if connection failed
 		*  @return none
 		*/
-
 		private function isOK() {
 
 			if ($this->mysqli->connect_errno) {
@@ -48,31 +46,34 @@
 
 			}
 		}
-
+		/**
+		 *  @name: close
+		 *  
+		 *  @pre: Connected to database
+		 *  @post: Closes the connection
+		 *  @return: None
+		 */
 		public function close() {
-
 			$this->mysqli->close();
-
 		}
 
 		/**
 		*  @name display
-		*  @pre None
+		*  @pre Connected to database
 		*  @post Displays posts and navigation
-		*  @return none
+		*  @return True if the query succeeds, false otherwise.
 		*/
 
 		public function display() {
 
-      //Checks to make sure the mysql database can be accessed
+			//Checks to make sure the mysql database can be accessed
 
 			include "src/Utility.php";
 			$util = new Utility();
 
-      $this->isOK();
+			$this->isOK();
 
 			if ($result = $this->mysqli->query($this->query))
-
 			{
 				/* fetch associative array */
 
@@ -108,7 +109,11 @@
 				/* free result set */
 
 				$result->free();
+				return true;
 
+			}
+			else {
+				return false;
 			}
 
 		}
