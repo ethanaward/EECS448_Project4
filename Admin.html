@@ -10,10 +10,11 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="scripts/Utilities.js"></script>
   <link rel = "stylesheet" href = "src/ForumStyle.css">
 
 </head>
-<body>
+<body onload="getTheDate()">
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav">
@@ -54,11 +55,15 @@
 				echo "<a href = 'admin/ViewPosts.html'>View and delete posts</a>
 					<br><br>
 					<form action = 'admin/CreateForum.php' method = 'post'>
-					<input type = 'text' placeholder='Forum Name' name = 'Forum'>
-					<input type = submit value = 'Create Forum'>
-					<br><br>
-					<a href = 'admin/ViewUsers.html'>View and delete users</a>
-					<br><br>
+						<input type = 'text' placeholder='Forum Name' name = 'Forum'>
+						<input type = submit value = 'Create Forum'>
+						<br><br>
+						<a href = 'admin/ViewUsers.html'>View and delete users</a>
+						<br><br>
+					</form>";
+				echo	"<form action='RunTests.php' method='post'>
+				   		<input type='submit' value='Run Tests'>
+				   		<input type='text' id='date' value=''>
 					</form>";
 			}
 			else 
