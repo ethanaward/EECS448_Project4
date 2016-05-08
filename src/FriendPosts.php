@@ -1,5 +1,4 @@
 <?php
-
 /**
 
 *	@file : FriendPosts.php
@@ -7,11 +6,9 @@
 *	@date : 2016.04.08
 *	@brief: Takes posts from friends' databases and displays them
 */
-
 	session_start();
 
 	class FriendPosts {
-
 
 
 		private $query;
@@ -79,14 +76,20 @@
 				exit();
 			}
 		}
-
+		/**
+		 *  @name: close
+		 *  
+		 *  @pre: Connected to database
+		 *  @post: Closes the connection
+		 *  @return: None
+		 */
 		public function close() {
 			$this->mysqli->close();
 		}
 
 		/**
 		*  @name display
-		*  @pre None
+		*  @pre Connected to database
 		*  @post Displays posts and navigation
 		*  @return none
 		*/
