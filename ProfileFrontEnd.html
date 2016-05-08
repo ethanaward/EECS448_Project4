@@ -23,10 +23,6 @@ $util = new Utility();
 		$_SESSION['profilename'] = $_SESSION['username'];
 	}
 
-	if(isset($_SESSION['message'])) {
-		echo "<h3>".$_SESSION['message']."</h3>";
-		unset($_SESSION['message']);
-	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,6 +63,11 @@ $util = new Utility();
 	<br>
 	<?php
 
+	if(isset($_SESSION['message'])) {
+		echo "<h3>".$_SESSION['message']."</h3>";
+		unset($_SESSION['message']);
+	}
+	
     include "src/Profile.php";
 
     $profile = new Profile();

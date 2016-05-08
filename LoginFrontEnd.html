@@ -2,12 +2,6 @@
 	// Start the session
 	session_start();
 
-	//Displays session message if needed
-	if(isset($_SESSION['message']))
-	{
-		echo "<h3>".$_SESSION['message']."</h3>";
-		unset($_SESSION['message']);
-	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +32,14 @@
 
 				<div class="col-sm-9">
 					<br>
+						<?php
+							if(isset($_SESSION['message']))
+							{
+								echo "<h3>".$_SESSION['message']."</h3>";
+								unset($_SESSION['message']);
+							}
 
+						?>
 					<form onsubmit = "return CheckInput.checkLogin()" action = "LoginBackEnd.php" method = "post">
 						<table>
 						<tr><td>Username:</td><td><input type= "text" id = "username" name = "username"></td></tr>

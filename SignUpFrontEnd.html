@@ -2,11 +2,7 @@
 	// Start the session
 	session_start();
 
-	if(isset($_SESSION['message']))
-	{
-		echo "<h3>".$_SESSION['message']."</h3>";
-		unset($_SESSION['message']);
-	}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +32,15 @@
 				</div>
 
 				<div class="col-sm-9">
+				
+				<?php
+					if(isset($_SESSION['message']))
+					{
+						echo "<h3>".$_SESSION['message']."</h3>";
+						unset($_SESSION['message']);
+					}
+				
+				?>
 				  <br>
 					<form onsubmit = "return CheckInput.checkSignUp();" action = "SignUpBackEnd.php" method = "post">
 					<table>

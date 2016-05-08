@@ -3,12 +3,6 @@
 // Start the session
 
 session_start();
-
-//Displays session message if needed
-if(isset($_SESSION['message'])) {
-	echo "<h3>".$_SESSION['message']."</h3>";
-	unset($_SESSION['message']);
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,17 +34,20 @@ if(isset($_SESSION['message'])) {
 				  <br>
 
 				<!-- This is what used to be ForumArchiveBackEnd.php -->
-	<?php
-	session_start();
+					<?php
+					//Displays session message if needed
+					if(isset($_SESSION['message'])) {
+						echo "<h3>".$_SESSION['message']."</h3>";
+						unset($_SESSION['message']);
+					}
+					include "src/ForumArchive.php";
 
-	include "src/ForumArchive.php";
+					$feed = new ForumArchive();
 
-	$feed = new ForumArchive();
+					$feed->display();
+					$feed->close();
 
-	$feed->display();
-	$feed->close();
-
-	?>
+					?>
 
 				</div>
 
