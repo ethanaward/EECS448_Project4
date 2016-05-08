@@ -47,7 +47,13 @@
 				exit();
 			}
 		}
-
+		/**
+		 *  @name: close
+		 *  
+		 *  @pre: Connected to database
+		 *  @post: Closes the connection
+		 *  @return: None
+		 */
 		public function close() {
 			$this->mysqli->close();
 		}

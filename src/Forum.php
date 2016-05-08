@@ -1,15 +1,11 @@
 <?php
 
-
-
 /**
 *	@file : Forum.php
 *	@author : Mike Neises, Travis Augustine, Ethan Ward
 *	@date : 2016.04.0
 *	@brief: Takes topics from forum database and displays them
 */
-
-
 
 	session_start();
 
@@ -35,7 +31,7 @@
 
 			$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
 
-			$this->user = $_SESSION["username"];
+			$this->user = $this->mysqli->real_escape_string($_SESSION["username"]);
 			$this->forum = $this->mysqli->real_escape_string($_SESSION["forumname"]);
 
 			$this->query = "SELECT * FROM EECSPosts WHERE forum_id='$this->forum' AND isTopic=1";
@@ -56,16 +52,22 @@
 				exit();
 			}
 		}
-
+		/**
+		 *  @name: close
+		 *  
+		 *  @pre: Connected to database
+		 *  @post: Closes the connection
+		 *  @return: None
+		 */
 		public function close() {
 			$this->mysqli->close();
 		}
 
 		/**
 		*  @name display
-		*  @pre None
+		*  @pre Connected to database
 		*  @post Displays posts and navigation
-		*  @return none
+		*  @return True if the query succeeds, false otherwise
 		*/
 
 		public function display() {
@@ -94,7 +96,12 @@
 
 				/* free result set */
 				$result->free();
+				
+				return true;
 
+			}
+			else {
+				return false;
 			}
 
 		}
