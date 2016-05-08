@@ -43,11 +43,23 @@
 				exit();
 			}
 		}
-
+		/**
+		 *  @name: close
+		 *  
+		 *  @pre: Connected to database
+		 *  @post: Closes the connection
+		 *  @return: None
+		 */
 		public function close() {
 			$this->mysqli->close();
 		}
-
+		/**
+		 *  @name: getFriends
+		 *  
+		 *  @pre: Connected to database, the profile exists
+		 *  @post: Adds the values to $friendList
+		 *  @return: True if the query succeeds, false otherwise
+		 */
 		public function getFriends(){
 
 			$this->query = "SELECT * FROM ". $_SESSION['profilename']."_Friends";
@@ -67,10 +79,20 @@
 				}
 				// free result set
 				$result->free();
+				return true;
+			}
+			else {
+				return false;
 			}
 		}
 		
-
+		/**
+		 *  @name: getForums
+		 *  
+		 *  @pre: Connected to database, the profile exists
+		 *  @post: Sets $forumList
+		 *  @return: True if the query succeeds, false otherwise
+		 */
 		public function getForums(){
 
 			$this->query = "SELECT * FROM ". $_SESSION['profilename']."_Forums";
@@ -91,9 +113,19 @@
 
 				// free result set
 				$result->free();
+				return true;
+			}
+			else {
+				return false;
 			}
 		}
-		
+		/**
+		 *  @name: getUserPosts
+		 *  
+		 *  @pre: Connected to database
+		 *  @post: Sets $userArray
+		 *  @return: True if the query succeeds, false otherwise
+		 */
 		public function getUserPosts(){
 			$this->query = "SELECT * FROM EECSPosts WHERE user_id='$this->user'";
 			
@@ -133,14 +165,19 @@
 
 				// free result set
 				$result->free();
+				return true;
 			}
+			else {
+				return false;
+			}
+			
 		}
 
 		/**
 		*  @name display
-		*  @pre None
+		*  @pre Connected to database
 		*  @post Displays posts and navigation
-		*  @return none
+		*  @return True if the query succeeds, false otherwise
 		*/
 		public function display() {
       	//Checks to make sure the mysql database can be accessed
@@ -177,6 +214,10 @@
 				}
 				/* free result set */
 				$result->free();
+				return true;
+			}
+			else {
+				return false;
 			}
 
 		}
