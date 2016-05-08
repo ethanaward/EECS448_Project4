@@ -85,6 +85,11 @@ session_start();
 				echo "</form>";
 			
 				$result->free();
+				
+				return true;
+			}
+			else {
+				return false;
 			}
 			
 		}
@@ -104,6 +109,10 @@ session_start();
 				}
 				echo "</table>";
 				$result->free();
+				return true;
+			}
+			else {
+				return false;
 			}
 		}
     }
@@ -123,7 +132,11 @@ session_start();
                 htmlspecialchars($row['user_id']), htmlspecialchars($row['user_id']));
           		}
           		echo "</table>";
+				return true;
           	}
+			else {
+				return false;
+			}
 		}
 		else
 		{
@@ -137,17 +150,18 @@ session_start();
                 htmlspecialchars($row['user_id']), htmlspecialchars($row['user_id']));
           		}
           		echo "</table>";
+				return true;
         	}
         	else
         	{
-
+				return false;
         	}
 		}
 	}
 
   public function displayButton() {
 
-    //i	nclude "src/Utility.php";
+    //include "src/Utility.php";
     $utility = new Utility();
 
 
