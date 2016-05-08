@@ -3,7 +3,7 @@
 *	@file : User.php
 *	@author : Mike Neises, Travis Augustine, Ethan Ward
 *	@date : 2016.04.08
-*	@brief: Authenticates user login information
+*	@brief: Authenticates user login/signup information
 */
 session_start();
   class User {
@@ -18,6 +18,7 @@ session_start();
 
 	/**
 	*  @name User
+	* 
 	*  @pre HTML form data submitted
 	*  @post Initializes variables and MySQL database
 	*  @return none
@@ -32,6 +33,7 @@ session_start();
 
 	/**
 	*  @name isOK
+	* 
 	*  @pre None
 	*  @post Prints error if connection failed
 	*  @return none
@@ -43,12 +45,14 @@ session_start();
       }
     }
 
-    /**
-  	*  @name redirectPage
-  	*  @pre None
-  	*  @post The user is redirected to the profile page
-  	*  @return none
-  	*/
+  	/**
+  	 *  @name: redirectPage
+  	 *  
+  	 *  @pre: None
+  	 *  @post: Redirects the user to the proper page
+  	 *  @param [in] $val : A value used to check where the user should be redirected to
+  	 *  @return: None
+  	 */
   	public function redirectPage($val)
   	{
 		if($val == 0) {
@@ -65,18 +69,24 @@ session_start();
   		
 
   	}
-
+    /**
+     *  @name: close
+     *  
+     *  @pre: Connected to database
+     *  @post: The mysqli is closed
+     *  @return: None
+     */
     public function close() {
       $this->mysqli->close();
     }
 
 	/**
-	*  @name login
-	*  @pre Database connected
-	*  @post Authenticates login
-	*  @return none
+	*  @name: login
+	* 
+	*  @pre: Database connected
+	*  @post: Authenticates login
+	*  @return: 0 if the login failed, 1 if it succeeded
 	*/
-
     public function login() {
       $this->isOK();
 
@@ -111,10 +121,10 @@ session_start();
     }
 
     /**
-  	*  @name signup
-  	*  @pre Gathered HTML form data
-  	*  @post New user is created
-  	*  @return none
+  	*  @name: signup
+  	*  @pre: Gathered HTML form data
+  	*  @post: New user is created if possible, nothing otherwise
+  	*  @return: 1 if the signup was successful, 2 if it was not
   	*/
   	public function signup()
   	{
@@ -140,7 +150,13 @@ session_start();
   			return 2;
   		}
   	}
-
+    /**
+     *  @name: createFriends
+     *  
+     *  @pre: Connected to database, a user has been added to the database
+     *  @post: Creates a user's friend table
+     *  @return: True if the table was created, false otherwise
+     */
     private function createFriends() {
 
       $this->query = "CREATE TABLE ". $this->username ."_Friends (user_id varchar(255) NOT NULL, FOREIGN KEY(user_id) REFERENCES EECSUsers(user_id)) ENGINE=InnoDB";
@@ -156,7 +172,13 @@ session_start();
       }
 
     }
-
+    /**
+     *  @name: createForums
+     *  
+     *  @pre: Connected to database, a user has been added to the database
+     *  @post: Creates a user's forums talble
+     *  @return: True if the table was created, false otherwise
+     */
     private function createForums() {
 
       $this->query = "CREATE TABLE ". $this->username ."_Forums (forum_id varchar(255) NOT NULL) ENGINE=InnoDB";
@@ -171,7 +193,14 @@ session_start();
       }
 
     }
-
+    /**
+     *  @name: deleteUser
+     *  
+     *  @pre: Connected to database, the user taken in exists
+     *  @post: Deletes the user and all of their associated data if possible
+     *  @param [in] $user : The user to be deleted
+     *  @return: True if the user was deleted, false otherwise
+     */
     public function deleteUser($user) {
 
         $this->deleteForums($user);
@@ -191,7 +220,14 @@ session_start();
 
 
     }
-
+    /**
+     *  @name: deleteFriends
+     *  
+     *  @pre: Connected to database, a user of the given name exists
+     *  @post: Deletes the user's friends table if possible
+     *  @param [in] $user : The user to delete the friends table of
+     *  @return: True if the table was deleted, false otherwise
+     */
     private function deleteFriends($user) {
 
         $this->query = "DROP TABLE ". $user . "_Friends";
@@ -206,7 +242,14 @@ session_start();
         }
 
     }
-
+    /**
+     *  @name: deleteForums
+     *  
+     *  @pre: Connected to database, a user of the given name exists
+     *  @post: Deletes the user's forums table if possible
+     *  @param [in] $user : The user to delete the forums table of
+     *  @return: True if the table was deleted, false otherwise
+     */
     private function deleteForums($user) {
 
         $this->query = "DROP TABLE ". $user . "_Forums";
@@ -221,7 +264,14 @@ session_start();
         }
 
     }
-
+    /**
+     *  @name: deleteFromFriends
+     *  
+     *  @pre: Connected to database
+     *  @post: Deletes the given user from the friends table of all users
+     *  @param [in] $user : The user to delete from friends tables
+     *  @return: True if the user was removed from the tables, false otherwise
+     */
     private function deleteFromFriends($user) {
 
         $this->query = 'SELECT * FROM EECSUsers';
