@@ -95,6 +95,15 @@ session_start();
 
 			$this->mysqli->close();
 		}
+		
+		public function redirectPage() {
+				if($_GET['topic'] == 0) {
+  					header("Location: ForumFrontEnd.html", TRUE, 303);
+				}
+				else {
+  					header("Location: FeedFrontEnd.html", TRUE, 303);
+				}
+		}
 		/**
 		*  @name makePost
 		*  @pre HTML form for post submitted, database initialized
@@ -106,16 +115,11 @@ session_start();
 			//Test to make sure the database can be accessed
 			$this->isOK();
 			//See echos for explanations inside this conditional.
-			if($this->mysqli->query($this->query)==TRUE) {
-					//echo "New post created successfully!";
-					if($_GET['topic'] == 0) {
-  						header("Location: ForumFrontEnd.html", TRUE, 303);
-					}
-					else {
-  						header("Location: FeedFrontEnd.html", TRUE, 303);
-					}
+			if($this->mysqli->query($this->query)) {
+					return true;
+
 			} else {
-					echo "Error: ".$this->query."<br>".$this->mysqli->error;
+					return false;
 			}
 
 		}
