@@ -17,7 +17,7 @@ session_start();
 		private $query;
 
 		/**
-		*  @name display
+		*  @name Edit
 		*  @pre HTML edit form submitted
 		*  @post Intitializes variables and MySQL database
 		*  @return none
@@ -50,7 +50,13 @@ session_start();
 				exit();
 			}
 		}
-		
+		/**
+		 *  @name: close
+		 *  
+		 *  @pre: Connected to database
+		 *  @post: Closes the connection
+		 *  @return: None
+		 */
 		public function close() {
 			$this->mysqli->close();
 		}
@@ -68,9 +74,9 @@ session_start();
 
 		/**
 		*  @name editProfile
-		*  @pre MySQL initialized
+		*  @pre Connected to database
 		*  @post Profile page and database are updated with new data
-		*  @return none
+		*  @return True if the values are updated, false otherwise
 		*/
 		public function editProfile()
 		{
