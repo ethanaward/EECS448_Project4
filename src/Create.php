@@ -6,11 +6,7 @@
 *	@brief: Creates new post in MySQL database
 */
 session_start();
-/*
-* Author: Michael Neises
-* Date Modified: April 8, 2016
-* Purpose: to add a post to the EECSPosts database
-*/
+
 	class Create
 	{
 		private $post;
@@ -26,17 +22,20 @@ session_start();
 		private $exists;
 
 		/**
-		*  @name Create
-		*  @pre HTML form for post submitted
-		*  @post Intitializes variables and MySQL database
-		*  @return none
+		*  @name: Create
+		*  @name: Create
+		*  @pre: HTML form for post submitted
+		*  @post: Intitializes variables and MySQL database
+		*  @return: none
 		*/
 		public function Create()
 		{
 
 			//Here we initialize the connection to the database.
+			
 			$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
-			//These two variables hold the post content and the username of the poster respectively.
+			
+			//These variables hold the data received from the post array, sanitized for use in a mysql database
 			$this->post = $this->mysqli->real_escape_string($_POST["mypost"]);
 			$this->user = $this->mysqli->real_escape_string($_SESSION["username"]);
 			$this->forum = $this->mysqli->real_escape_string($_SESSION["forumname"]);
@@ -55,6 +54,7 @@ session_start();
 				$this->topic = $_SESSION["topicname"];
 			}
 
+			
 			if( isset($_SESSION["TestSuite"]) )
 			{
 				if($_SESSION["TestSuite"])
@@ -69,17 +69,17 @@ session_start();
 			}
 
 			//This query is used to see if the topic already exists in this forum.
-			$exists = "SELECT topic_id FROM EECSPosts WHERE forum_id='$this->forum'";
+			$this->exists = "SELECT topic_id FROM EECSPosts WHERE forum_id='$this->forum'";
 
 			//This query we will use to add the post with the username into the EECSPosts database.
 			$this->query = "INSERT INTO EECSPosts (content, user_id, forum_id, topic_id, isForum, isTopic, Date) VALUES('$this->post', '$this->user', '$this->forum', '$this->topic', '$this->isForum', '$this->isTopic', '$this->Date' )";
 
 		}
 		/**
-		*  @name isOK
-		*  @pre None
-		*  @post Prints error if connection failed
-		*  @return none
+		*  @name: isOK
+		*  @pre: None
+		*  @post: Prints error if connection failed
+		*  @return: none
 		*/
 		private function isOK()
 		{
@@ -90,12 +90,24 @@ session_start();
 				exit();
 			}
 		}
-
+		/**
+		 *  @name: close
+		 *  
+		 *  @pre: Connected to database
+		 *  @post: Closes the connection
+		 *  @return: None
+		 */
 		public function close() {
 
 			$this->mysqli->close();
 		}
-		
+		/**
+		 *  @name: redirectPage 
+		 *  
+		 *  @pre: None
+		 *  @post: Redirects the user to the appropriate page
+		 *  @return: None
+		 */
 		public function redirectPage() {
 				if($_GET['topic'] == 0) {
   					header("Location: ForumFrontEnd.html", TRUE, 303);
@@ -105,16 +117,16 @@ session_start();
 				}
 		}
 		/**
-		*  @name makePost
-		*  @pre HTML form for post submitted, database initialized
-		*  @post Alters MySQL database
-		*  @return none
+		*  @name: makePost
+		*  @pre: HTML form for post submitted, database initialized
+		*  @post: Inserts a post into the database
+		*  @return: True if the post is made, false otherwise
 		*/
 		public function makePost()
 		{
 			//Test to make sure the database can be accessed
 			$this->isOK();
-			//See echos for explanations inside this conditional.
+			
 			if($this->mysqli->query($this->query)) {
 					return true;
 
@@ -124,10 +136,10 @@ session_start();
 
 		}
 		/**
-		*  @name topicExists
-		*  @pre HTML form for post submitted, database initialized
-		*  @post none
-		*  @return True if the new topic had already been created
+		*  @name: topicExists
+		*  @pre: HTML form for post submitted, database initialized
+		*  @post: none
+		*  @return: True if the topic exists, false otherwise
 		*/
 		public function topicExists(){
 			$topic = $this->topic;
@@ -145,9 +157,18 @@ session_start();
 			    // free result set
 			    $result->free();
 			}
-			return false;
+			else {
+				return false;
+			}
 		}
-
+		/**
+		 *  @name: deletePost
+		 *  
+		 *  @pre: Connected to database, post exists
+		 *  @post: The taken in post is deleted
+		 *  @param [in] $post_id : The id of the post to be deleted
+		 *  @return: True if the post is deleted, false otherwise.
+		 */
 		public function deletePost($post_id) {
 			$this->isOK();
 
