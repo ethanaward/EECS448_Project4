@@ -14,7 +14,7 @@
   <link rel = "stylesheet" href = "src/ForumStyle.css">
 
 </head>
-<body onload="getTheDate()">
+<body>
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav">
@@ -65,6 +65,8 @@
 				   		<input type='submit' value='Run Tests'>
 				   		<input type='text' id='date' value=''>
 					</form>";
+				echo '<script type="text/javascript">', 'getTheDate();', '</script>'
+				;
 			}
 			else 
 			{
