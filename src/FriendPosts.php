@@ -1,54 +1,29 @@
-
-
-
-
 <?php
-
-
 
 /**
 
 *	@file : FriendPosts.php
-
 *	@author : Mike Neises, Travis Augustine, Ethan Ward
-
 *	@date : 2016.04.08
-
 *	@brief: Takes posts from friends' databases and displays them
-
 */
 
-
-
 	session_start();
-
-
-
-
 
 	class FriendPosts {
 
 
 
 		private $query;
-
 		private $mysqli;
-
 		private $user;
 		private $friendList;
-
-
-
+		
 		/**
-
 		*  @name FriendPosts()
-
 		*  @pre None
-
 		*  @post Initializes variables and MySQL database
-
 		*  @return none
-
 		*/
 
 		public function FriendPosts() {
@@ -59,17 +34,11 @@
 
 		}
 
-
 		/**
-
 		*  @name getFriends()
-
 		*  @pre user is logged in
-
 		*  @post $friendList is set
-
 		*  @return none
-
 		*/
 		public function getFriends(){
 
@@ -80,24 +49,16 @@
 
       		$this->isOK();
 
-
 			if ($result = $this->mysqli->query($this->query))
-
 			{
 			$i=0;
-
 				// fetch associative array 
-
 				while ($row = $result->fetch_assoc())
-
 				{
 					$myFriendList[$i] = $row["user_id"];
-
 					$i++;
 				}
-
 				// free result set
-
 				$result->free();
 
 			}
@@ -105,53 +66,29 @@
 
 		}
 
-
 		/**
-
 		*  @name isOK
-
 		*  @pre None
-
 		*  @post Prints error if connection failed
-
 		*  @return none
-
 		*/
 
 		private function isOK() {
-
 			if ($this->mysqli->connect_errno) {
-
 				printf("Connect failed: %s\n", $this->mysqli->connect_error);
-
 				exit();
-
 			}
-
 		}
-
-
 
 		public function close() {
-
 			$this->mysqli->close();
-
 		}
 
-
-
-
-
 		/**
-
 		*  @name display
-
 		*  @pre None
-
 		*  @post Displays posts and navigation
-
 		*  @return none
-
 		*/
 
 		public function display() {
