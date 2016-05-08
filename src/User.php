@@ -55,10 +55,10 @@ session_start();
   	 */
   	public function redirectPage($val)
   	{
-		if($val == 0) {
+		if($val == 1) {
 			header("Location: ProfileFrontEnd.html", TRUE, 303);
 		}
-		else if ($val == 1) {
+		else if ($val == 0) {
 			$_SESSION['message'] = "Login failed";
 			header("Location: LoginFrontEnd.html", TRUE, 303);
 		}
