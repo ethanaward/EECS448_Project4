@@ -27,9 +27,8 @@ class TestSuite {
 	*  @return none
 	*/
 	public function TestSuite() {
+		$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
 		$this->user = "mike";//"Admin";
-		$this->create = new Create();	
-
 		$this->post = "testpost";
 		$this->topicName = "testTopic";
 		$this->forumName = "EECS448";	
@@ -80,7 +79,7 @@ class TestSuite {
 		$_SESSION["testisTopic"] = 1;
 
 		try{
-			$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
+			$this->create = new Create();	
 			$this->create->makePost();
 		}
 		catch(Exception $e){
@@ -97,7 +96,6 @@ class TestSuite {
 		{
 			echo "<p>Topic post creation failed.</p>";
 		}
-		$this->mysqli->close();
 	}
 	private function FeedPostTest(){
 		$result = false;
@@ -110,7 +108,7 @@ class TestSuite {
 		$_SESSION["testisTopic"] = 0;
 
 		try{
-			$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
+			$this->create = new Create();	
 			$this->create->makePost();
 		}
 		catch(Exception $e){
@@ -126,7 +124,6 @@ class TestSuite {
 		{
 			echo "<p>Feed post creation failed.</p>";
 		}
-		$this->mysqli->close();
 	}
 	private function DeletePostTest(){
 
