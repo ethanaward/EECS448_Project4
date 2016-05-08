@@ -63,7 +63,7 @@
 		*  @name display
 		*  @pre None
 		*  @post Displays posts and navigation
-		*  @return none
+		*  @return True if the query succeeds, false otherwise
 		*/
 		public function display() {
       	//Checks to make sure the mysql database can be accessed
@@ -89,6 +89,10 @@
 
 				/* free result set */
 				$result->free();
+				return true;
+			}
+			else {
+				return false;
 			}
 
 		}
