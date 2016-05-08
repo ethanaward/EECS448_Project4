@@ -12,44 +12,38 @@
 	class ForumPosts {
 
 		private $query;
-
 		private $mysqli;
-
 		private $user;
 		private $forumList;
 
-
-
 		/**
-		*  @name FriendPosts()
-		*  @pre None
-		*  @post Initializes variables and MySQL database
-		*  @return none
+		*  @name: FriendPosts()
+		*  @pre: None
+		*  @post: Initializes variables and MySQL database
+		*  @return: none
 		*/
 
 		public function ForumPosts() {
 			$this->user = $_SESSION["username"];
 			$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
 			$this->getForums();
-
 		}
 
-
 		/**
-		*  @name getForums()
-		*  @pre user is logged in
-		*  @post $forumList is set
-		*  @return none
+		*  @name: getForums()
+		*  @pre: Connected to database, user is logged in
+		*  @post: $forumList is set
+		*  @return: none
 		*/
 		public function getForums(){
 
 			$this->query = "SELECT * FROM ". $_SESSION['profilename']."_Forums";
 			$myForumList = array();
 
-  		//Checks to make sure the mysql database can be accessed
+			//Checks to make sure the mysql database can be accessed
 
-    	$this->isOK();
-
+			$this->isOK();
+	
 
 			if ($result = $this->mysqli->query($this->query))
 			{
@@ -75,10 +69,10 @@
 
 
 		/**
-		*  @name isOK
-		*  @pre None
-		*  @post Prints error if connection failed
-		*  @return none
+		*  @name: isOK
+		*  @pre: None
+		*  @post: Prints error if connection failed
+		*  @return: none
 		*/
 
 		private function isOK() {
@@ -91,24 +85,24 @@
 
 			}
 		}
-
+		
+		/**
+		 *  @name: close
+		 *  
+		 *  @pre: Connected to database
+		 *  @post: Closes the connection
+		 *  @return: None
+		 */
 		public function close() {
-
 			$this->mysqli->close();
-
 		}
 
-
-
-
-
 		/**
-		*  @name display
-		*  @pre None
-		*  @post Displays posts and navigation
-		*  @return none
+		*  @name: display
+		*  @pre: None
+		*  @post: Displays posts and navigation
+		*  @return: None
 		*/
-
 		public function display() {
 
       		//Checks to make sure the mysql database can be accessed
