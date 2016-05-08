@@ -17,10 +17,10 @@ session_start();
 	private $isAdmin;
 	
 	/**
-	*  @name Profile
-	*  @pre None
-	*  @post MySQL database is initialized
-	*  @return none
+	*  @name: Profile
+	*  @pre: None
+	*  @post: MySQL database and query are initialized
+	*  @return: none
 	*/
     public function Profile()
     {
@@ -44,7 +44,13 @@ session_start();
         	exit();
       	}
     }
-
+    /**
+     *  @name: close
+     *  
+     *  @pre: Connected to database
+     *  @post: Closes the connection
+     *  @return: None
+     */
     public function close()
     {
 		$this->mysqli->close();
@@ -52,9 +58,9 @@ session_start();
 
 	/**
 	*  @name display
-	*  @pre None
-	*  @post Displays HTML form for editing profile
-	*  @return none
+	*  @pre Connected to database, the user exists
+	*  @post Displays all the information for the user, including a form for editing if the user is viewing their own profile
+	*  @return True if the information can be displayed, false otherwise
 	*/
     public function display()
     {
@@ -117,48 +123,13 @@ session_start();
 		}
     }
 
-  public function displayFollowed()
-	{
-		$this->query = "SELECT * FROM ". $_SESSION['profilename']."_Friends";
-		if($_SESSION['username'] == $_SESSION['profilename'])
-		{
-        	if($result = $this->mysqli->query($this->query))
-        	{
-          		echo "<table style = 'display: inline-block'>";
-          		echo "<tr><td>Friends List</td></tr>";
-          		while($row = $result->fetch_assoc())
-          		{
-            		printf("<tr> <td><a href = ProfileFrontEnd.html?profile=%s>%s</a></td> </tr>",
-                htmlspecialchars($row['user_id']), htmlspecialchars($row['user_id']));
-          		}
-          		echo "</table>";
-				return true;
-          	}
-			else {
-				return false;
-			}
-		}
-		else
-		{
-			if($result = $this->mysqli->query($this->query))
-			{
-          		echo "<table>";
-          		echo "<tr><td>Friends List</td></tr>";
-          		while($row = $result->fetch_assoc())
-          		{
-            		printf("<tr><td><a href = ProfileFrontEnd.html?profile=%s>%s</a></td> </tr>",
-                htmlspecialchars($row['user_id']), htmlspecialchars($row['user_id']));
-          		}
-          		echo "</table>";
-				return true;
-        	}
-        	else
-        	{
-				return false;
-        	}
-		}
-	}
-
+  /**
+   *  @name: 
+   *  
+   *  @pre:
+   *  @post:
+   *  @return: 
+   */
   public function displayButton() {
 
     //include "src/Utility.php";
@@ -188,7 +159,13 @@ session_start();
     }
   }
 
-
+	/**
+	 *  @name: 
+	 *  
+	 *  @pre:
+	 *  @post:
+	 *  @return: 
+	 */
 	public function displayAdmin(){
 		if($this->isAdmin == 1)
 		{
