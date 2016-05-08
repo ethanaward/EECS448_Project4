@@ -124,11 +124,11 @@ session_start();
     }
 
   /**
-   *  @name: 
+   *  @name: displayButton
    *  
-   *  @pre:
-   *  @post:
-   *  @return: 
+   *  @pre: Connected to database, a user is logged in and is not viewing their own profile, the utility class has been included
+   *  @post: Displays a button for adding/removing a user as a friend
+   *  @return: None
    */
   public function displayButton() {
 
@@ -160,11 +160,11 @@ session_start();
   }
 
 	/**
-	 *  @name: 
+	 *  @name: displayAdmin
 	 *  
-	 *  @pre:
-	 *  @post:
-	 *  @return: 
+	 *  @pre: None
+	 *  @post: Displays a link to the admin page if the user is an admin
+	 *  @return: None
 	 */
 	public function displayAdmin(){
 		if($this->isAdmin == 1)
