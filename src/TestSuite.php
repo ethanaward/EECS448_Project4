@@ -9,14 +9,16 @@
 
 session_start();
 include "Create.php";
+include "Forum.php";
+include "Feed.php";
 
 class TestSuite {
 
 	private $mysqli;
 	private $user;
 	private $create;
-
-	private $post;
+	private $topicpost;
+	private $feedpost;
 	private $topicName;
 	private $forumName;
 
@@ -29,7 +31,8 @@ class TestSuite {
 	public function TestSuite() {
 		$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
 		$this->user = "mike";//"Admin";
-		$this->post = "testpost";
+		$this->topicpost = "Test Suite Topic Post";
+		$this->feedpost = "Test Suite Feed Post";
 		$this->topicName = "testTopic";
 		$this->forumName = "EECS448";	
 
@@ -41,7 +44,9 @@ class TestSuite {
 
 		$this->CreateUserTest();
 		$this->TopicPostTest();
+		$this->DisplayTopicPostTest();
 		$this->FeedPostTest();
+		$this->DisplayFeedPostTest();
 		$this->DeletePostTest();
 		$this->DeleteUserTest();
 
@@ -69,9 +74,8 @@ class TestSuite {
 		//create a user called "Admin"
 	}
 	private function TopicPostTest(){
-		$result = false;
 	
-		$_SESSION["testmypost"] = $this->post;
+		$_SESSION["testmypost"] = $this->topicpost;
 		$_SESSION["username"] = $this->user;
 		$_SESSION["forumname"] = $this->forumName;
 		$_SESSION["testtopicID"] = $this->topicName;
@@ -79,28 +83,27 @@ class TestSuite {
 		$_SESSION["testisTopic"] = 1;
 
 		try{
-			$this->create = new Create();	
-			$this->create->makePost();
+			$this->create = new Create();
+			if($this->create->makePost()){
+				echo "<p>Topic post created successfully.</p>";
+			}
+			else {
+				echo "<p>Topic post creation failed.</p>";
+			}
 		}
 		catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
-		//search EECSPosts for this post
-		//if found, $result = true
-		
-		if($result)
-		{
-			echo "<p>Topic post created successfully.</p>";
-		}
-		else
-		{
-			echo "<p>Topic post creation failed.</p>";
-		}
+
+	}
+	private function DisplayTopicPostTest(){
+		$forum = new Forum();
+		$forum->display();
+		$forum->close();
 	}
 	private function FeedPostTest(){
-		$result = false;
 	
-		$_SESSION["testmypost"] = $this->post;
+		$_SESSION["testmypost"] = $this->feedpost;
 		$_SESSION["username"] = $this->user;
 		$_SESSION["forumname"] = $this->forumName;
 		$_SESSION["testtopicID"] = $this->topicName;
@@ -108,22 +111,25 @@ class TestSuite {
 		$_SESSION["testisTopic"] = 0;
 
 		try{
-			$this->create = new Create();	
-			$this->create->makePost();
+			$this->create = new Create();
+			if($this->create->makePost()){
+				echo "<p>Feed post created successfully.</p>";
+			}
+			else {
+				echo "<p>Feed post creation failed.</p>";
+			}
 		}
 		catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 		//search EECSPosts for this post
 		//if found, $result = true
-		if($result)
-		{
-			echo "<p>Feed post created successfully.</p>";
-		}
-		else
-		{
-			echo "<p>Feed post creation failed.</p>";
-		}
+	}
+	private function DisplayFeedPostTest(){
+		$_SESSION["topicname"] = "testTopic";
+		$feed = new Feed();
+		$feed->display();
+		$feed->close();
 	}
 	private function DeletePostTest(){
 
