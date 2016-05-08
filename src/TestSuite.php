@@ -38,6 +38,7 @@ class TestSuite {
 	}
 
 	public function RunTests() {
+		//This session variable is set so that Create.php knows to use these variables for posting.
 		$_SESSION["TestSuite"] = true;
 
 		$this->CreateUserTest();
@@ -46,6 +47,7 @@ class TestSuite {
 		$this->DeletePostTest();
 		$this->DeleteUserTest();
 
+		//The session variable is set to false so that Create.php knows not to use these variables.
 		$_SESSION["TestSuite"] = false;
 	}
 
