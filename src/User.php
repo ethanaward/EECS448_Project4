@@ -49,10 +49,20 @@ session_start();
   	*  @post The user is redirected to the profile page
   	*  @return none
   	*/
-  	private function redirectPage()
+  	public function redirectPage($val)
   	{
-
-  		header("Location: ProfileFrontEnd.html", TRUE, 303);
+		if($val == 0) {
+			header("Location: ProfileFrontEnd.html", TRUE, 303);
+		}
+		else if ($val == 1) {
+			$_SESSION['message'] = "Login failed";
+			header("Location: LoginFrontEnd.html", TRUE, 303);
+		}
+		else if ($val == 2) {
+			$_SESSION['message'] = "Signup failed";
+			header("Location: SignupFrontEnd.html", TRUE, 303);
+		}
+  		
 
   	}
 
@@ -82,23 +92,22 @@ session_start();
           if(password_verify($this->password,$row['Password']) ) {
             $_SESSION["profilename"] = $this->username;
             $_SESSION["username"] = $this->username;
-            header("Location: ProfileFrontEnd.html", TRUE, 303);
-            exit();
-          }
+            return 1;
+			}
 
-          else {
-            echo "Error: Incorrect password<br>";
-            echo "<a href = LoginFrontEnd.html>Back</a>";
-          }
+			else {
+				return 0;
+			}
         }
         else
         {
-          echo "Error: Username does not exist";
-          echo "<br>";
-          echo "<a href='LoginFrontEnd.html'>Back</a>";
+			return 0;
         }
 
       }
+	  else {
+		return 0;
+	  }
     }
 
     /**
@@ -122,17 +131,14 @@ session_start();
   		{
         		$_SESSION['username'] = $this->username;
         		$_SESSION['profilename'] = $this->username;
+				$this->createFriends();
+				$this->createForums();
+				return 1;
   		}
   		else
   		{
-  			echo "Error: " . $this->query . "<br>" . $this->mysqli->error;
+  			return 2;
   		}
-
-      $this->createFriends();
-      $this->createForums();
-
-      $this->redirectPage();
-
   	}
 
     private function createFriends() {
@@ -225,6 +231,7 @@ session_start();
                 $this->query = "DELETE FROM ". $row['user_id'] . "_Friends WHERE user_id = '$user'";
                 $this->mysqli->query($this->query);
             }
+			return true;
         }
         else
         {

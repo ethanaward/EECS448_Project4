@@ -10,7 +10,7 @@ session_start();
 include "src/User.php";
 
 $user = new User();
-$user->login();
+$user->redirectPage($user->login());
 $user->close();
 
 ?>

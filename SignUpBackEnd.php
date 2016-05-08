@@ -12,7 +12,7 @@ include "src/User.php";
 
 $user = new User();
 
-$user->signup();
+$user->redirectPage($user->signup());
 $user->close();
 
 ?>
