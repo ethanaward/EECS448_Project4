@@ -50,6 +50,10 @@ session_start();
 				exit();
 			}
 		}
+		
+		public function close() {
+			$this->mysqli->close();
+		}
 
 		/**
 		*  @name redirectPage
@@ -57,7 +61,7 @@ session_start();
 		*  @post The user is redirected to the profile page
 		*  @return none
 		*/
-		private function redirectPage()
+		public function redirectPage()
 		{
 			header("Location: ProfileFrontEnd.html", TRUE, 303);
 		}
@@ -70,22 +74,16 @@ session_start();
 		*/
 		public function editProfile()
 		{
-
 			$this->isOK();
 
 			if($this->mysqli->query($this->query))
 			{
-
+				return true;
 			}
 			else
 			{
-				echo "Error: <br>" . $this->mysqli->error;
+				return false;
 			}
-
-			$this->mysqli->close();
-
-			$this->redirectPage();
-
 		}
 
 	}

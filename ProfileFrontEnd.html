@@ -8,27 +8,25 @@ include "src/Utility.php";
 
 $util = new Utility();
 
-if(isset($_GET['profile'])) {
+	if(isset($_GET['profile'])) {
 
-	if($util->checkUser($_GET['profile'])) {
-		  $_SESSION['profilename'] = $_GET['profile'];
-	}
+		if($util->checkUser($_GET['profile'])) {
+			$_SESSION['profilename'] = $_GET['profile'];
+		}
 	
-	else {
-		header("Location: Error.html", TRUE, 303);
+		else {
+			header("Location: Error.html", TRUE, 303);
+		}
 	}
 
-  
-}
+	else {
+		$_SESSION['profilename'] = $_SESSION['username'];
+	}
 
-else {
-  $_SESSION['profilename'] = $_SESSION['username'];
-}
-
-if(isset($_SESSION['message'])) {
-	echo "<h3>".$_SESSION['message']."</h3>";
-	unset($_SESSION['message']);
-}
+	if(isset($_SESSION['message'])) {
+		echo "<h3>".$_SESSION['message']."</h3>";
+		unset($_SESSION['message']);
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
