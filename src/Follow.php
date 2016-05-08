@@ -27,9 +27,9 @@
     $this->query = "INSERT INTO ". $user."_Friends (user_id) VALUES ('"  .$friend. "')";
 
     if($this->mysqli->query($this->query)) {
-
+		return true;
     } else {
-        echo "Error: ".$this->query."<br>".$this->mysqli->error;
+        return false;
     }
 
   }
@@ -39,9 +39,9 @@
     $this->query = "INSERT INTO ". $user."_Forums (forum_id) VALUES ('"  .$forum. "')";
 
     if($this->mysqli->query($this->query)) {
-
+		return true;
     } else {
-        echo "Error: ".$this->query."<br>".$this->mysqli->error;
+        return false;
     }
   }
 
@@ -50,9 +50,9 @@
       $this->query = "DELETE FROM " . $user ."_Friends WHERE user_id='". $friend . "'";
 
       if($this->mysqli->query($this->query)) {
-
+		return true;
       } else {
-          echo "Error: ".$this->query."<br>".$this->mysqli->error;
+          return false;
       }
   }
 
@@ -61,9 +61,9 @@
     $this->query = "DELETE FROM " . $user ."_Forums WHERE forum_id='". $forum . "'";
 
     if($this->mysqli->query($this->query)) {
-
+		return true;
     } else {
-        echo "Error: ".$this->query."<br>".$this->mysqli->error;
+        return false;
     }
 
   }
