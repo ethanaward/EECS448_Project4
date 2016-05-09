@@ -35,7 +35,9 @@ class TestSuite {
 		$this->topicpost = "Test Suite Topic Post";
 		$this->feedpost = "Test Suite Feed Post";
 		$this->topicName = "testTopic";
-		$this->forumName = "EECS448";	
+		$this->forumName = "Test";	
+		//Create a new test forum
+		$this->mysqli->query("INSERT INTO EECSForums(forum_id) VALUES ('Test')");
 
 	}
 	/**
@@ -59,6 +61,9 @@ class TestSuite {
 
 		//The session variable is set to false so that Create.php knows not to use these variables.
 		$_SESSION["TestSuite"] = false;
+		//Delete the test forum/posts
+		$this->mysqli->query("DELETE FROM EECSPosts WHERE forum_id = 'Test'");
+		$this->mysqli->query("DELETE FROM EECSForums WHERE forum_id = 'Test'");
 	}
 
 	/**
@@ -137,11 +142,11 @@ class TestSuite {
 		return($value);
 	}
 	/**
-	 *  @name: 
+	 *  @name: FeedPostTest
 	 *  
-	 *  @pre: 
-	 *  @post: 
-	 *  @return: 
+	 *  @pre: None
+	 *  @post: None
+	 *  @return: True if the post was created, false otherwise.
 	 */
 	private function FeedPostTest(){
 	
@@ -168,11 +173,11 @@ class TestSuite {
 		//if found, $result = true
 	}
 	/**
-	 *  @name: 
+	 *  @name: DisplayFeedPostTest
 	 *  
-	 *  @pre: 
-	 *  @post: 
-	 *  @return: 
+	 *  @pre: None
+	 *  @post: None
+	 *  @return: True if the post was displayed, false otherwise
 	 */
 	private function DisplayFeedPostTest(){
 		$_SESSION["topicname"] = "testTopic";
@@ -182,21 +187,25 @@ class TestSuite {
 		return($value);
 	}
 	/**
-	 *  @name: 
+	 *  @name: DeletePostTest
 	 *  
-	 *  @pre: 
-	 *  @post: 
-	 *  @return: 
+	 *  @pre: None
+	 *  @post: None
+	 *  @return: True if the post was deleted, false otherwise
 	 */
 	private function DeletePostTest(){
-
+		$create = new Create();
+		$result = $this->mysqli->query("SELECT post_id FROM EECSPosts WHERE content = 'Test Suite Feed Post'");
+		$row = $result->fetch_assoc();
+		
+		return($create->deletePost($row['post_id']));
 	}
 	/**
-	 *  @name: 
+	 *  @name: DeleteUserTest
 	 *  
-	 *  @pre: 
-	 *  @post: 
-	 *  @return: 
+	 *  @pre: None
+	 *  @post: None
+	 *  @return: True if the user was deleted, false otherwise
 	 */
 	private function DeleteUserTest(){
 
@@ -208,8 +217,19 @@ class TestSuite {
 	 *  @post: 
 	 *  @return: 
 	 */
-	private function OtherTests(){
+	private function UserExistsTest(){
 
+	}
+
+	 /**
+	  *  @name: 
+	  *  
+	  *  @pre: 
+	  *  @post: 
+	  *  @return: 
+	  */
+	private function UserNotExistTest(){
+		
 	}
 }
 
