@@ -28,6 +28,7 @@ session_start();
 
 	  if($_SESSION['TestSuite']) {
 		$this->username = $_SESSION['TestUsername'];
+		$this->password = $_SESSION['TestPassword'];
 	  }
 	  
 	  else {

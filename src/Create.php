@@ -182,8 +182,8 @@ session_start();
 			$this->isOK();
 
 			$this->query = "DELETE FROM EECSPosts WHERE post_id = '".$post_id."'";
-			$this->mysqli->query($this->query);
-			if($mysqli->affected_rows == 1) {
+			
+			if($this->mysqli->query($this->query)) {
 				return true;
 			}
 			else {
