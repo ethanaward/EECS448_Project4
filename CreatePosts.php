@@ -21,7 +21,7 @@ if(isset($_SESSION['username'])) {
 		}
 		else
 		{
-	 		$_SESSION['message'] = "That topic already exists! Find it here: ";
+	 		$_SESSION['message'] = "That topic already exists!";
 		}
 	}
 	else
