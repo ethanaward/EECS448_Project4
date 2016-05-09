@@ -131,6 +131,7 @@ session_start();
 					return true;
 
 			} else {
+				echo "Error: " . $this->query . "<br>" . $this->mysqli->error;
 					return false;
 			}
 
@@ -158,6 +159,7 @@ session_start();
 			    $result->free();
 			}
 			else {
+				echo "Error: " . $this->query . "<br>" . $this->mysqli->error;
 				return false;
 			}
 		}
@@ -173,8 +175,8 @@ session_start();
 			$this->isOK();
 
 			$this->query = "DELETE FROM EECSPosts WHERE post_id = '".$post_id."'";
-
-			if($this->mysqli->query($this->query)) {
+			$this->mysqli->query($this->query);
+			if($mysqli->affected_rows == 1) {
 				return true;
 			}
 			else {

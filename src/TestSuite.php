@@ -13,6 +13,7 @@ include "Forum.php";
 include "Feed.php";
 include "Follow.php";
 include "Utility.php";
+include "User.php";
 
 class TestSuite {
 
@@ -32,7 +33,7 @@ class TestSuite {
 	*/
 	public function TestSuite() {
 		$this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
-		$this->user = "mike";//"Admin";
+		$this->user = "TestAdmin";//"Admin";
 		$this->topicpost = "Test Suite Topic Post";
 		$this->feedpost = "Test Suite Feed Post";
 		$this->topicName = "testTopic";
@@ -58,9 +59,17 @@ class TestSuite {
 		echo "Create normal post: " . ($this->Test4() ? "Passed<br>" : "Failed<br>");
 		echo "Display normal post: " . ($this->Test5() ? "Passed<br>" : "Failed<br>");
 		echo "Delete post: " . ($this->Test6() ? "Passed<br>" : "Failed<br>");
-		echo "Delete user: " . ($this->Test7() ? "Passed<br>" : "Failed<br>");
+		echo "Delete nonexistent post: " . ($this->Test7() ? "Passed<br>" : "Failed<br>");
 		echo "checkUser on existing user: " . ($this->Test8() ? "Passed<br>" : "Failed<br>");
-		echo "checkUser on nonexistent user: " . ($this->Test9	() ? "Passed<br>" : "Failed<br>");
+		echo "checkUser on nonexistent user: " . ($this->Test9() ? "Passed<br>" : "Failed<br>");
+		echo "checkFriend on existing user: " . ($this->Test10() ? "Passed<br>" : "Failed<br>");
+		echo "checkFriend on nonexistent user: " . ($this->Test11() ? "Passed<br>" : "Failed<br>");
+		echo "checkForum on existing user: " . ($this->Test12() ? "Passed<br>" : "Failed<br>");
+		echo "checkForum on nonexistent user: " . ($this->Test13() ? "Passed<br>" : "Failed<br>");
+		echo "checkBoard on existing user: " . ($this->Test14() ? "Passed<br>" : "Failed<br>");
+		echo "checkBoard on nonexistent user: " . ($this->Test15() ? "Passed<br>" : "Failed<br>");
+		echo "Delete user: " . ($this->Test16() ? "Passed<br>" : "Failed<br>");
+		
 
 		//The session variable is set to false so that Create.php knows not to use these variables.
 		$_SESSION["TestSuite"] = false;
@@ -99,7 +108,13 @@ class TestSuite {
 	 *  @return: True if a user has been created, false if not.
 	 */
 	private function Test1(){
-		//create a user called "Admin"
+		$_SESSION['TestUsername'] = "TestAdmin";
+		
+		$user = new User();
+		$value = $user->signup();
+		$user->close();
+		return($value);
+		
 	}
 	/**
 	 *  @name: Test2
@@ -191,7 +206,7 @@ class TestSuite {
 	}
 	/**
 	 *  @name: Test6
-	 *  @brief: Tests deleting posts
+	 *  @brief: Tests deletePost when the post exists
 	 *  @pre: None
 	 *  @post: None
 	 *  @return: True if the post was deleted, false otherwise
@@ -205,13 +220,18 @@ class TestSuite {
 	}
 	/**
 	 *  @name: Test7
-	 *  @brief: Tests deleting users
+	 *  @brief: Tests deletePost when the post does not exist
 	 *  @pre: None
 	 *  @post: None
-	 *  @return: True if the user was deleted, false otherwise
+	 *  @return: True if the test is passed, false if not
 	 */
 	private function Test7(){
-
+		$create = new Create();
+		$result = $this->mysqli->query("SELECT post_id FROM EECSPosts ORDER BY post_id DESC LIMIT 1");
+		$row = $result->fetch_assoc();
+		$id = $row['post_id'];
+		$id++;
+		return(!($create->deletePost($id)));
 	}
 	/**
 	 *  @name: Test8
@@ -246,10 +266,20 @@ class TestSuite {
 	  *  @return: True if the test is passed, false if not
 	  */
 	private function Test10(){
-		
+		$follow = new Follow();
 		$util = new Utility();
-
-	
+		
+		$this->mysqli->query("INSERT INTO EECSUsers(user_id) VALUES ('TestUser')");
+		$follow->addFriend("TestAdmin", "TestUser");
+		
+		$value = $util->checkFriend("TestAdmin", "TestUser");
+		$follow->removeFriend("TestAdmin", "TestUser");
+		
+		$util->close();
+		$follow->close();
+		
+		return($value);
+	}
 	/**
 	 *  @name: Test11
 	 *  @brief: Tests checkFriend when the friend does not exist
@@ -259,6 +289,10 @@ class TestSuite {
 	 */
 	private function Test11(){
 		$util = new Utility();
+		
+		$value = ! ($util->checkFriend("TestAdmin", "TestUser"));
+		$util->close();
+		return($value);
 
 	}
 	/**
@@ -269,7 +303,18 @@ class TestSuite {
 	 *  @return: True if the test is passed, false if not
 	 */
 	private function Test12(){
+		$follow = new Follow();
 		$util = new Utility();
+	
+		$follow->addForum("TestAdmin", "TestForum");
+		
+		$value = $util->checkForum("TestAdmin", "TestForum");
+		$follow->removeForum("TestAdmin", "TestForum");
+		
+		$util->close();
+		$follow->close();
+		
+		return($value);
 
 	}
 	/**
@@ -281,6 +326,10 @@ class TestSuite {
 	 */
 	private function Test13(){
 		$util = new Utility();
+		
+		$value = ! ($util->checkForum("TestAdmin", "TestForum"));
+		$util->close();
+		return($value);
 
 	}
 	/**
@@ -292,7 +341,10 @@ class TestSuite {
 	 */
 	private function Test14(){
 		$util = new Utility();
-
+		
+		$value = $util->checkBoard("Test");
+		$util->close();
+		return($value);
 	}
 	/**
 	 *  @name: Test15
@@ -304,7 +356,24 @@ class TestSuite {
 	private function Test15(){
 		$util = new Utility();
 		
+		$value = !($util->checkBoard("thisforumdoesnotexist"));
+		$util->close();
+		return($value);
+		
 	}
+	/**
+	 *  @name: Test16
+	 *  @brief: Tests deleting users
+	 *  @pre: None
+	 *  @post: None
+	 *  @return: True if the user was deleted, false otherwise
+	 */
+	private function Test16(){
+		
+	}
+
+	
+	
 }
 
 ?>

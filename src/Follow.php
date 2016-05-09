@@ -61,6 +61,7 @@
     if($this->mysqli->query($this->query)) {
 		return true;
     } else {
+		echo "Error: " . $this->query . "<br>" . $this->mysqli->error;
         return false;
     }
 
@@ -81,6 +82,7 @@
     if($this->mysqli->query($this->query)) {
 		return true;
     } else {
+		echo "Error: " . $this->query . "<br>" . $this->mysqli->error;
         return false;
     }
   }
@@ -100,6 +102,7 @@
       if($this->mysqli->query($this->query)) {
 		return true;
       } else {
+			echo "Error: " . $this->query . "<br>" . $this->mysqli->error;
           return false;
       }
   }
@@ -119,6 +122,7 @@
     if($this->mysqli->query($this->query)) {
 		return true;
     } else {
+		echo "Error: " . $this->query . "<br>" . $this->mysqli->error;
         return false;
     }
 

@@ -101,6 +101,7 @@
 
 			}
 			else {
+				echo "Error: " . $this->query . "<br>" . $this->mysqli->error;
 				return false;
 			}
 

@@ -26,8 +26,15 @@ session_start();
     public function User() {
       $this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
 
-      $this->username = $this->mysqli->real_escape_string($_POST['username']);
-      $this->password = $this->mysqli->real_escape_string($_POST['password']);
+	  if($_SESSION['TestSuite']) {
+		$this->username = $_SESSION['TestUsername'];
+	  }
+	  
+	  else {
+		$this->username = $this->mysqli->real_escape_string($_POST['username']);
+		$this->password = $this->mysqli->real_escape_string($_POST['password']);
+	  }
+	  
 
     }
 

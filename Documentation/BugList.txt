@@ -1,0 +1,3 @@
+Bug List
+
+1. A user's followed forums list can have forums that don't exist. This will never come into practice, however.
