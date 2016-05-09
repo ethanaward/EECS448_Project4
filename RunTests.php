@@ -5,7 +5,7 @@
 *	@date : 2016.04.08
 *	@brief: Creates new TestSuite object
 */
-error_reporting(0);
+//error_reporting(0);
 session_start();
 include "src/TestSuite.php";
 
