@@ -43,6 +43,7 @@ session_start();
 			$this->isTopic = $this->mysqli->real_escape_string($_POST["isTopic"]);
 			$this->Date = $this->mysqli->real_escape_string($_POST["Date"]);
 
+			//Here we check if a topicID was posted by a form. If not, we use the session's topicID.
 			if( isset($_POST['topicID']) )
 			{
 				$this->topic = $_POST['topicID'];
@@ -54,7 +55,7 @@ session_start();
 				$this->topic = $_SESSION["topicname"];
 			}
 
-			
+			//If Create is being run in the TestSuite, use these alternate variable declarations.
 			if( isset($_SESSION["TestSuite"]) )
 			{
 				if($_SESSION["TestSuite"])
