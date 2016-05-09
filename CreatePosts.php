@@ -5,7 +5,7 @@
 *	@date : 2016.04.08
 *	@brief: Creates new Create object
 */
-error_reporting(0);
+//error_reporting(0);
 session_start();
 include "src/Create.php";
 
@@ -13,11 +13,12 @@ if(isset($_SESSION['username'])) {
 	$create = new Create();
 	$create->makePost();
 	$_SESSION['message'] = "Post created!";
+	$create->close();
 }
 else {
   $_SESSION['message'] = "The post could not be created. You are not logged in.";
 }
-$create->close();
+
 if($_GET['topic'] == 0) {
   header("Location: ForumFrontEnd.html", TRUE, 303);
 }
