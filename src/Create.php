@@ -127,6 +127,12 @@ session_start();
 		{
 			//Test to make sure the database can be accessed
 			$this->isOK();
+
+			if($this->topicExists() && $this->isTopic==1)
+			{
+				echo "Error: That topic already exists.";
+				return false;
+			}
 			
 			if($this->mysqli->query($this->query)) {
 					return true;
