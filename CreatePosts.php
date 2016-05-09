@@ -11,26 +11,9 @@ include "src/Create.php";
 
 if(isset($_SESSION['username'])) {
 	$create = new Create();
-	if($_POST["isTopic"]==1)
-	{
-		$exist = $create->topicExists();
-		if(!$exist)
-		{
-			$create->makePost();
-			$_SESSION['message'] = "Post created!";
-		}
-		else
-		{
-	 		$_SESSION['message'] = "That topic already exists!";
-		}
-	}
-	else
-	{
-		$create->makePost();
-		$_SESSION['message'] = "Post created!";
-	}
+	$create->makePost();
+	$_SESSION['message'] = "Post created!";
 }
-
 else {
   $_SESSION['message'] = "The post could not be created. You are not logged in.";
 }
