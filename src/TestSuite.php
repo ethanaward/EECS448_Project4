@@ -12,6 +12,7 @@ include "Create.php";
 include "Forum.php";
 include "Feed.php";
 include "Follow.php";
+include "Utility.php";
 
 class TestSuite {
 
@@ -51,13 +52,15 @@ class TestSuite {
 		//This session variable is set so that Create.php knows to use these variables for posting.
 		$_SESSION["TestSuite"] = true;
 
-		echo "Create user test passed: " . ($this->CreateUserTest() ? "True<br>" : "False<br>");
-		echo "Create topic post test passed: " . ($this->TopicPostTest() ? "True<br>" : "False<br>");
-		echo "Display topic post test passed: " . ($this->DisplayTopicPostTest() ? "True<br>" : "False<br>");
-		echo "Create normal post test passed: " . ($this->FeedPostTest() ? "True<br>" : "False<br>");
-		echo "Display normal post test passed: " . ($this->DisplayFeedPostTest() ? "True<br>" : "False<br>");
-		echo "Delete post test passed: " . ($this->DeletePostTest() ? "True<br>" : "False<br>");
-		echo "Delete user post test passed: " . ($this->DeleteUserTest() ? "True<br>" : "False<br>");
+		echo "Create user: " . ($this->Test1() ? "Passed<br>" : "Failed<br>");
+		echo "Create topic post: " . ($this->Test2() ? "Passed<br>" : "Failed<br>");
+		echo "Display topic post: " . ($this->Test3() ? "Passed<br>" : "Failed<br>");
+		echo "Create normal post: " . ($this->Test4() ? "Passed<br>" : "Failed<br>");
+		echo "Display normal post: " . ($this->Test5() ? "Passed<br>" : "Failed<br>");
+		echo "Delete post: " . ($this->Test6() ? "Passed<br>" : "Failed<br>");
+		echo "Delete user: " . ($this->Test7() ? "Passed<br>" : "Failed<br>");
+		echo "checkUser on existing user: " . ($this->Test8() ? "Passed<br>" : "Failed<br>");
+		echo "checkUser on nonexistent user: " . ($this->Test9	() ? "Passed<br>" : "Failed<br>");
 
 		//The session variable is set to false so that Create.php knows not to use these variables.
 		$_SESSION["TestSuite"] = false;
@@ -89,23 +92,23 @@ class TestSuite {
 		$this->mysqli->close();
 	}
 	/**
-	 *  @name: CreateUserTest
-	 *  
+	 *  @name: Test1
+	 *  @brief: Tests user creation
 	 *  @pre: None
 	 *  @post: Prints whether a user has been created or not
 	 *  @return: True if a user has been created, false if not.
 	 */
-	private function CreateUserTest(){
+	private function Test1(){
 		//create a user called "Admin"
 	}
 	/**
-	 *  @name: TopicPostTest
-	 *  
+	 *  @name: Test2
+	 *  @brief: Tests topic post creation
 	 *  @pre: None
 	 *  @post: Displays whether a topic post has been created
 	 *  @return: True if a topic post was created, false if not
 	 */
-	private function TopicPostTest(){
+	private function Test2(){
 	
 		$_SESSION["testmypost"] = $this->topicpost;
 		$_SESSION["username"] = $this->user;
@@ -129,26 +132,26 @@ class TestSuite {
 
 	}
 	/**
-	 *  @name: DisplayTopicPostTest
-	 *  
+	 *  @name: Test3
+	 *  @brief: Tests displaying topics
 	 *  @pre: None
 	 *  @post: None
 	 *  @return: True if the topic was displayed, false otherwise
 	 */
-	private function DisplayTopicPostTest(){
+	private function Test3(){
 		$forum = new Forum();
 		$value = $forum->display();
 		$forum->close();
 		return($value);
 	}
 	/**
-	 *  @name: FeedPostTest
-	 *  
+	 *  @name: Test4
+	 *  @brief: Tests creating normal posts
 	 *  @pre: None
 	 *  @post: None
 	 *  @return: True if the post was created, false otherwise.
 	 */
-	private function FeedPostTest(){
+	private function Test4(){
 	
 		$_SESSION["testmypost"] = $this->feedpost;
 		$_SESSION["username"] = $this->user;
@@ -173,13 +176,13 @@ class TestSuite {
 		//if found, $result = true
 	}
 	/**
-	 *  @name: DisplayFeedPostTest
-	 *  
+	 *  @name: Test5
+	 *  @brief: Test displaying normal posts
 	 *  @pre: None
 	 *  @post: None
 	 *  @return: True if the post was displayed, false otherwise
 	 */
-	private function DisplayFeedPostTest(){
+	private function Test5(){
 		$_SESSION["topicname"] = "testTopic";
 		$feed = new Feed();
 		$value = $feed->display();
@@ -187,13 +190,13 @@ class TestSuite {
 		return($value);
 	}
 	/**
-	 *  @name: DeletePostTest
-	 *  
+	 *  @name: Test6
+	 *  @brief: Tests deleting posts
 	 *  @pre: None
 	 *  @post: None
 	 *  @return: True if the post was deleted, false otherwise
 	 */
-	private function DeletePostTest(){
+	private function Test6(){
 		$create = new Create();
 		$result = $this->mysqli->query("SELECT post_id FROM EECSPosts WHERE content = 'Test Suite Feed Post'");
 		$row = $result->fetch_assoc();
@@ -201,34 +204,105 @@ class TestSuite {
 		return($create->deletePost($row['post_id']));
 	}
 	/**
-	 *  @name: DeleteUserTest
-	 *  
+	 *  @name: Test7
+	 *  @brief: Tests deleting users
 	 *  @pre: None
 	 *  @post: None
 	 *  @return: True if the user was deleted, false otherwise
 	 */
-	private function DeleteUserTest(){
+	private function Test7(){
 
 	}
 	/**
-	 *  @name: 
-	 *  
-	 *  @pre: 
-	 *  @post: 
-	 *  @return: 
+	 *  @name: Test8
+	 *  @brief: Tests checkUser when the user exists
+	 *  @pre: None
+	 *  @post: None
+	 *  @return: True if the test is passed, false if not
 	 */
-	private function UserExistsTest(){
-
+	private function Test8(){
+		$util = new Utility();
+		$user = "mike";
+		return($util->checkUser($user));
 	}
 
 	 /**
-	  *  @name: 
-	  *  
-	  *  @pre: 
-	  *  @post: 
-	  *  @return: 
+	  *  @name: Test9
+	  *  @brief: Tests checkUser when the user does not exist
+	  *  @pre: None
+	  *  @post: None
+	  *  @return: True if the test is passed, false if not
 	  */
-	private function UserNotExistTest(){
+	private function Test9(){
+		$util = new Utility();
+		$user = "thisuserdoesnotexist";
+		return(!($util->checkUser($user)));
+	}
+	 /**
+	  *  @name: Test10
+	  *  @brief: Tests checkFriend when the friend exists
+	  *  @pre: None
+	  *  @post: None
+	  *  @return: True if the test is passed, false if not
+	  */
+	private function Test10(){
+		
+		$util = new Utility();
+
+	
+	/**
+	 *  @name: Test11
+	 *  @brief: Tests checkFriend when the friend does not exist
+	 *  @pre: None
+	 *  @post: None
+	 *  @return: True if the test is passed, false if not
+	 */
+	private function Test11(){
+		$util = new Utility();
+
+	}
+	/**
+	 *  @name: Test12
+	 *  @brief: Tests checkForum when the forum exists
+	 *  @pre: None
+	 *  @post: None
+	 *  @return: True if the test is passed, false if not
+	 */
+	private function Test12(){
+		$util = new Utility();
+
+	}
+	/**
+	 *  @name: Test13
+	 *  @brief: Tests checkForum when the forum does not exist
+	 *  @pre: None
+	 *  @post: None
+	 *  @return: True if the test is passed, false if not
+	 */
+	private function Test13(){
+		$util = new Utility();
+
+	}
+	/**
+	 *  @name: Test14
+	 *  @brief: Tests checkBoard when the board exists
+	 *  @pre: None
+	 *  @post: None
+	 *  @return: True if the test is passed, false if not
+	 */
+	private function Test14(){
+		$util = new Utility();
+
+	}
+	/**
+	 *  @name: Test15
+	 *  @brief: Tests checkBoard when the board does not exist
+	 *  @pre: None
+	 *  @post: None
+	 *  @return: True if the test is passed, false if not
+	 */
+	private function Test15(){
+		$util = new Utility();
 		
 	}
 }

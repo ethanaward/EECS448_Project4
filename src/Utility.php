@@ -54,7 +54,6 @@
    */
   public function checkUser($user) {
 		$this->isOK();
-		
 		$this->query = "SELECT count(1) FROM EECSUsers WHERE user_id='". $user ."'";
         if($result = $this->mysqli->query($this->query)) {
           $row = $result->fetch_assoc();
