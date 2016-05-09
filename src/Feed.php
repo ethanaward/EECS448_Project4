@@ -78,12 +78,14 @@
 				echo "<ul>";
 				while ($row = $result->fetch_assoc())
 				{
+					echo "<div style='border: 1px solid grey; margin-bottom:40px; margin-top:40px; margin-right:50%; padding-bottom:20px; padding-left:20px; padding-right:20px;'>";
 					echo "<br>";
 					printf ("%s \n", htmlspecialchars($row["content"]));
 					echo "<br>-";
 					printf ("<a href = 'ProfileFrontEnd.html?profile=%s'>%s</a> (%s)",
 					htmlspecialchars($row["user_id"]),htmlspecialchars($row["user_id"]),htmlspecialchars($row["Date"]));
-					echo "<br>";
+					echo "</div>";
+					//echo "<br>";
 				}
 				echo "</ul>";
 
