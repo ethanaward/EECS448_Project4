@@ -2,6 +2,8 @@ Bug List
 
 1. A user's followed forums list can have forums that don't exist. This will never come into practice, however.
 2. The creation of any post sends the user to Error.html
-3. Running the Test Suite sets the user to TestAdmin
+3. Running the Test Suite sets the user to TestAdmin (maybe not)
 4. The profile page's "Description" box can't handle apostrophes.
 5. Test Suite posts do not contain date/time strings
+6. You can access topics that don't exist, and they will just have a blank box
+7. Attempting to make a post from this will take you to a blank page
