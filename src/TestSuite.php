@@ -187,8 +187,6 @@ class TestSuite {
 		catch(Exception $e){
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
-		//search EECSPosts for this post
-		//if found, $result = true
 	}
 	/**
 	 *  @name: Test5
