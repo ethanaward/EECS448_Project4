@@ -244,6 +244,7 @@ class TestSuite {
 		$util = new Utility();
 		$user = "mike";
 		return($util->checkUser($user));
+		
 	}
 
 	 /**
