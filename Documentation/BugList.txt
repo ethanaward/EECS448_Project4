@@ -4,3 +4,4 @@ Bug List
 2. The creation of any post sends the user to Error.html
 3. Running the Test Suite sets the user to TestAdmin
 4. The profile page's "Description" box can't handle apostrophes.
+5. Test Suite posts do not contain date/time strings
