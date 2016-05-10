@@ -10,3 +10,5 @@ http://html5pattern.com/
 
 Used for bootstrap theme on site
 http://www.w3schools.com/bootstrap/
+
+http://php.net/manual/en/index.php
