@@ -1,7 +1,7 @@
 <?php
 // Start the session
 session_start();
- 
+
 ?>
 
 <!DOCTYPE html>
@@ -79,66 +79,68 @@ session_start();
 
 		<?php
 
-			$mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
-
-			if($mysqli->connect_errno) {
-			  printf("Connect failed: %s\n", $mysqli->connect_error);
-			  exit();
-			}
-
-			$user = $_POST['users'];
-
-			$query = "SELECT post_id,user_id,content,forum_id,topic_id,isForum,isTopic,Date FROM EECSPosts";
-
-			if($result = $mysqli->query($query)) {
-
-				echo "<form action = 'DeletePost.php' method = 'post'>";
-
-
-				while($row = $result->fetch_assoc()) {
-
-					printf("<input type = 'checkbox' name = 'DeleteList[]' value = '%s'> <p>%s</p>    <p>%s</p>     <p>%s</p>    <p>%s</p>    <p>%s</p>    <p>%s</p> <p>%s</p>",
-          htmlspecialchars($row["post_id"]), htmlspecialchars($row["user_id"]), htmlspecialchars($row["content"]), htmlspecialchars($row["forum_id"]), htmlspecialchars($row["topic_id"]),
-          htmlspecialchars($row["isForum"]), htmlspecialchars($row["isTopic"]), htmlspecialchars($row["Date"]));
-					echo "<br>";
-				}
-
-
-				echo "<input type = 'submit' value = 'Delete Posts'>";
-				echo "</form>";
-				$result->free();
-			}
-
-			$mysqli->close();
-			?>
-			
-			<?php
-    	if(isset($_SESSION['message']))
+			if(isset($_SESSION['message']))
 			{
 				echo "<h3>".$_SESSION['message']."</h3>";
 				unset($_SESSION['message']);
 			}
-			
-		if(isset($_SESSION['username']))
-		{			
-			$user = $_SESSION["username"];
-			$mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
-			
-			$query = "SELECT * FROM EECSUsers WHERE user_id='$user'";
-			
-			if ($result = $mysqli->query($query))
-			{				
-				// fetch associative array			
-				$row = $result->fetch_assoc();
-				$isAdmin = $row['isAdmin'];
-				// free result set
-				$result->free();
-			}
-			
-			if($isAdmin == 1)
-			{
-				echo "<br><br><a href = '../Admin.html'>Back to Admin Page</a>";
-			}
+
+
+        if(isset($_SESSION['username']))
+        {
+            $user = $_SESSION["username"];
+            $mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
+
+            $query = "SELECT * FROM EECSUsers WHERE user_id='$user'";
+
+            if ($result = $mysqli->query($query))
+            {
+                // fetch associative array
+                $row = $result->fetch_assoc();
+                $isAdmin = $row['isAdmin'];
+                // free result set
+                $result->free();
+            }
+
+            if($isAdmin == 1) {
+    			if($mysqli->connect_errno) {
+    			  printf("Connect failed: %s\n", $mysqli->connect_error);
+    			  exit();
+    			}
+
+    			$user = $_POST['users'];
+
+    			$query = "SELECT post_id,user_id,content,forum_id,topic_id,isForum,isTopic,Date FROM EECSPosts";
+
+    			if($result = $mysqli->query($query)) {
+
+    				echo "<form action = 'DeletePost.php' method = 'post'>";
+
+
+    				while($row = $result->fetch_assoc()) {
+
+    					printf("<input type = 'checkbox' name = 'DeleteList[]' value = '%s'> <p>%s</p>    <p>%s</p>     <p>%s</p>    <p>%s</p>    <p>%s</p>    <p>%s</p> <p>%s</p>",
+              htmlspecialchars($row["post_id"]), htmlspecialchars($row["user_id"]), htmlspecialchars($row["content"]), htmlspecialchars($row["forum_id"]), htmlspecialchars($row["topic_id"]),
+              htmlspecialchars($row["isForum"]), htmlspecialchars($row["isTopic"]), htmlspecialchars($row["Date"]));
+    					echo "<br>";
+    				}
+
+
+    				echo "<input type = 'submit' value = 'Delete Posts'>";
+    				echo "</form>";
+    				$result->free();
+    			}
+
+                echo "<br><br><a href = '../Admin.html'>Back to Admin Page</a>";
+
+    			$mysqli->close();
+            }
+            else {
+                echo "You are not an admin";
+            }
+        }
+        else {
+            echo "You are not logged in";
 		}
 
 		?>

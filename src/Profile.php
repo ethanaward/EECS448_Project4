@@ -14,7 +14,7 @@ session_start();
 
     private $query;
     private $mysqli;
-	private $isAdmin;
+	//private $isAdmin;
 	
 	/**
 	*  @name: Profile
@@ -81,7 +81,7 @@ session_start();
 					<tr> <td>Description:</td><td><input type = 'text' name = 'description' value = '%s'</td> </tr>",
 					htmlspecialchars($row["user_id"]), htmlspecialchars($row["Email"]), htmlspecialchars($row["FirstName"]), htmlspecialchars($row["LastName"]), htmlspecialchars($row["Website"]), htmlspecialchars($row["Description"]));
 					
-					$this->isAdmin = $row['isAdmin'];
+					$_SESSION['isAdmin'] = $row['isAdmin'];
 				}
 			
 
@@ -169,7 +169,7 @@ session_start();
 	 *  @return: None
 	 */
 	public function displayAdmin(){
-		if($this->isAdmin == 1)
+		if($_SESSION['isAdmin'] == 1)
 		{
 			echo "<br><br><a href='Admin.html'>Admin Page</a>";
 		}
