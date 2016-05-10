@@ -1,0 +1,153 @@
+\hypertarget{class_user}{}\section{User Class Reference}
+\label{class_user}\index{User@{User}}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf User}\par
+{\em \begin{DoxyPrecond}{Precondition}
+H\+T\+ML form data submitted 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Initializes variables and My\+S\+QL database 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_user_aa67031b663e39314207197d3b5dfd735}{User} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \+: redirect\+Page}\par
+{\em \begin{DoxyPrecond}{Precondition}
+\+: None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: Redirects the user to the proper page 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$val} & \+: A value used to check where the user should be redirected to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: None 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_user_af2a5b1d0f21a4d7df3949d9115d3c5a8}{redirect\+Page} (\$val)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \+: close}\par
+{\em \begin{DoxyPrecond}{Precondition}
+\+: Connected to database 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: The mysqli is closed 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+\+: None 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_user_aa69c8bf1f1dcf4e72552efff1fe3e87e}{close} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \+: login}\par
+{\em \begin{DoxyPrecond}{Precondition}
+\+: Database connected 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: Authenticates login 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+\+: 0 if the login failed, 1 if it succeeded 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_user_aa311da27ba5706f5710cea7706c8eae1}{login} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \+: signup}\par
+{\em \begin{DoxyPrecond}{Precondition}
+\+: Gathered H\+T\+ML form data 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: New user is created if possible, nothing otherwise 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+\+: 1 if the signup was successful, 2 if it was not 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_user_a852ed40b79f143c1478699d908f46957}{signup} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \+: delete\+User}\par
+{\em \begin{DoxyPrecond}{Precondition}
+\+: Connected to database, the user taken in exists 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: Deletes the user and all of their associated data if possible 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$user} & \+: The user to be deleted \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: True if the user was deleted, false otherwise 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_user_a4a7e78c14bdda63f35847cf2a4a862d0}{delete\+User} (\$user)
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Member Function Documentation}
+\index{User@{User}!close@{close}}
+\index{close@{close}!User@{User}}
+\subsubsection[{\texorpdfstring{close()}{close()}}]{\setlength{\rightskip}{0pt plus 5cm}close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_user_aa69c8bf1f1dcf4e72552efff1fe3e87e}{}\label{class_user_aa69c8bf1f1dcf4e72552efff1fe3e87e}
+\index{User@{User}!delete\+User@{delete\+User}}
+\index{delete\+User@{delete\+User}!User@{User}}
+\subsubsection[{\texorpdfstring{delete\+User(\$user)}{deleteUser($user)}}]{\setlength{\rightskip}{0pt plus 5cm}delete\+User (
+\begin{DoxyParamCaption}
+\item[{}]{\$user}
+\end{DoxyParamCaption}
+)}\hypertarget{class_user_a4a7e78c14bdda63f35847cf2a4a862d0}{}\label{class_user_a4a7e78c14bdda63f35847cf2a4a862d0}
+\index{User@{User}!login@{login}}
+\index{login@{login}!User@{User}}
+\subsubsection[{\texorpdfstring{login()}{login()}}]{\setlength{\rightskip}{0pt plus 5cm}login (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_user_aa311da27ba5706f5710cea7706c8eae1}{}\label{class_user_aa311da27ba5706f5710cea7706c8eae1}
+\index{User@{User}!redirect\+Page@{redirect\+Page}}
+\index{redirect\+Page@{redirect\+Page}!User@{User}}
+\subsubsection[{\texorpdfstring{redirect\+Page(\$val)}{redirectPage($val)}}]{\setlength{\rightskip}{0pt plus 5cm}redirect\+Page (
+\begin{DoxyParamCaption}
+\item[{}]{\$val}
+\end{DoxyParamCaption}
+)}\hypertarget{class_user_af2a5b1d0f21a4d7df3949d9115d3c5a8}{}\label{class_user_af2a5b1d0f21a4d7df3949d9115d3c5a8}
+\index{User@{User}!signup@{signup}}
+\index{signup@{signup}!User@{User}}
+\subsubsection[{\texorpdfstring{signup()}{signup()}}]{\setlength{\rightskip}{0pt plus 5cm}signup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_user_a852ed40b79f143c1478699d908f46957}{}\label{class_user_a852ed40b79f143c1478699d908f46957}
+\index{User@{User}!User@{User}}
+\index{User@{User}!User@{User}}
+\subsubsection[{\texorpdfstring{User()}{User()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf User} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_user_aa67031b663e39314207197d3b5dfd735}{}\label{class_user_aa67031b663e39314207197d3b5dfd735}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{_user_8php}{User.\+php}\end{DoxyCompactItemize}
