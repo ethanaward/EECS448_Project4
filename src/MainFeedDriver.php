@@ -1,6 +1,6 @@
 <?php
 /**
-*	@file : myRecentPosts.php
+*	@file : MainFeedDriver.php
 *	@author : Mike Neises, Travis Augustine, Ethan Ward
 *	@date : 2016.04.08
 *	@brief: Takes the user's posts from database and displays them
