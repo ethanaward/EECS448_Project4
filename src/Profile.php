@@ -175,7 +175,7 @@ session_start();
 							// fetch associative array 
 							while ($row = $result->fetch_assoc())
 							{
-							  	printf ("<a href = 'ProfileFrontEnd.html?profile=%s'>%s</a><br> \n", $row["user_id"], $row["user_id"]);
+							  	printf ("<br><a href = 'ProfileFrontEnd.html?profile=%s'>%s</a><br> \n", $row["user_id"], $row["user_id"]);
 								$i++;
 							}
 							// free result set
