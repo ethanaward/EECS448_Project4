@@ -39,6 +39,10 @@ class TestSuite {
 		$this->topicName = "testTopic";
 		$this->forumName = "Test";	
 		
+		if(isset($_SESSION['username'])) {
+			$_SESSION['temp'] = $_SESSION['username'];
+		}
+		
 		//Create a new test forum and user
 		$this->mysqli->query("INSERT INTO EECSForums(forum_id) VALUES ('Test')");
 		$this->mysqli->query("INSERT INTO EECSUsers(user_id) VALUES ('TestUser')");
@@ -81,6 +85,11 @@ class TestSuite {
 		$this->mysqli->query("DELETE FROM EECSUsers WHERE user_id = 'TestUser'");
 		$this->mysqli->query("DELETE FROM EECSPosts WHERE forum_id = 'Test'");
 		$this->mysqli->query("DELETE FROM EECSForums WHERE forum_id = 'Test'");
+		
+		if(isset($_SESSION['temp'])) {
+			$_SESSION['username'] = $_SESSION['temp'];
+			unset($_SESSION['temp']);
+		}
 	}
 
 	/**
