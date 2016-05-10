@@ -15,7 +15,7 @@ session_start();
     private $query;
     private $mysqli;
 	//private $isAdmin;
-	
+
 	/**
 	*  @name: Profile
 	*  @pre: None
@@ -25,7 +25,7 @@ session_start();
     public function Profile()
     {
         $this->mysqli = new mysqli('mysql.eecs.ku.edu', 'eward', 'ethanward', 'eward');
-        
+
 		$this->query = "SELECT * FROM EECSUsers WHERE user_id = '".$this->mysqli->real_escape_string($_SESSION['profilename'])."'";
 
     }
@@ -46,7 +46,7 @@ session_start();
     }
     /**
      *  @name: close
-     *  
+     *
      *  @pre: Connected to database
      *  @post: Closes the connection
      *  @return: None
@@ -80,25 +80,25 @@ session_start();
 					<tr> <td>Website:</td><td><input type = 'text' name = 'website' value = '%s'</td> </tr>
 					<tr> <td>Description:</td><td><input type = 'text' name = 'description' value = '%s'</td> </tr>",
 					htmlspecialchars($row["user_id"]), htmlspecialchars($row["Email"]), htmlspecialchars($row["FirstName"]), htmlspecialchars($row["LastName"]), htmlspecialchars($row["Website"]), htmlspecialchars($row["Description"]));
-					
+
 					$_SESSION['isAdmin'] = $row['isAdmin'];
 				}
-			
+
 
 
 				echo "<tr><td><input type = 'submit' value = 'Edit profile'></td></tr>";
 				echo "</table>";
 				echo "</form>";
-			
+
 				$result->free();
-				
+
 				return true;
 			}
 			else {
 				echo "Error: " . $this->query . "<br>" . $this->mysqli->error;
 				return false;
 			}
-			
+
 		}
 		else
 		{
@@ -127,7 +127,7 @@ session_start();
 
   /**
    *  @name: displayButton
-   *  
+   *
    *  @pre: Connected to database, a user is logged in and is not viewing their own profile, the utility class has been included
    *  @post: Displays a button for adding/removing a user as a friend
    *  @return: None
@@ -162,13 +162,13 @@ session_start();
   }
   	/**
 	 *  @name: displayFriends
-	 *  
+	 *
 	 *  @pre: None
 	 *  @post: Displays links to user's friends
 	 *  @return: None
 	 */
   		public function displayFriends(){
-		
+
 						$this->query = "SELECT * FROM ". $_SESSION['profilename']."_Friends";
 
 						//Checks to make sure the mysql database can be accessed
@@ -177,8 +177,8 @@ session_start();
 						if ($result = $this->mysqli->query($this->query))
 						{
 							$i=0;
-
-							// fetch associative array 
+                            echo "<br><br>Friends List";
+							// fetch associative array
 							while ($row = $result->fetch_assoc())
 							{
 							  	printf ("<br><a href = 'ProfileFrontEnd.html?profile=%s'>%s</a><br> \n", $row["user_id"], $row["user_id"]);
@@ -188,7 +188,7 @@ session_start();
 							$result->free();
 							return true;
 						}
-						else 
+						else
 						{
 							echo "Error: " . $this->query . "<br>" . $this->mysqli->error;
 							return false;
@@ -196,7 +196,7 @@ session_start();
 		}
 	/**
 	 *  @name: displayAdmin
-	 *  
+	 *
 	 *  @pre: None
 	 *  @post: Displays a link to the admin page if the user is an admin
 	 *  @return: None
