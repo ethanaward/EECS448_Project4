@@ -6,3 +6,4 @@ Bug List
 4. Test Suite posts do not contain date/time strings
 5. You can access topics that don't exist, and they will just have a blank box
 6. Attempting to make a post from this blank box will take you to a blank page
+7. When in smaller browsers, the navigation does not alter size to adjust for the drop-down increasing or decreasing when an Admin adds or removes a forum
