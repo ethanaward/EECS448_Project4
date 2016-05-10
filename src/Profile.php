@@ -160,7 +160,13 @@ session_start();
     	}
     }
   }
-  
+  	/**
+	 *  @name: displayFriends
+	 *  
+	 *  @pre: None
+	 *  @post: Displays links to user's friends
+	 *  @return: None
+	 */
   		public function displayFriends(){
 		
 						$this->query = "SELECT * FROM ". $_SESSION['profilename']."_Friends";
