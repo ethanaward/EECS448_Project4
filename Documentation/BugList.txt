@@ -7,3 +7,5 @@ Bug List
 5. Test Suite posts do not contain date/time strings
 6. You can access topics that don't exist, and they will just have a blank box
 7. Attempting to make a post from this will take you to a blank page
+8. Running tests can be accessed when you aren't an admin
+9. Other admin functionality can be accessed when you aren't an admin(Deleting posts, etc)
