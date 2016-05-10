@@ -1,0 +1,175 @@
+\hypertarget{class_follow}{}\section{Follow Class Reference}
+\label{class_follow}\index{Follow@{Follow}}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf \+: Follow}\par
+{\em \begin{DoxyPrecond}{Precondition}
+\+: None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: A \hyperlink{class_follow}{Follow} object is created and the database is connected to 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+\+: None 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_follow_a84352201e33bab0eb302bb4454894646}{Follow} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \+: close}\par
+{\em \begin{DoxyPrecond}{Precondition}
+\+: Connected to database 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: Closes the connection 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+\+: None 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_follow_aa69c8bf1f1dcf4e72552efff1fe3e87e}{close} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \+: add\+Friend}\par
+{\em \begin{DoxyPrecond}{Precondition}
+\+: Connected to database, the user and friend exist 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: Adds the friend to the user\textquotesingle{}s friend table 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$user} & \+: The user whose table the friend is added to \\
+\hline
+\mbox{\tt in}  & {\em \$friend} & \+: The friend to be added \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: True if the friend is added, false if not 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_follow_ae1d4e16a88fb4a2644b48e5540c71b18}{add\+Friend} (\$user, \$friend)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \+: add\+Forum}\par
+{\em \begin{DoxyPrecond}{Precondition}
+\+: Connected to database, the user and forum exist 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: Adds the forum to the user\textquotesingle{}s table 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$user} & \+: The user whose table is added to \\
+\hline
+\mbox{\tt in}  & {\em \$forum} & \+: The forum to be added \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: True if the forum is added, false if not 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_follow_ac74cb2976741724d52a8ffa4c6d12d52}{add\+Forum} (\$user, \$forum)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \+: remove\+Friend}\par
+{\em \begin{DoxyPrecond}{Precondition}
+\+: Connected to database, the user exists and the friend is in their friends table 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: Removes the friend from the user\textquotesingle{}s friend list if possible 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$user} & \+: The user whose table is to be removed from \\
+\hline
+\mbox{\tt in}  & {\em \$friend} & \+: The friend to remove \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: True if the friend is removed, false if not 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_follow_aa183e62eabe0793a6baa3b18243debe6}{remove\+Friend} (\$user, \$friend)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \+: remove\+Forum}\par
+{\em \begin{DoxyPrecond}{Precondition}
+\+: Connected to database, the user exists and the forum is in their table 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: Removes the forum from the user\textquotesingle{}s table if possible 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$user} & \+: The user whose table is to be removed from \\
+\hline
+\mbox{\tt in}  & {\em \$forum} & \+: The forum to remove \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: True if the forum is removed, false if not 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_follow_a409137c748d8be1bfb465bc97acb41c7}{remove\+Forum} (\$user, \$forum)
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Member Function Documentation}
+\index{Follow@{Follow}!add\+Forum@{add\+Forum}}
+\index{add\+Forum@{add\+Forum}!Follow@{Follow}}
+\subsubsection[{\texorpdfstring{add\+Forum(\$user, \$forum)}{addForum($user, $forum)}}]{\setlength{\rightskip}{0pt plus 5cm}add\+Forum (
+\begin{DoxyParamCaption}
+\item[{}]{\$user, }
+\item[{}]{\$forum}
+\end{DoxyParamCaption}
+)}\hypertarget{class_follow_ac74cb2976741724d52a8ffa4c6d12d52}{}\label{class_follow_ac74cb2976741724d52a8ffa4c6d12d52}
+\index{Follow@{Follow}!add\+Friend@{add\+Friend}}
+\index{add\+Friend@{add\+Friend}!Follow@{Follow}}
+\subsubsection[{\texorpdfstring{add\+Friend(\$user, \$friend)}{addFriend($user, $friend)}}]{\setlength{\rightskip}{0pt plus 5cm}add\+Friend (
+\begin{DoxyParamCaption}
+\item[{}]{\$user, }
+\item[{}]{\$friend}
+\end{DoxyParamCaption}
+)}\hypertarget{class_follow_ae1d4e16a88fb4a2644b48e5540c71b18}{}\label{class_follow_ae1d4e16a88fb4a2644b48e5540c71b18}
+\index{Follow@{Follow}!close@{close}}
+\index{close@{close}!Follow@{Follow}}
+\subsubsection[{\texorpdfstring{close()}{close()}}]{\setlength{\rightskip}{0pt plus 5cm}close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_follow_aa69c8bf1f1dcf4e72552efff1fe3e87e}{}\label{class_follow_aa69c8bf1f1dcf4e72552efff1fe3e87e}
+\index{Follow@{Follow}!Follow@{Follow}}
+\index{Follow@{Follow}!Follow@{Follow}}
+\subsubsection[{\texorpdfstring{Follow()}{Follow()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Follow} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_follow_a84352201e33bab0eb302bb4454894646}{}\label{class_follow_a84352201e33bab0eb302bb4454894646}
+\index{Follow@{Follow}!remove\+Forum@{remove\+Forum}}
+\index{remove\+Forum@{remove\+Forum}!Follow@{Follow}}
+\subsubsection[{\texorpdfstring{remove\+Forum(\$user, \$forum)}{removeForum($user, $forum)}}]{\setlength{\rightskip}{0pt plus 5cm}remove\+Forum (
+\begin{DoxyParamCaption}
+\item[{}]{\$user, }
+\item[{}]{\$forum}
+\end{DoxyParamCaption}
+)}\hypertarget{class_follow_a409137c748d8be1bfb465bc97acb41c7}{}\label{class_follow_a409137c748d8be1bfb465bc97acb41c7}
+\index{Follow@{Follow}!remove\+Friend@{remove\+Friend}}
+\index{remove\+Friend@{remove\+Friend}!Follow@{Follow}}
+\subsubsection[{\texorpdfstring{remove\+Friend(\$user, \$friend)}{removeFriend($user, $friend)}}]{\setlength{\rightskip}{0pt plus 5cm}remove\+Friend (
+\begin{DoxyParamCaption}
+\item[{}]{\$user, }
+\item[{}]{\$friend}
+\end{DoxyParamCaption}
+)}\hypertarget{class_follow_aa183e62eabe0793a6baa3b18243debe6}{}\label{class_follow_aa183e62eabe0793a6baa3b18243debe6}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{_follow_8php}{Follow.\+php}\end{DoxyCompactItemize}

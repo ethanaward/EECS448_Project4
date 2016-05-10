@@ -1,0 +1,169 @@
+\hypertarget{class_utility}{}\section{Utility Class Reference}
+\label{class_utility}\index{Utility@{Utility}}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf \+: Utility}\par
+{\em \begin{DoxyPrecond}{Precondition}
+\+: None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: Creates a new \hyperlink{class_utility}{Utility} object and initializes its mysqli 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_utility_a5a80b2bca9134badc1c6f7a9c76fafc3}{Utility} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \+: close}\par
+{\em \begin{DoxyPrecond}{Precondition}
+\+: Connected to database 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: Closes the connection 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+\+: None 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_utility_aa69c8bf1f1dcf4e72552efff1fe3e87e}{close} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \+: check\+User}\par
+{\em \begin{DoxyPrecond}{Precondition}
+\+: Connected to database 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: None 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$user} & A user id that will be checked against the database \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: True if the user is in the database, false if it is not or if the query fails 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_utility_a51f9fc92fbe85f69fb8222a212f04159}{check\+User} (\$user)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \+: check\+Friend}\par
+{\em \begin{DoxyPrecond}{Precondition}
+\+: Connected to database 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: None 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$user} & \+: A user id whose friend table will be checked \\
+\hline
+\mbox{\tt in}  & {\em \$friend} & \+: A user id which will be checked against the friend table \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: True if the friend exists in the user\textquotesingle{}s friend table, false if it is not or if the query fails 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_utility_aba2cf5971f1ba3bc165e9c9b6645a96f}{check\+Friend} (\$user, \$friend)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \+: check\+Forum}\par
+{\em \begin{DoxyPrecond}{Precondition}
+\+: Connected to database 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: None 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$user} & \+: A user id whose forum table will be checked \\
+\hline
+\mbox{\tt in}  & {\em \$forum} & \+: A forum id which will be checked against the forum table \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: True if the user has the forum in their forum table, false if it is not or if the query fails 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_utility_a21131b36e28440bc1da8de2b6e07a8ec}{check\+Forum} (\$user, \$forum)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf \+: check\+Board}\par
+{\em \begin{DoxyPrecond}{Precondition}
+\+: Connected to database 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: None 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em \$board} & \+: A board id to be checked against the database \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: True if the board is in the database, false if it is not or if the query fails. 
+\end{DoxyReturn}
+}\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_utility_ae743f48c1d36ea805d5e4a2527fecd18}{check\+Board} (\$board)
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Member Function Documentation}
+\index{Utility@{Utility}!check\+Board@{check\+Board}}
+\index{check\+Board@{check\+Board}!Utility@{Utility}}
+\subsubsection[{\texorpdfstring{check\+Board(\$board)}{checkBoard($board)}}]{\setlength{\rightskip}{0pt plus 5cm}check\+Board (
+\begin{DoxyParamCaption}
+\item[{}]{\$board}
+\end{DoxyParamCaption}
+)}\hypertarget{class_utility_ae743f48c1d36ea805d5e4a2527fecd18}{}\label{class_utility_ae743f48c1d36ea805d5e4a2527fecd18}
+\index{Utility@{Utility}!check\+Forum@{check\+Forum}}
+\index{check\+Forum@{check\+Forum}!Utility@{Utility}}
+\subsubsection[{\texorpdfstring{check\+Forum(\$user, \$forum)}{checkForum($user, $forum)}}]{\setlength{\rightskip}{0pt plus 5cm}check\+Forum (
+\begin{DoxyParamCaption}
+\item[{}]{\$user, }
+\item[{}]{\$forum}
+\end{DoxyParamCaption}
+)}\hypertarget{class_utility_a21131b36e28440bc1da8de2b6e07a8ec}{}\label{class_utility_a21131b36e28440bc1da8de2b6e07a8ec}
+\index{Utility@{Utility}!check\+Friend@{check\+Friend}}
+\index{check\+Friend@{check\+Friend}!Utility@{Utility}}
+\subsubsection[{\texorpdfstring{check\+Friend(\$user, \$friend)}{checkFriend($user, $friend)}}]{\setlength{\rightskip}{0pt plus 5cm}check\+Friend (
+\begin{DoxyParamCaption}
+\item[{}]{\$user, }
+\item[{}]{\$friend}
+\end{DoxyParamCaption}
+)}\hypertarget{class_utility_aba2cf5971f1ba3bc165e9c9b6645a96f}{}\label{class_utility_aba2cf5971f1ba3bc165e9c9b6645a96f}
+\index{Utility@{Utility}!check\+User@{check\+User}}
+\index{check\+User@{check\+User}!Utility@{Utility}}
+\subsubsection[{\texorpdfstring{check\+User(\$user)}{checkUser($user)}}]{\setlength{\rightskip}{0pt plus 5cm}check\+User (
+\begin{DoxyParamCaption}
+\item[{}]{\$user}
+\end{DoxyParamCaption}
+)}\hypertarget{class_utility_a51f9fc92fbe85f69fb8222a212f04159}{}\label{class_utility_a51f9fc92fbe85f69fb8222a212f04159}
+\index{Utility@{Utility}!close@{close}}
+\index{close@{close}!Utility@{Utility}}
+\subsubsection[{\texorpdfstring{close()}{close()}}]{\setlength{\rightskip}{0pt plus 5cm}close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_utility_aa69c8bf1f1dcf4e72552efff1fe3e87e}{}\label{class_utility_aa69c8bf1f1dcf4e72552efff1fe3e87e}
+\index{Utility@{Utility}!Utility@{Utility}}
+\index{Utility@{Utility}!Utility@{Utility}}
+\subsubsection[{\texorpdfstring{Utility()}{Utility()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Utility} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_utility_a5a80b2bca9134badc1c6f7a9c76fafc3}{}\label{class_utility_a5a80b2bca9134badc1c6f7a9c76fafc3}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{_utility_8php}{Utility.\+php}\end{DoxyCompactItemize}
