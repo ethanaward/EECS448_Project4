@@ -6,3 +6,7 @@ http://stackoverflow.com/questions/4253960/sql-how-to-properly-check-if-a-record
 Used for regex expressions for signup input
 http://stackoverflow.com/questions/16434174/only-allow-certain-characters-to-be-entered-in-html-textinput
 http://html5pattern.com/
+
+
+Used for bootstrap theme on site
+http://www.w3schools.com/bootstrap/
