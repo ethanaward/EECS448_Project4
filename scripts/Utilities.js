@@ -1,5 +1,17 @@
-var myDate;
+/**
+*	@file : Utilities.js
+*	@author : Mike Neises, Travis Augustine, Ethan Ward
+*	@date : 2016.04.08
+*	@brief: Obtains date values
+*/
 
+var myDate;
+	/**
+	*  @name getTheDate
+	*  @pre None
+	*  @post Saves current date in date string
+	*  @return None
+	*/
 function getTheDate(){
 	myDate = new Date();
 
@@ -9,6 +21,12 @@ function getTheDate(){
 	document.getElementById("date").type = "hidden";
 }
 
+	/**
+	*  @name getMonthName
+	*  @pre Submitted feed post form
+	*  @post None
+	*  @return String of current month
+	*/
 function getMonthName(){
 	var dateString = "";
 	var dateNum = myDate.getMonth();
@@ -51,6 +69,12 @@ function getMonthName(){
 	return dateString;
 }
 
+	/**
+	*  @name getTimeString
+	*  @pre None
+	*  @post None
+	*  @return String of hours and minutes
+	*/
 function getTimeString(){
 	var timeString = "";
 	var hours = + parseInt(myDate.getHours());
@@ -59,6 +83,12 @@ function getTimeString(){
 	return timeString;
 }
 
+	/**
+	*  @name toggleRecentPosts
+	*  @pre None
+	*  @post Switches visibility of posts
+	*  @return None
+	*/
 function toggleRecentPosts(){
 	var myDiv = document.getElementById("recentPosts")
 	var myTitle = document.getElementById("recentPostsTitle")

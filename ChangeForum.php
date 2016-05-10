@@ -1,5 +1,10 @@
 <?php
-
+/**
+*	@file : ChangeForum.php
+*	@author : Mike Neises, Travis Augustine, Ethan Ward
+*	@date : 2016.05.04
+*	@brief: Adds or removes forum at user's request
+*/
 session_start();
 
 include "src/Follow.php";
