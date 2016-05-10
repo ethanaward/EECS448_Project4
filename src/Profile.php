@@ -160,7 +160,34 @@ session_start();
     	}
     }
   }
+  
+  		public function displayFriends(){
+		
+						$this->query = "SELECT * FROM ". $_SESSION['profilename']."_Friends";
 
+						//Checks to make sure the mysql database can be accessed
+						$this->isOK();
+
+						if ($result = $this->mysqli->query($this->query))
+						{
+							$i=0;
+
+							// fetch associative array 
+							while ($row = $result->fetch_assoc())
+							{
+							  	printf ("<a href = 'ProfileFrontEnd.html?profile=%s'>%s</a><br> \n", $row["user_id"], $row["user_id"]);
+								$i++;
+							}
+							// free result set
+							$result->free();
+							return true;
+						}
+						else 
+						{
+							echo "Error: " . $this->query . "<br>" . $this->mysqli->error;
+							return false;
+						}
+		}
 	/**
 	 *  @name: displayAdmin
 	 *  
