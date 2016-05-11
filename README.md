@@ -9,3 +9,5 @@ username: travis
 password: Password123
 
 Login to account, then click "Admin Page" from the Profile Page to navigate to the Admin Page, then click "Run Tests" to run the test suite.
+
+In order to test it, you need a server to run the PHP. The EECS servers will not work, as session variables seem to be broken on them. We recommend using LAMP or its Windows/Mac equivalents, WAMP and MAMP.
