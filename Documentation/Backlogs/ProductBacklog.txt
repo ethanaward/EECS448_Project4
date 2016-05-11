@@ -1,4 +1,15 @@
-ONGOING
+Incomplete
+
+1. XL – private chat
+a. show what users are online
+b. allow real-time communication
+c. clear chat function
+
+2. S – sign-up page
+a. email verification
+
+
+Complete as of Project 4
 
 1. XL - Add follow functionality
 a. Allow user to add friends/boards to follow
@@ -32,15 +43,8 @@ b. Remove user from followers/followed tables
 c. Remove misc. 
 d. Delete individual posts
 
-7. XL – private chat
-a. show what users are online
-b. allow real-time communication
-c. clear chat function
 
-8. S – sign-up page
-a. email verification
-
-COMPLETE
+COMPLETE as of Project 3
 
 1. L – profile page
 a. display user info
